@@ -13,7 +13,7 @@ struct CeMealApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            IngredientView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
