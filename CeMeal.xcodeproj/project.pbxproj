@@ -13,9 +13,14 @@
 		552C6AD4285B23C9001F4FB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C6AD3285B23C9001F4FB5 /* Preview Assets.xcassets */; };
 		552C6AD6285B23C9001F4FB5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C6AD5285B23C9001F4FB5 /* Persistence.swift */; };
 		552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */; };
+		FA0276E62864389C0032B1DD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E52864389B0032B1DD /* Date.swift */; };
+		FA0276E828643BE20032B1DD /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E728643BE20032B1DD /* Float.swift */; };
 		FA6D87662862D7BF000E5225 /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87652862D7BF000E5225 /* IngredientView.swift */; };
 		FA6D876E28631DA0000E5225 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D876D28631DA0000E5225 /* NavigationBarModifier.swift */; };
 		FA6D877028631F6E000E5225 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D876F28631F6E000E5225 /* Color.swift */; };
+		FA6D877328632049000E5225 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D877228632049000E5225 /* Ingredient.swift */; };
+		FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87752863213C000E5225 /* IngredientViewModel.swift */; };
+		FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87792863278A000E5225 /* IngredientListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +31,14 @@
 		552C6AD3285B23C9001F4FB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		552C6AD5285B23C9001F4FB5 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		552C6AD8285B23C9001F4FB5 /* CeMeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CeMeal.xcdatamodel; sourceTree = "<group>"; };
+		FA0276E52864389B0032B1DD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		FA0276E728643BE20032B1DD /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 		FA6D87652862D7BF000E5225 /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
 		FA6D876D28631DA0000E5225 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		FA6D876F28631F6E000E5225 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		FA6D877228632049000E5225 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		FA6D87752863213C000E5225 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
+		FA6D87792863278A000E5225 /* IngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +75,11 @@
 				552C6AD0285B23C9001F4FB5 /* Assets.xcassets */,
 				552C6AD5285B23C9001F4FB5 /* Persistence.swift */,
 				552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */,
+				FA0276E4286438810032B1DD /* Helper */,
+				FA6D877128632009000E5225 /* Model */,
+				FA6D876B28631BF7000E5225 /* View */,
+				FA6D877428632117000E5225 /* ViewModel */,
 				552C6AD2285B23C9001F4FB5 /* Preview Content */,
-				FA6D876B28631BF7000E5225 /* Views */,
 			);
 			path = CeMeal;
 			sourceTree = "<group>";
@@ -79,14 +92,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FA6D876B28631BF7000E5225 /* Views */ = {
+		FA0276E4286438810032B1DD /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FA0276E52864389B0032B1DD /* Date.swift */,
+				FA0276E728643BE20032B1DD /* Float.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		FA6D876B28631BF7000E5225 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FA6D876C28631D85000E5225 /* Components */,
-				FA6D87652862D7BF000E5225 /* IngredientView.swift */,
+				FA6D877828632511000E5225 /* IngredientView */,
 				552C6ACE285B23C7001F4FB5 /* ContentView.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		FA6D876C28631D85000E5225 /* Components */ = {
@@ -96,6 +118,31 @@
 				FA6D876F28631F6E000E5225 /* Color.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		FA6D877128632009000E5225 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D877228632049000E5225 /* Ingredient.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA6D877428632117000E5225 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D87752863213C000E5225 /* IngredientViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FA6D877828632511000E5225 /* IngredientView */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D87652862D7BF000E5225 /* IngredientView.swift */,
+				FA6D87792863278A000E5225 /* IngredientListView.swift */,
+			);
+			path = IngredientView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,11 +215,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */,
 				552C6AD6285B23C9001F4FB5 /* Persistence.swift in Sources */,
 				552C6ACF285B23C7001F4FB5 /* ContentView.swift in Sources */,
 				FA6D877028631F6E000E5225 /* Color.swift in Sources */,
 				FA6D876E28631DA0000E5225 /* NavigationBarModifier.swift in Sources */,
+				FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */,
+				FA6D877328632049000E5225 /* Ingredient.swift in Sources */,
 				552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */,
+				FA0276E828643BE20032B1DD /* Float.swift in Sources */,
+				FA0276E62864389C0032B1DD /* Date.swift in Sources */,
 				FA6D87662862D7BF000E5225 /* IngredientView.swift in Sources */,
 				552C6ACD285B23C7001F4FB5 /* CeMealApp.swift in Sources */,
 			);
