@@ -9,12 +9,14 @@ import SwiftUI
 
 @main
 struct CeMealApp: App {
+    
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            IngredientView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
+    
 }
