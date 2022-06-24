@@ -54,6 +54,9 @@ struct IngredientView: View {
                         .listRowBackground(Color(UIColor.systemGray6))
                     }
                     .listStyle(.plain)
+                    .refreshable {
+                        self.ingredientViewModel.getIngredients()
+                    }
                     
                 } else {
                     
