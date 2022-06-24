@@ -15,6 +15,10 @@ struct Ingredient: Identifiable {
     var category: String
     var buyDate: Date
     var unit: String
-    var checked: Bool
+    var isChecked: Bool
+    
+    func updateCheckmark() -> Ingredient {
+        return Ingredient(id: id, title: title, qty: qty, category: category, buyDate: buyDate, unit: unit, isChecked: !isChecked)
+    }
     
 }

@@ -9,12 +9,18 @@ import SwiftUI
 
 struct IngredientListView: View {
     
+    @ObservedObject var ingredientViewModel = IngredientViewModel()
     var ingredient: Ingredient
     
     var body: some View {
         HStack {
             // Checkbox
-            Image(systemName: ingredient.checked ? "checkmark.square.fill" : "square")
+            Image(systemName: ingredient.isChecked ? "checkmark.square.fill" : "square")
+                .onTapGesture {
+                    withAnimation(.easeOut) {
+                        ingredientViewModel.ingredientIsChecked(ingredient: ingredient)
+                    }
+                }
                 .foregroundColor(.accentColor)
             
             // Content
@@ -63,6 +69,6 @@ struct IngredientListView: View {
 
 struct IngredientListView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientListView(ingredient: Ingredient(title: "Chicken Breast", qty: 3, category: "Poultry", buyDate: Date(), unit: "gr", checked: true))
+        IngredientListView(ingredient: Ingredient(title: "Chicken Breast", qty: 3, category: "Poultry", buyDate: Date(), unit: "gr", isChecked: true))
     }
 }
