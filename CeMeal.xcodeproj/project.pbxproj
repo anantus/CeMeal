@@ -21,6 +21,7 @@
 		FA6D877328632049000E5225 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D877228632049000E5225 /* Ingredient.swift */; };
 		FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87752863213C000E5225 /* IngredientViewModel.swift */; };
 		FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87792863278A000E5225 /* IngredientListView.swift */; };
+		FAF6D5A828645F2D005FD65A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF6D5A728645F2D005FD65A /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		FA6D877228632049000E5225 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		FA6D87752863213C000E5225 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		FA6D87792863278A000E5225 /* IngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListView.swift; sourceTree = "<group>"; };
+		FAF6D5A528645F21005FD65A /* CeMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CeMeal.entitlements; sourceTree = "<group>"; };
+		FAF6D5A728645F2D005FD65A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF6D5A828645F2D005FD65A /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +61,7 @@
 			children = (
 				552C6ACB285B23C7001F4FB5 /* CeMeal */,
 				552C6ACA285B23C7001F4FB5 /* Products */,
+				FAF6D5A628645F2D005FD65A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +76,7 @@
 		552C6ACB285B23C7001F4FB5 /* CeMeal */ = {
 			isa = PBXGroup;
 			children = (
+				FAF6D5A528645F21005FD65A /* CeMeal.entitlements */,
 				552C6ACC285B23C7001F4FB5 /* CeMealApp.swift */,
 				552C6AD0285B23C9001F4FB5 /* Assets.xcassets */,
 				552C6AD5285B23C9001F4FB5 /* Persistence.swift */,
@@ -143,6 +149,14 @@
 				FA6D87792863278A000E5225 /* IngredientListView.swift */,
 			);
 			path = IngredientView;
+			sourceTree = "<group>";
+		};
+		FAF6D5A628645F2D005FD65A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAF6D5A728645F2D005FD65A /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +366,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CeMeal/CeMeal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CeMeal/Preview Content\"";
@@ -381,6 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CeMeal/CeMeal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CeMeal/Preview Content\"";
