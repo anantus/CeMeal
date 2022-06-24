@@ -105,6 +105,5 @@ struct IngredientView: View {
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
         IngredientView()
-            .previewInterfaceOrientation(.portrait)
     }
 }
