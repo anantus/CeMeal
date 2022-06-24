@@ -68,6 +68,17 @@ struct IngredientView: View {
                     
                 }
                 
+                Button {
+                    
+                } label: {
+                    Text("Generate Recipe")
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color.ui.buttonLabel)
+                }
+                .buttonStyle(NeumorphicButtonStyle(bgColor: .accentColor))
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .padding(.bottom)
+                
             }
             
             .navigationTitle("Hi, Chef!")
@@ -91,7 +102,6 @@ struct IngredientView: View {
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
         IngredientView()
-            .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.portrait)
     }
 }

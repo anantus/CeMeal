@@ -21,6 +21,7 @@
 		FA6D877328632049000E5225 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D877228632049000E5225 /* Ingredient.swift */; };
 		FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87752863213C000E5225 /* IngredientViewModel.swift */; };
 		FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87792863278A000E5225 /* IngredientListView.swift */; };
+		FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5A28656D7F006CEF12 /* Button.swift */; };
 		FAF6D5A828645F2D005FD65A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF6D5A728645F2D005FD65A /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		FA6D877228632049000E5225 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		FA6D87752863213C000E5225 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		FA6D87792863278A000E5225 /* IngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListView.swift; sourceTree = "<group>"; };
+		FAC70C5A28656D7F006CEF12 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAF6D5A528645F21005FD65A /* CeMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CeMeal.entitlements; sourceTree = "<group>"; };
 		FAF6D5A728645F2D005FD65A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -122,6 +124,7 @@
 			children = (
 				FA6D876D28631DA0000E5225 /* NavigationBarModifier.swift */,
 				FA6D876F28631F6E000E5225 /* Color.swift */,
+				FAC70C5A28656D7F006CEF12 /* Button.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				FA0276E828643BE20032B1DD /* Float.swift in Sources */,
 				FA0276E62864389C0032B1DD /* Date.swift in Sources */,
 				FA6D87662862D7BF000E5225 /* IngredientView.swift in Sources */,
+				FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */,
 				552C6ACD285B23C7001F4FB5 /* CeMealApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@ extension Color {
     static let ui = Color.UI()
     
     struct UI {
-         let title = Color("TitleColor")
+        let title = Color("TitleColor")
+        let buttonLabel = Color("ButtonLabelColor")
     }
 }
