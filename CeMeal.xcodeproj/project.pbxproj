@@ -22,6 +22,7 @@
 		FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87752863213C000E5225 /* IngredientViewModel.swift */; };
 		FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87792863278A000E5225 /* IngredientListView.swift */; };
 		FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5A28656D7F006CEF12 /* Button.swift */; };
+		FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */; };
 		FAF6D5A828645F2D005FD65A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF6D5A728645F2D005FD65A /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		FA6D87752863213C000E5225 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
 		FA6D87792863278A000E5225 /* IngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListView.swift; sourceTree = "<group>"; };
 		FAC70C5A28656D7F006CEF12 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
 		FAF6D5A528645F21005FD65A /* CeMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CeMeal.entitlements; sourceTree = "<group>"; };
 		FAF6D5A728645F2D005FD65A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 				FA6D876C28631D85000E5225 /* Components */,
 				FA6D877828632511000E5225 /* IngredientView */,
 				552C6ACE285B23C7001F4FB5 /* ContentView.swift */,
+				FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				FA6D877028631F6E000E5225 /* Color.swift in Sources */,
 				FA6D876E28631DA0000E5225 /* NavigationBarModifier.swift in Sources */,
 				FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */,
+				FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */,
 				FA6D877328632049000E5225 /* Ingredient.swift in Sources */,
 				552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */,
 				FA0276E828643BE20032B1DD /* Float.swift in Sources */,
