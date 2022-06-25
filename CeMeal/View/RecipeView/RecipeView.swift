@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeView: View {
     
+    @State private var selectedMenu = 0
+    
     var recipe: Recipe
     
     var body: some View {
@@ -24,6 +26,22 @@ struct RecipeView: View {
                     .padding(0)
                 
                 // Segmented control
+                Picker("Menu", selection: $selectedMenu, content: {
+                    Group {
+                        Text("Ingredients")
+                    }
+                    .tag(0)
+                    VStack {
+                        Text("Directions")
+                    }
+                    .tag(1)
+                    VStack {
+                        Text("Might Like")
+                    }
+                    .tag(2)
+                })
+                .pickerStyle(.segmented)
+                .padding()
             }
             
             .navigationTitle(recipe.title)
