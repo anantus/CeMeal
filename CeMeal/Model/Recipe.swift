@@ -12,11 +12,13 @@ struct Recipe: Identifiable {
     var id: String
     var title: String
     var thumbnailImage: String?
+    var isFavorite: Bool
     
-    init(id: String = UUID().uuidString, title: String, thumbnailImage: String? = nil) {
+    init(id: String = UUID().uuidString, title: String, thumbnailImage: String? = nil, isFavorite: Bool = false) {
         self.id = id
         self.title = title
         self.thumbnailImage = thumbnailImage
+        self.isFavorite = isFavorite
     }
     
 }

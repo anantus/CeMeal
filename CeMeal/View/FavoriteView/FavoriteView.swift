@@ -16,7 +16,7 @@ struct FavoriteView: View {
         NavigationView {
             List(recipeViewModel.recipes) { recipe in
                 NavigationLink(destination: {
-                    Text(recipe.title)
+                    RecipeView(recipe: recipe)
                 }, label: {
                     RecipeListView(recipe: recipe)
                 })
