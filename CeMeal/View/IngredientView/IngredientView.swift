@@ -22,7 +22,7 @@ struct IngredientView: View {
                 if ingredientViewModel.ingredients.count != 0 {
                     
                     List {
-                        // My ingredients title
+                        // My ingredients title & sort
                         HStack {
                             Text("My Ingredients")
                                 .foregroundColor(Color.ui.title)
