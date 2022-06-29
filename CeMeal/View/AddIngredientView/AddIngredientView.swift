@@ -9,16 +9,18 @@ import SwiftUI
 
 struct AddIngredientView: View {
     
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Environment(\.presentationMode) var addIngredient: Binding<PresentationMode>
     @GestureState private var dragOffset = CGSize.zero
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
+    @State private var showDetailSheet: Bool = false
+    @State private var selectedIngredient: Ingredient?
 
     var body: some View {
         Group {
             List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
                 Button {
-                    
+                    selectedIngredient = ingredient
                 } label: {
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -30,6 +32,9 @@ struct AddIngredientView: View {
                 }
             }
             .listStyle(.plain)
+            .sheet(item: $selectedIngredient) { item in
+                IngredientDetailView(ingredient: selectedIngredient ?? Ingredient(title: "Empty", qty: 0.0, category: "Unknown", buyDate: Date(), unit: "unknown", isChecked: false))
+            }
         }
         
         .navigationTitle("Add Ingredient")
@@ -39,7 +44,7 @@ struct AddIngredientView: View {
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button {
-                    self.mode.wrappedValue.dismiss()
+                    self.addIngredient.wrappedValue.dismiss()
                 } label: {
                     Text("Cancel")
                         .foregroundColor(.red)
@@ -50,7 +55,7 @@ struct AddIngredientView: View {
         .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
         .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
             if value.startLocation.x < 20 && value.translation.width > 100 {
-                self.mode.wrappedValue.dismiss()
+                self.addIngredient.wrappedValue.dismiss()
             }
         }))
     }
