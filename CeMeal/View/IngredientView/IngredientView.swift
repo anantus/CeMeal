@@ -88,8 +88,8 @@ struct IngredientView: View {
             .navigationBarColor(backgroundColor: .systemBackground, titleColor: UIColor(Color.ui.title))
             .toolbar {
                 ToolbarItem(placement: .automatic) {
-                    Button {
-                        
+                    NavigationLink {
+                        AddIngredientView()
                     } label: {
                         Image(systemName: "plus")
                     }
