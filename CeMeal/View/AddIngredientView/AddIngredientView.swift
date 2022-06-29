@@ -16,29 +16,22 @@ struct AddIngredientView: View {
 
     var body: some View {
         Group {
-            if searchQuery.isEmpty {
-                List(ingredientsViewModel.ingredients) { ingredient in
-                    Button {
+            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .padding(.leading)
                         
-                    } label: {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .padding(.leading)
-                            
-                            Text("\(ingredient.title)")
-                                .foregroundColor(.accentColor)
-                        }
+                        Text("\(ingredient.title)")
+                            .foregroundColor(.accentColor)
                     }
                 }
-                .listStyle(.plain)
-            } else {
-                List(ingredientsViewModel.ingredients) { ingredient in
-                    
-                }
             }
-                
-            
+            .listStyle(.plain)
         }
+        
         .navigationTitle("Add Ingredient")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarColor(backgroundColor: .systemBackground, titleColor: UIColor(Color.ui.title))
