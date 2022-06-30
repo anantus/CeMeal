@@ -9,6 +9,7 @@ import SwiftUI
 
 struct IngredientView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
@@ -41,17 +42,17 @@ struct IngredientView: View {
                                     .foregroundColor(.accentColor)
                             }
                         }
-                        .listRowBackground(Color(UIColor.systemGray6))
+                        .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
                         // Filled ingredient list
                         ForEach(leftoverViewModel.leftovers.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { leftover in
-                            NavigationLink {
-                                Text("Chicken Breast")
+                            Button {
+//                                Text("Chicken Breast")
                             } label: {
                                 LeftoverListView(leftover: leftover)
                             }
                         }
-                        .listRowBackground(Color(UIColor.systemGray6))
+                        .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
                     .listStyle(.plain)
                     .refreshable {
