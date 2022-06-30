@@ -20,7 +20,10 @@
 		FA6D877028631F6E000E5225 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D876F28631F6E000E5225 /* Color.swift */; };
 		FA6D877328632049000E5225 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D877228632049000E5225 /* Ingredient.swift */; };
 		FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87752863213C000E5225 /* IngredientViewModel.swift */; };
-		FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87792863278A000E5225 /* IngredientListView.swift */; };
+		FA6D877A2863278A000E5225 /* LeftoverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87792863278A000E5225 /* LeftoverListView.swift */; };
+		FA6DAE03286CFD80006A5AE6 /* IngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6DAE02286CFD80006A5AE6 /* IngredientDetailView.swift */; };
+		FA6DAE09286D8044006A5AE6 /* Leftover.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6DAE08286D8044006A5AE6 /* Leftover.swift */; };
+		FA6DAE0B286DC3B5006A5AE6 /* LeftoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */; };
 		FAA77538286AD7BE009D4F2B /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA77537286AD7BE009D4F2B /* AddIngredientView.swift */; };
 		FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5A28656D7F006CEF12 /* Button.swift */; };
 		FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */; };
@@ -51,7 +54,10 @@
 		FA6D876F28631F6E000E5225 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FA6D877228632049000E5225 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		FA6D87752863213C000E5225 /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
-		FA6D87792863278A000E5225 /* IngredientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListView.swift; sourceTree = "<group>"; };
+		FA6D87792863278A000E5225 /* LeftoverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverListView.swift; sourceTree = "<group>"; };
+		FA6DAE02286CFD80006A5AE6 /* IngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailView.swift; sourceTree = "<group>"; };
+		FA6DAE08286D8044006A5AE6 /* Leftover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leftover.swift; sourceTree = "<group>"; };
+		FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverViewModel.swift; sourceTree = "<group>"; };
 		FAA77537286AD7BE009D4F2B /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
 		FAC70C5A28656D7F006CEF12 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				FA6D877228632049000E5225 /* Ingredient.swift */,
+				FA6DAE08286D8044006A5AE6 /* Leftover.swift */,
 				FAD63A6328666FF5002B6130 /* Recipe.swift */,
 			);
 			path = Model;
@@ -169,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				FA6D87752863213C000E5225 /* IngredientViewModel.swift */,
+				FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */,
 				FAD63A6528667159002B6130 /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
@@ -178,7 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				FA6D87652862D7BF000E5225 /* IngredientView.swift */,
-				FA6D87792863278A000E5225 /* IngredientListView.swift */,
+				FA6D87792863278A000E5225 /* LeftoverListView.swift */,
+				FA6DAE02286CFD80006A5AE6 /* IngredientDetailView.swift */,
 			);
 			path = IngredientView;
 			sourceTree = "<group>";
@@ -289,21 +298,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6DAE0B286DC3B5006A5AE6 /* LeftoverViewModel.swift in Sources */,
 				FAD63A682866A0E7002B6130 /* RecipeListView.swift in Sources */,
 				FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */,
 				FAD63A72286758A5002B6130 /* RecipeDirectionsView.swift in Sources */,
+				FA6DAE03286CFD80006A5AE6 /* IngredientDetailView.swift in Sources */,
 				552C6AD6285B23C9001F4FB5 /* Persistence.swift in Sources */,
 				FAD63A74286758B5002B6130 /* RecipeSuggestionsView.swift in Sources */,
 				552C6ACF285B23C7001F4FB5 /* ContentView.swift in Sources */,
 				FAD63A6628667159002B6130 /* RecipeViewModel.swift in Sources */,
 				FA6D877028631F6E000E5225 /* Color.swift in Sources */,
 				FA6D876E28631DA0000E5225 /* NavigationBarModifier.swift in Sources */,
-				FA6D877A2863278A000E5225 /* IngredientListView.swift in Sources */,
+				FA6D877A2863278A000E5225 /* LeftoverListView.swift in Sources */,
 				FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */,
 				FAD63A6D2866A2D1002B6130 /* Image.swift in Sources */,
 				FAD63A7028675895002B6130 /* RecipeIngredientsView.swift in Sources */,
 				FA6D877328632049000E5225 /* Ingredient.swift in Sources */,
 				552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */,
+				FA6DAE09286D8044006A5AE6 /* Leftover.swift in Sources */,
 				FAD63A6B2866A248002B6130 /* RecipeView.swift in Sources */,
 				FA0276E828643BE20032B1DD /* Float.swift in Sources */,
 				FA0276E62864389C0032B1DD /* Date.swift in Sources */,

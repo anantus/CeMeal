@@ -9,36 +9,36 @@ import SwiftUI
 
 struct AddIngredientView: View {
     
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Environment(\.presentationMode) var addIngredient: Binding<PresentationMode>
     @GestureState private var dragOffset = CGSize.zero
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
+    @State private var showDetailSheet: Bool = false
+    @State private var selectedIngredient: Ingredient?
+    
+    private var initIngredient = Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"])
 
     var body: some View {
         Group {
-            if searchQuery.isEmpty {
-                List(ingredientsViewModel.ingredients) { ingredient in
-                    Button {
+            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
+                Button {
+                    selectedIngredient = ingredient
+                } label: {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .padding(.leading)
                         
-                    } label: {
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .padding(.leading)
-                            
-                            Text("\(ingredient.title)")
-                                .foregroundColor(.accentColor)
-                        }
+                        Text("\(ingredient.title)")
+                            .foregroundColor(.accentColor)
                     }
                 }
-                .listStyle(.plain)
-            } else {
-                List(ingredientsViewModel.ingredients) { ingredient in
-                    
-                }
             }
-                
-            
+            .listStyle(.plain)
         }
+        .sheet(item: $selectedIngredient) { item in
+            IngredientDetailView(ingredient: selectedIngredient ?? initIngredient)
+        }
+        
         .navigationTitle("Add Ingredient")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarColor(backgroundColor: .systemBackground, titleColor: UIColor(Color.ui.title))
@@ -46,7 +46,7 @@ struct AddIngredientView: View {
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button {
-                    self.mode.wrappedValue.dismiss()
+                    self.addIngredient.wrappedValue.dismiss()
                 } label: {
                     Text("Cancel")
                         .foregroundColor(.red)
@@ -57,7 +57,7 @@ struct AddIngredientView: View {
         .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
         .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
             if value.startLocation.x < 20 && value.translation.width > 100 {
-                self.mode.wrappedValue.dismiss()
+                self.addIngredient.wrappedValue.dismiss()
             }
         }))
     }
