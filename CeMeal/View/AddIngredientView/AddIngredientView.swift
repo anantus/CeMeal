@@ -15,6 +15,8 @@ struct AddIngredientView: View {
     @State private var searchQuery = ""
     @State private var showDetailSheet: Bool = false
     @State private var selectedIngredient: Ingredient?
+    
+    private var initIngredient = Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"])
 
     var body: some View {
         Group {
@@ -32,9 +34,9 @@ struct AddIngredientView: View {
                 }
             }
             .listStyle(.plain)
-            .sheet(item: $selectedIngredient) { item in
-                IngredientDetailView(ingredient: selectedIngredient ?? Ingredient(title: "Empty", qty: 0.0, category: "Unknown", buyDate: Date(), unit: "unknown", isChecked: false))
-            }
+        }
+        .sheet(item: $selectedIngredient) { item in
+            IngredientDetailView(ingredient: selectedIngredient ?? initIngredient)
         }
         
         .navigationTitle("Add Ingredient")
