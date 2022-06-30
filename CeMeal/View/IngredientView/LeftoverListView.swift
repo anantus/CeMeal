@@ -16,6 +16,8 @@ struct LeftoverListView: View {
         HStack {
             // Checkbox
             Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
+                .resizable()
+                .frame(width: 20, height: 20)
                 .onTapGesture {
                     withAnimation(.easeOut) {
                         leftoverViewModel.leftoverIsChecked(leftover: leftover)

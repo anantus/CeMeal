@@ -35,6 +35,8 @@ struct IngredientDetailView: View {
                 ForEach(Array(storages.enumerated()), id: \.offset) { index, storage in
                     HStack {
                         Image(systemName: checkedStorage == index ? "checkmark.square.fill" : "square")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                             .onTapGesture {
                                 checkedStorage = index
                             }
