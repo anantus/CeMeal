@@ -13,5 +13,6 @@ extension Color {
     struct UI {
         let title = Color("TitleColor")
         let buttonLabel = Color("ButtonLabelColor")
+        let accent2 = Color("AccentColor2")
     }
 }

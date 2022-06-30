@@ -46,15 +46,19 @@ struct LeftoverListView: View {
                 HStack {
                     Image(systemName: "calendar")
                         .foregroundColor(.accentColor)
-                    
+                        .font(.subheadline)
+
                     Text(dateToString(leftover.buyDate))
                         .foregroundColor(.gray)
+                        .font(.subheadline)
                     
                     Image(systemName: "plus.square.fill.on.square.fill")
-                        .foregroundColor(.accentColor)
-                    
-//                    Text(leftover.qty.clean.description)
-//                        .foregroundColor(.gray)
+                        .foregroundColor(Color.ui.accent2)
+                        .font(.subheadline)
+
+                    Text(dateToString(leftover.expireDate))
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
                 }
                 .padding(.top, 1)
                 
