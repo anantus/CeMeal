@@ -19,16 +19,14 @@ class IngredientViewModel: ObservableObject {
         ingredients.removeAll()
         
         let newIngredients = [
-            Ingredient(title: "Chicken Breast", qty: 3, category: "Poultry", buyDate: Date(), unit: "gr", isChecked: true)
+            Ingredient(title: "Chicken Breast", category: "Poultry", expireDay: [90, 1, 1], shelfLife: [
+                "Shelf": "1 month",
+                "Fridge": "not recommended",
+                "Freezer": "not recommended"
+            ])
         ]
         
         ingredients.append(contentsOf: newIngredients)
-    }
-    
-    func ingredientIsChecked(ingredient: Ingredient) {
-        if let index = ingredients.firstIndex(where: { $0.id == ingredient.id }) {
-            ingredients[index] = ingredient.updateCheckmark()
-        }
     }
     
 }
