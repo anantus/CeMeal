@@ -12,14 +12,14 @@ class LeftoverViewModel: ObservableObject {
     @Published var leftovers: [Leftover] = []
     
     init() {
-        getFridges()
+        getLeftovers()
     }
     
-    func getFridges() {
+    func getLeftovers() {
         leftovers.removeAll()
         
         let newLeftovers = [
-            Leftover(ingredientId: "123", buyDate: Date(), expireDate: Date(), storage: "Shelf", isChecked: true)
+            Leftover(title: "Chicken Breast", category: "Poultry", buyDate: Date(), expireDate: Date(), storage: "Shelf", isChecked: true)
         ]
         
         leftovers.append(contentsOf: newLeftovers)

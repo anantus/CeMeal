@@ -10,15 +10,17 @@ import Foundation
 struct Leftover: Identifiable {
     
     var id: String
-    var ingredientId: String
+    var title: String
+    var category: String
     var buyDate: Date
     var expireDate: Date
     var storage: String
     var isChecked: Bool
     
-    init(id: String = UUID().uuidString, ingredientId: String, buyDate: Date, expireDate: Date, storage: String, isChecked: Bool) {
+    init(id: String = UUID().uuidString, title: String, category: String, buyDate: Date, expireDate: Date, storage: String, isChecked: Bool) {
         self.id = id
-        self.ingredientId = ingredientId
+        self.title = title
+        self.category = category
         self.buyDate = buyDate
         self.expireDate = expireDate
         self.storage = storage
@@ -26,7 +28,7 @@ struct Leftover: Identifiable {
     }
     
     func updateCheckmark() -> Leftover {
-        return Leftover(id: id, ingredientId: ingredientId, buyDate: buyDate, expireDate: expireDate, storage: storage, isChecked: !isChecked)
+        return Leftover(id: id, title: title, category: category, buyDate: buyDate, expireDate: expireDate, storage: storage, isChecked: !isChecked)
     }
     
 }
