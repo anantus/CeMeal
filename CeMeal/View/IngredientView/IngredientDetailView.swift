@@ -9,6 +9,7 @@ import SwiftUI
 
 struct IngredientDetailView: View {
     
+//    @Environment(\.isAddIngredientPresented) var isAddIngredientPresented
     @Environment(\.presentationMode) var detailSheet
     
     var ingredient: Ingredient
@@ -45,7 +46,7 @@ struct IngredientDetailView: View {
 struct IngredientDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            IngredientDetailView(ingredient: Ingredient(title: "Chicken Breast", qty: 1.0, category: "Poultry", buyDate: Date(), unit: "gram", isChecked: false))
+            IngredientDetailView(ingredient: Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"]))
         }
     }
 }
