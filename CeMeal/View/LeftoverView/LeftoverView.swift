@@ -1,5 +1,5 @@
 //
-//  IngredientView.swift
+//  LeftoverView.swift
 //  CeMeal
 //
 //  Created by Darma Wiryanata on 22/06/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IngredientView: View {
+struct LeftoverView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var leftoverViewModel = LeftoverViewModel()
@@ -105,6 +105,6 @@ struct IngredientView: View {
 
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientView()
+        LeftoverView()
     }
 }
