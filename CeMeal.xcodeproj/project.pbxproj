@@ -15,6 +15,9 @@
 		552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */; };
 		FA0276E62864389C0032B1DD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E52864389B0032B1DD /* Date.swift */; };
 		FA0276E828643BE20032B1DD /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E728643BE20032B1DD /* Float.swift */; };
+		FA216DD1286EDBB200AC320F /* GenerateRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD0286EDBB200AC320F /* GenerateRecipeView.swift */; };
+		FA216DD3286EE00900AC320F /* RecipeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD2286EE00900AC320F /* RecipeSectionView.swift */; };
+		FA216DD5286EF02500AC320F /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD4286EF02500AC320F /* BadgeView.swift */; };
 		FA6D87662862D7BF000E5225 /* LeftoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87652862D7BF000E5225 /* LeftoverView.swift */; };
 		FA6D876E28631DA0000E5225 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D876D28631DA0000E5225 /* NavigationBarModifier.swift */; };
 		FA6D877028631F6E000E5225 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D876F28631F6E000E5225 /* Color.swift */; };
@@ -49,6 +52,9 @@
 		552C6AD8285B23C9001F4FB5 /* CeMeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CeMeal.xcdatamodel; sourceTree = "<group>"; };
 		FA0276E52864389B0032B1DD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FA0276E728643BE20032B1DD /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
+		FA216DD0286EDBB200AC320F /* GenerateRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRecipeView.swift; sourceTree = "<group>"; };
+		FA216DD2286EE00900AC320F /* RecipeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSectionView.swift; sourceTree = "<group>"; };
+		FA216DD4286EF02500AC320F /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		FA6D87652862D7BF000E5225 /* LeftoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverView.swift; sourceTree = "<group>"; };
 		FA6D876D28631DA0000E5225 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		FA6D876F28631F6E000E5225 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -137,6 +143,16 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		FA216DCF286EDB8F00AC320F /* GenerateRecipeView */ = {
+			isa = PBXGroup;
+			children = (
+				FA216DD0286EDBB200AC320F /* GenerateRecipeView.swift */,
+				FA216DD2286EE00900AC320F /* RecipeSectionView.swift */,
+				FA216DD4286EF02500AC320F /* BadgeView.swift */,
+			);
+			path = GenerateRecipeView;
+			sourceTree = "<group>";
+		};
 		FA6D876B28631BF7000E5225 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +161,7 @@
 				FAC70C5E28666CF2006CEF12 /* FavoriteView */,
 				FAD63A692866A164002B6130 /* RecipeView */,
 				FAA77536286AD751009D4F2B /* AddIngredientView */,
+				FA216DCF286EDB8F00AC320F /* GenerateRecipeView */,
 				552C6ACE285B23C7001F4FB5 /* ContentView.swift */,
 				FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */,
 			);
@@ -299,10 +316,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA6DAE0B286DC3B5006A5AE6 /* LeftoverViewModel.swift in Sources */,
+				FA216DD1286EDBB200AC320F /* GenerateRecipeView.swift in Sources */,
 				FAD63A682866A0E7002B6130 /* RecipeListView.swift in Sources */,
 				FA6D87762863213C000E5225 /* IngredientViewModel.swift in Sources */,
 				FAD63A72286758A5002B6130 /* RecipeDirectionsView.swift in Sources */,
 				FA6DAE03286CFD80006A5AE6 /* IngredientDetailView.swift in Sources */,
+				FA216DD5286EF02500AC320F /* BadgeView.swift in Sources */,
 				552C6AD6285B23C9001F4FB5 /* Persistence.swift in Sources */,
 				FAD63A74286758B5002B6130 /* RecipeSuggestionsView.swift in Sources */,
 				552C6ACF285B23C7001F4FB5 /* ContentView.swift in Sources */,
@@ -314,6 +333,7 @@
 				FAD63A6D2866A2D1002B6130 /* Image.swift in Sources */,
 				FAD63A7028675895002B6130 /* RecipeIngredientsView.swift in Sources */,
 				FA6D877328632049000E5225 /* Ingredient.swift in Sources */,
+				FA216DD3286EE00900AC320F /* RecipeSectionView.swift in Sources */,
 				552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */,
 				FA6DAE09286D8044006A5AE6 /* Leftover.swift in Sources */,
 				FAD63A6B2866A248002B6130 /* RecipeView.swift in Sources */,

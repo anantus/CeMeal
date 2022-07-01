@@ -73,8 +73,8 @@ struct LeftoverView: View {
                     
                 }
                 
-                Button {
-                    
+                NavigationLink {
+                    GenerateRecipeView()
                 } label: {
                     Text("Generate Recipe")
                         .fontWeight(.heavy)
