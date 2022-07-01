@@ -54,7 +54,7 @@ struct LeftoverListView: View {
                         .foregroundColor(.gray)
                         .font(.subheadline)
                     
-                    Image(systemName: "plus.square.fill.on.square.fill")
+                    Image(systemName: "calendar")
                         .foregroundColor(Color.ui.accent2)
                         .font(.subheadline)
 
