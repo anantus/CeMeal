@@ -32,6 +32,17 @@ struct GenerateRecipeView: View {
             // MARK: With more ingredients title
             RecipeSectionView(title: "With more ingredients", subtitle: nil, hasActionButton: true)
             
+            // MARK: More ingredients badges
+            if moreIngredients.count > 0 {
+                ScrollView(.horizontal) {
+                    HStack(spacing: 15) {
+                        ForEach(moreIngredients, id: \.self) { ingredient in
+                            BadgeView(ingredient: ingredient)
+                        }
+                    }
+                }
+            }
+            
             // MARK: With more ingredients recipes
             ForEach(recipeViewModel.recipes) { recipe in
                 NavigationLink {
