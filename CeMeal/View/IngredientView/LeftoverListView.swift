@@ -7,18 +7,20 @@
 
 import SwiftUI
 
-struct IngredientListView: View {
+struct LeftoverListView: View {
     
-    @ObservedObject var ingredientViewModel = IngredientViewModel()
-    var ingredient: Ingredient
+    @ObservedObject var leftoverViewModel = LeftoverViewModel()
+    var leftover: Leftover
     
     var body: some View {
         HStack {
             // Checkbox
-            Image(systemName: ingredient.isChecked ? "checkmark.square.fill" : "square")
+            Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
+                .resizable()
+                .frame(width: 20, height: 20)
                 .onTapGesture {
                     withAnimation(.easeOut) {
-                        ingredientViewModel.ingredientIsChecked(ingredient: ingredient)
+                        leftoverViewModel.leftoverIsChecked(leftover: leftover)
                     }
                 }
                 .foregroundColor(.accentColor)
@@ -27,7 +29,7 @@ struct IngredientListView: View {
             VStack(alignment: .leading) {
                 
                 // Title
-                Text(ingredient.title)
+                Text(leftover.title)
                     .font(
                         .title3
                         .weight(.semibold)
@@ -36,7 +38,7 @@ struct IngredientListView: View {
                     .textCase(.uppercase)
                 
                 // Category
-                Text(ingredient.category)
+                Text(leftover.category)
                     .foregroundColor(.accentColor)
                     .font(
                         .system(.callout, design: .serif)
@@ -46,15 +48,19 @@ struct IngredientListView: View {
                 HStack {
                     Image(systemName: "calendar")
                         .foregroundColor(.accentColor)
-                    
-                    Text(dateToString(ingredient.buyDate))
+                        .font(.subheadline)
+
+                    Text(dateToString(leftover.buyDate))
                         .foregroundColor(.gray)
+                        .font(.subheadline)
                     
                     Image(systemName: "plus.square.fill.on.square.fill")
-                        .foregroundColor(.accentColor)
-                    
-                    Text(ingredient.qty.clean.description)
+                        .foregroundColor(Color.ui.accent2)
+                        .font(.subheadline)
+
+                    Text(dateToString(leftover.expireDate))
                         .foregroundColor(.gray)
+                        .font(.subheadline)
                 }
                 .padding(.top, 1)
                 
@@ -69,6 +75,6 @@ struct IngredientListView: View {
 
 struct IngredientListView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientListView(ingredient: Ingredient(title: "Chicken Breast", qty: 3, category: "Poultry", buyDate: Date(), unit: "gr", isChecked: true))
+        LeftoverListView(leftover: Leftover(id: "123", title: "Chicken Breast", category: "Poultry", buyDate: Date(), expireDate: Date(), storage: "Fridge", isChecked: true))
     }
 }

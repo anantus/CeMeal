@@ -9,7 +9,8 @@ import SwiftUI
 
 struct IngredientView: View {
     
-    @ObservedObject private var ingredientViewModel = IngredientViewModel()
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
     
@@ -19,7 +20,7 @@ struct IngredientView: View {
             ZStack {
                 
                 // Ingredient items
-                if ingredientViewModel.ingredients.count != 0 {
+                if leftoverViewModel.leftovers.count != 0 {
                     
                     List {
                         // My ingredients title & sort
@@ -41,21 +42,21 @@ struct IngredientView: View {
                                     .foregroundColor(.accentColor)
                             }
                         }
-                        .listRowBackground(Color(UIColor.systemGray6))
+                        .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
                         // Filled ingredient list
-                        ForEach(ingredientViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
-                            NavigationLink {
-                                Text("Chicken Breast")
+                        ForEach(leftoverViewModel.leftovers.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { leftover in
+                            Button {
+//                                Text("Chicken Breast")
                             } label: {
-                                IngredientListView(ingredient: ingredient)
+                                LeftoverListView(leftover: leftover)
                             }
                         }
-                        .listRowBackground(Color(UIColor.systemGray6))
+                        .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
                     .listStyle(.plain)
                     .refreshable {
-                        self.ingredientViewModel.getIngredients()
+                        self.leftoverViewModel.getLeftovers()
                     }
                     
                 } else {
@@ -88,8 +89,8 @@ struct IngredientView: View {
             .navigationBarColor(backgroundColor: .systemBackground, titleColor: UIColor(Color.ui.title))
             .toolbar {
                 ToolbarItem(placement: .automatic) {
-                    Button {
-                        
+                    NavigationLink {
+                        AddIngredientView()
                     } label: {
                         Image(systemName: "plus")
                     }
