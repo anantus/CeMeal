@@ -31,4 +31,8 @@ class LeftoverViewModel: ObservableObject {
         }
     }
     
+    func removeLeftOver(at offset: IndexSet) {
+        
+    }
+    
 }

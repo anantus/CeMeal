@@ -52,6 +52,7 @@ struct LeftoverView: View {
                                 LeftoverListView(leftover: leftover)
                             }
                         }
+                        .onDelete(perform: leftoverViewModel.removeLeftOver)
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
                     .listStyle(.plain)
@@ -94,7 +95,6 @@ struct LeftoverView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
-                    
                 }
             }
             .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
