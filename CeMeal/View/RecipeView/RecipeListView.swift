@@ -33,6 +33,7 @@ struct RecipeListView: View {
                     )
                     .foregroundColor(Color.ui.title)
                     .textCase(.uppercase)
+                    .multilineTextAlignment(.leading)
                 
                 // Category
                 Text("You have all the ingredients")
@@ -41,9 +42,17 @@ struct RecipeListView: View {
                         .system(.callout, design: .serif)
                         .italic()
                     )
+                    .multilineTextAlignment(.leading)
                 
             }
             .padding(.horizontal, 8)
+            
+            Spacer()
+            
+            // Trailing chevron
+            Image(systemName: "chevron.right")
+                .foregroundColor(.gray)
+                .font(.system(size: 16, weight: .semibold))
             
         }
         .padding(.vertical, 10)

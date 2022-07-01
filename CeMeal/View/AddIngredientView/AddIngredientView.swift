@@ -61,6 +61,7 @@ struct AddIngredientView: View {
             }
         }))
     }
+    
 }
 
 struct AddIngredientView_Previews: PreviewProvider {
