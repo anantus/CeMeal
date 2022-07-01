@@ -10,12 +10,17 @@ import SwiftUI
 @main
 struct CeMealApp: App {
     
+    @StateObject var leftoversViewModel = LeftoversViewModel()
+    @StateObject var favoriteViewModel = FavoriteViewModel()
+    
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(leftoversViewModel)
+                .environmentObject(favoriteViewModel)
         }
     }
     
