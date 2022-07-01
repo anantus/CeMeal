@@ -20,7 +20,7 @@ struct AddIngredientView: View {
 
     var body: some View {
         Group {
-            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
+            List(ingredientsViewModel.ingredients.filter({ searchQuery.lowercased().isEmpty ? true : $0.title.lowercased().contains(searchQuery.lowercased()) })) { ingredient in
                 Button {
                     selectedIngredient = ingredient
                 } label: {

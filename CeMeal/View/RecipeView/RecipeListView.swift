@@ -51,7 +51,7 @@ struct RecipeListView: View {
             
             // Trailing chevron
             Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
+                .foregroundColor(Color(UIColor.systemGray3))
                 .font(.system(size: 16, weight: .semibold))
             
         }
