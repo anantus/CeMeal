@@ -71,13 +71,18 @@ struct RecipeView: View {
             }
         
             .navigationTitle(recipe.title)
+            .navigationBarBackButtonHidden(true)
             .navigationBarColor(backgroundColor: .systemBackground, titleColor: UIColor(Color.ui.title))
             .toolbar {
-                ToolbarItem(placement: .automatic) {
+                ToolbarItem(placement: .cancellationAction) {
+                    Text("Back")
+                        .foregroundColor(.red)
+                }
+                ToolbarItem(placement: .confirmationAction) {
                     Image(systemName: recipe.isFavorite ? "heart.fill" : "heart")
                         .foregroundColor(.accentColor)
+                }
             }
-        }
     }
     
 }

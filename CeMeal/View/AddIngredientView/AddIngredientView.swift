@@ -10,7 +10,6 @@ import SwiftUI
 struct AddIngredientView: View {
     
     @Environment(\.presentationMode) var addIngredient: Binding<PresentationMode>
-    @GestureState private var dragOffset = CGSize.zero
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
     @State private var showDetailSheet: Bool = false
@@ -55,11 +54,6 @@ struct AddIngredientView: View {
             }
         }
         .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
-        .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
-            if value.startLocation.x < 20 && value.translation.width > 100 {
-                self.addIngredient.wrappedValue.dismiss()
-            }
-        }))
     }
     
 }
