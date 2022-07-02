@@ -9,6 +9,11 @@ import SwiftUI
 
 struct LeftoverView: View {
     
+    @Environment(\.managedObjectContext) private var viewContent
+    @EnvironmentObject var leftoversViewModel:LeftoverViewModel
+    
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
@@ -20,7 +25,7 @@ struct LeftoverView: View {
             ZStack {
                 
                 // Ingredient items
-                if leftoversViewModel.leftovers.count != 0 {
+                if fetchedLeftovers.count != 0 {
                     
                     List {
                         // My ingredients title & sort
@@ -45,7 +50,7 @@ struct LeftoverView: View {
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
                         // Filled ingredient list
-                        ForEach(leftoverViewModel.leftovers.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { leftover in
+                        ForEach(fetchedLeftovers.filter({ searchQuery.isEmpty ? true : $0.ingredients!.contains(searchQuery) })) { leftover in
                             Button {
 //                                Text("Chicken Breast")
                             } label: {

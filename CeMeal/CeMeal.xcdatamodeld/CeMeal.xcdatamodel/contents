@@ -14,12 +14,13 @@
         <attribute name="dateExpired" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="ingredients" optional="YES" attributeType="String"/>
+        <attribute name="isChecked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="reminder" optional="YES" attributeType="String"/>
         <attribute name="storage" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Leftovers" positionX="-63" positionY="-9" width="128" height="134"/>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
         <element name="Favorites" positionX="-54" positionY="0" width="128" height="74"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Leftovers" positionX="-63" positionY="-9" width="128" height="149"/>
     </elements>
 </model>

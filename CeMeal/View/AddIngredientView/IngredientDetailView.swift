@@ -88,7 +88,7 @@ struct IngredientDetailView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action:{
                         //TODO: Reminder berdasarkan pilihan remind nya
-                        leftoverVM.ingredientsName = ingredient.ingredientName
+                        leftoverVM.ingredients = ingredient.ingredientName
                         leftoverVM.storage = storages[checkedStorage]
                         leftoverVM.dateCreated = buyDate
                         leftoverVM.dateExpired = expireDate
@@ -113,9 +113,9 @@ struct IngredientDetailView: View {
     }
 }
 
-//struct IngredientDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let ing = IngredientViewModel().ingredients[0]
-//        IngredientDetailView(ingredient: ing)
-//    }
-//}
+struct IngredientDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        let ing = IngredientViewModel().ingredients[0]
+        IngredientDetailView(ingredient: ing)
+    }
+}

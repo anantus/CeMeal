@@ -9,8 +9,9 @@ import SwiftUI
 
 struct LeftoverListView: View {
     
-    @ObservedObject var leftoverViewModel = LeftoversViewModel()
-    var leftover: Leftover
+    @Environment(\.managedObjectContext) private var viewContent
+    @EnvironmentObject var leftoversViewModel:LeftoverViewModel
+    @ObservedObject var leftover:Leftovers
     
     var body: some View {
         HStack {
@@ -20,7 +21,9 @@ struct LeftoverListView: View {
                 .frame(width: 20, height: 20)
                 .onTapGesture {
                     withAnimation(.easeOut) {
-                        leftoverViewModel.leftoverIsChecked(leftover: leftover)
+//                        leftoversViewModel.leftoverIsChecked(leftover: leftover)
+                        //toggle leftover
+                        leftover.isChecked.toggle()
                     }
                 }
                 .foregroundColor(.accentColor)
@@ -29,7 +32,7 @@ struct LeftoverListView: View {
             VStack(alignment: .leading) {
                 
                 // Title
-                Text(leftover.title)
+                Text(leftover.ingredients!)
                     .font(
                         .title3
                         .weight(.semibold)
@@ -38,7 +41,7 @@ struct LeftoverListView: View {
                     .textCase(.uppercase)
                 
                 // Category
-                Text(leftover.category)
+                Text(leftover.category ?? "no category")
                     .foregroundColor(.accentColor)
                     .font(
                         .system(.callout, design: .serif)
@@ -50,7 +53,7 @@ struct LeftoverListView: View {
                         .foregroundColor(.accentColor)
                         .font(.subheadline)
 
-                    Text(dateToString(leftover.buyDate))
+                    Text(dateToString(leftover.dateCreated!))
                         .foregroundColor(.gray)
                         .font(.subheadline)
                     
@@ -58,7 +61,7 @@ struct LeftoverListView: View {
                         .foregroundColor(Color.ui.accent2)
                         .font(.subheadline)
 
-                    Text(dateToString(leftover.expireDate))
+                    Text(dateToString(leftover.dateExpired!))
                         .foregroundColor(.gray)
                         .font(.subheadline)
                 }
@@ -73,8 +76,8 @@ struct LeftoverListView: View {
     }
 }
 
-struct IngredientListView_Previews: PreviewProvider {
-    static var previews: some View {
-        LeftoverListView(leftover: Leftover(id: "123", title: "Chicken Breast", category: "Poultry", buyDate: Date(), expireDate: Date(), storage: "Fridge", isChecked: true))
-    }
-}
+//struct IngredientListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LeftoverListView(leftover: Leftover(id: "123", title: "Chicken Breast", category: "Poultry", buyDate: Date(), expireDate: Date(), storage: "Fridge", isChecked: true))
+//    }
+//}

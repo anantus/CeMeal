@@ -67,10 +67,10 @@ struct AddIngredientView: View {
     }
 }
 
-//struct AddIngredientView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            AddIngredientView(addIngredient: <#T##Environment<Binding<PresentationMode>>#>, ingredientsViewModel: <#T##IngredientViewModel#>)
-//        }
-//    }
-//}
+struct AddIngredientView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            AddIngredientView()
+        }
+    }
+}

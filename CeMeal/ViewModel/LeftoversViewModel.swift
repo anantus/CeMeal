@@ -10,35 +10,37 @@ import Combine
 import CoreData
 
 class LeftoversViewModel:ObservableObject{
-    @Published var ingredientsName = ""
+    @Published var ingredients = ""
     @Published var storage = ""
     @Published var category = ""
     @Published var reminder = ""
     //TODO: implement dateExpired
     @Published var dateCreated = Date()
     @Published var dateExpired = Date()
-    @Published var ingredientsItem:Leftovers!
+    @Published var isChecked = false
+    @Published var leftoverItem:Leftovers!
     
     func createLeftovers(context:NSManagedObjectContext){
-        if ingredientsItem == nil {
-            let ingredient = Leftovers(context: context)
-            ingredient.id = UUID()
-            ingredient.ingredients = ingredientsName
-            ingredient.storage = storage
-            ingredient.category = category
-            ingredient.reminder = reminder
-            ingredient.dateCreated = dateCreated
-            ingredient.dateExpired = dateExpired
+        if leftoverItem == nil {
+            let leftover = Leftovers(context: context)
+            leftover.id = UUID()
+            leftover.ingredients = ingredients
+            leftover.storage = storage
+            leftover.category = category
+            leftover.reminder = reminder
+            leftover.dateCreated = dateCreated
+            leftover.dateExpired = dateExpired
+            leftover.isChecked = false
         }
         else{
-            ingredientsItem.ingredients = ingredientsName
+            leftoverItem.ingredients = ingredients
         }
         save(context: context)
-        ingredientsName = ""
+        ingredients = ""
     }
     
     func editLeftovers(ingredient:Leftovers){
-        ingredientsItem = ingredient
+        leftoverItem = ingredient
     }
     
     func delete(ingredient:Leftovers, context:NSManagedObjectContext){
