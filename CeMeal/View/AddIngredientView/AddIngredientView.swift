@@ -14,30 +14,34 @@ struct AddIngredientView: View {
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
     @State private var showDetailSheet: Bool = false
-    @State private var selectedIngredient: Ingredient?
+//    @State private var selectedIngredient: Ingredient?
+    @State private var isEdit:Bool = false
     
-    private var initIngredient = Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"])
+//    private var initIngredient = Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"])
 
     var body: some View {
         Group {
-            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
+            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.ingredientName.contains(searchQuery) })) { ingredient in
                 Button {
-                    selectedIngredient = ingredient
+                    showDetailSheet.toggle()
                 } label: {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .padding(.leading)
                         
-                        Text("\(ingredient.title)")
+                        Text("\(ingredient.ingredientName)")
                             .foregroundColor(.accentColor)
                     }
+                }
+                .sheet(isPresented: $showDetailSheet) {
+                    IngredientDetailView(ingredient: ingredient)
                 }
             }
             .listStyle(.plain)
         }
-        .sheet(item: $selectedIngredient) { item in
-            IngredientDetailView(ingredient: selectedIngredient ?? initIngredient)
-        }
+//        .sheet(item: $selectedIngredient) { item in
+//            IngredientDetailView(ingredient: selectedIngredient ?? initIngredient)
+//        }
         
         .navigationTitle("Add Ingredient")
         .navigationBarTitleDisplayMode(.inline)
@@ -63,10 +67,10 @@ struct AddIngredientView: View {
     }
 }
 
-struct AddIngredientView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            AddIngredientView()
-        }
-    }
-}
+//struct AddIngredientView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            AddIngredientView(addIngredient: <#T##Environment<Binding<PresentationMode>>#>, ingredientsViewModel: <#T##IngredientViewModel#>)
+//        }
+//    }
+//}

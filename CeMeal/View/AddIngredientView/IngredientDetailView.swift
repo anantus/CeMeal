@@ -9,7 +9,10 @@ import SwiftUI
 
 struct IngredientDetailView: View {
     
-//    @Environment(\.isAddIngredientPresented) var isAddIngredientPresented
+    //    @Environment(\.isAddIngredientPresented) var isAddIngredientPresented
+    @Environment(\.managedObjectContext) var viewContent
+    @EnvironmentObject var leftoverVM:LeftoversViewModel
+    
     @Environment(\.presentationMode) var detailSheet
     @State private var checkedStorage = 0
     @State private var buyDate = Date()
@@ -37,9 +40,6 @@ struct IngredientDetailView: View {
                         Image(systemName: checkedStorage == index ? "checkmark.square.fill" : "square")
                             .resizable()
                             .frame(width: 20, height: 20)
-                            .onTapGesture {
-                                checkedStorage = index
-                            }
                             .foregroundColor(.accentColor)
                             .padding()
                         
@@ -48,13 +48,16 @@ struct IngredientDetailView: View {
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.ui.title)
                             
-                            Text("1-3 months")
+                            Text(storagePicker(index: index))
                                 .foregroundColor(.accentColor)
                                 .font(
                                     .system(.callout, design: .serif)
                                     .italic()
                                 )
                         }
+                    }
+                    .onTapGesture {
+                        checkedStorage = index
                     }
                 }
                 
@@ -70,7 +73,7 @@ struct IngredientDetailView: View {
             }
             .listStyle(.plain)
             
-            .navigationTitle(ingredient.title)
+            .navigationTitle(ingredient.ingredientName)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -83,19 +86,36 @@ struct IngredientDetailView: View {
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
+                    Button(action:{
+                        //TODO: Reminder berdasarkan pilihan remind nya
+                        leftoverVM.ingredientsName = ingredient.ingredientName
+                        leftoverVM.storage = storages[checkedStorage]
+                        leftoverVM.dateCreated = buyDate
+                        leftoverVM.dateExpired = expireDate
+                        leftoverVM.createLeftovers(context: viewContent)
                         detailSheet.wrappedValue.dismiss()
-                    } label: {
+                    } , label: {
                         Text("Save")
-                    }
+                    })
                 }
             }
         }
     }
-}
-
-struct IngredientDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        IngredientDetailView(ingredient: Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"]))
+    
+    func storagePicker(index: Int) -> String {
+        if index == 0{
+            return  ingredient.cupboard
+        }
+        else if index == 1{
+            return ingredient.fridge
+        }
+        return ingredient.freezer
     }
 }
+
+//struct IngredientDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let ing = IngredientViewModel().ingredients[0]
+//        IngredientDetailView(ingredient: ing)
+//    }
+//}
