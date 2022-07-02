@@ -19,8 +19,6 @@ class FavoriteViewModel:ObservableObject{
             recipe.id = UUID()
             recipe.mealName = mealName
             recipe.date = Date()
-            
-            
         }
         else{
             recipeItem.mealName = mealName

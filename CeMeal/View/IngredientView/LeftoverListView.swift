@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LeftoverListView: View {
     
-    @ObservedObject var leftoverViewModel = LeftoverViewModel()
+    @ObservedObject var leftoverViewModel = LeftoversViewModel()
     var leftover: Leftover
     
     var body: some View {

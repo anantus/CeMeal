@@ -15,6 +15,7 @@ class LeftoversViewModel:ObservableObject{
     @Published var category = ""
     @Published var reminder = ""
     //TODO: implement dateExpired
+    @Published var dateCreated = Date()
     @Published var dateExpired = Date()
     @Published var ingredientsItem:Leftovers!
     
@@ -26,7 +27,7 @@ class LeftoversViewModel:ObservableObject{
             ingredient.storage = storage
             ingredient.category = category
             ingredient.reminder = reminder
-            ingredient.dateCreated = Date()
+            ingredient.dateCreated = dateCreated
             ingredient.dateExpired = dateExpired
         }
         else{

@@ -20,7 +20,7 @@ struct IngredientView: View {
             ZStack {
                 
                 // Ingredient items
-                if leftoverViewModel.leftovers.count != 0 {
+                if leftoversViewModel.leftovers.count != 0 {
                     
                     List {
                         // My ingredients title & sort
