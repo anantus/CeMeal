@@ -17,8 +17,8 @@
 		55EF8BD8286C55E400529ED7 /* Ingredients.csv in Resources */ = {isa = PBXBuildFile; fileRef = 55EF8BD6286C55E400529ED7 /* Ingredients.csv */; };
 		55EF8BFF286EB86D00529ED7 /* LeftoversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */; };
 		55EF8C07286ED06700529ED7 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF8C06286ED06700529ED7 /* FavoriteViewModel.swift */; };
-		55EF8C11286EE90D00529ED7 /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF8C10286EE90D00529ED7 /* IngredientViewModel.swift */; };
-		55EF8C13286EE92700529ED7 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF8C12286EE92700529ED7 /* RecipeViewModel.swift */; };
+		55F4678328707C5D0027738E /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F4678228707C5D0027738E /* IngredientViewModel.swift */; };
+		55F4678528707C950027738E /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F4678428707C950027738E /* RecipeViewModel.swift */; };
 		FA0276E62864389C0032B1DD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E52864389B0032B1DD /* Date.swift */; };
 		FA0276E828643BE20032B1DD /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E728643BE20032B1DD /* Float.swift */; };
 		FA6D87662862D7BF000E5225 /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87652862D7BF000E5225 /* IngredientView.swift */; };
@@ -55,8 +55,8 @@
 		55EF8BD6286C55E400529ED7 /* Ingredients.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ingredients.csv; path = ../../../../../../Downloads/Ingredients.csv; sourceTree = "<group>"; };
 		55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoversViewModel.swift; sourceTree = "<group>"; };
 		55EF8C06286ED06700529ED7 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
-		55EF8C10286EE90D00529ED7 /* IngredientViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IngredientViewModel.swift; path = ../../../../../../.Trash/IngredientViewModel.swift; sourceTree = "<group>"; };
-		55EF8C12286EE92700529ED7 /* RecipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeViewModel.swift; path = ../../../../../../.Trash/RecipeViewModel.swift; sourceTree = "<group>"; };
+		55F4678228707C5D0027738E /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
+		55F4678428707C950027738E /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		FA0276E52864389B0032B1DD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FA0276E728643BE20032B1DD /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 		FA6D87652862D7BF000E5225 /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
@@ -186,10 +186,10 @@
 			isa = PBXGroup;
 			children = (
 				55EF8C06286ED06700529ED7 /* FavoriteViewModel.swift */,
-				55EF8C10286EE90D00529ED7 /* IngredientViewModel.swift */,
-				55EF8C12286EE92700529ED7 /* RecipeViewModel.swift */,
 				FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */,
 				55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */,
+				55F4678228707C5D0027738E /* IngredientViewModel.swift */,
+				55F4678428707C950027738E /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -329,14 +329,14 @@
 				FAD63A7028675895002B6130 /* RecipeIngredientsView.swift in Sources */,
 				FA6D877328632049000E5225 /* Ingredient.swift in Sources */,
 				552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */,
+				55F4678328707C5D0027738E /* IngredientViewModel.swift in Sources */,
 				FA6DAE09286D8044006A5AE6 /* Leftover.swift in Sources */,
 				FAD63A6B2866A248002B6130 /* RecipeView.swift in Sources */,
-				55EF8C11286EE90D00529ED7 /* IngredientViewModel.swift in Sources */,
 				FA0276E828643BE20032B1DD /* Float.swift in Sources */,
 				FA0276E62864389C0032B1DD /* Date.swift in Sources */,
 				FA6D87662862D7BF000E5225 /* IngredientView.swift in Sources */,
 				FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */,
-				55EF8C13286EE92700529ED7 /* RecipeViewModel.swift in Sources */,
+				55F4678528707C950027738E /* RecipeViewModel.swift in Sources */,
 				FAC70C6028666D17006CEF12 /* FavoriteView.swift in Sources */,
 				552C6ACD285B23C7001F4FB5 /* CeMealApp.swift in Sources */,
 				FAD63A6428666FF5002B6130 /* Recipe.swift in Sources */,
