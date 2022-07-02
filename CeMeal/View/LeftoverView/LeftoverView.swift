@@ -10,12 +10,12 @@ import SwiftUI
 struct LeftoverView: View {
     
     @Environment(\.managedObjectContext) private var viewContent
-    @EnvironmentObject var leftoversViewModel:LeftoverViewModel
+    @EnvironmentObject var leftoversViewModel:LeftoversViewModel
     
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
+//    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
     
@@ -55,15 +55,22 @@ struct LeftoverView: View {
 //                                Text("Chicken Breast")
                             } label: {
                                 LeftoverListView(leftover: leftover)
+                            }.swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                //role destructive add red color and delete animation
+                                Button(role: .destructive, action: {
+                                    leftoversViewModel.delete(ingredient: leftover, context: viewContent)
+                                }, label: {
+                                    Label("Delete", systemImage: "trash")
+                                })
                             }
                         }
-                        .onDelete(perform: leftoverViewModel.removeLeftOver)
+//                        .onDelete(perform: leftoversViewModel.delete(ingredient: leftover, context: viewContent))
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
                     .listStyle(.plain)
-                    .refreshable {
-                        self.leftoverViewModel.getLeftovers()
-                    }
+//                    .refreshable {
+//                        self.leftoverViewModel.getLeftovers()
+//                    }
                     
                 } else {
                     
