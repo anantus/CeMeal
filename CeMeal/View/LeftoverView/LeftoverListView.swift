@@ -24,7 +24,7 @@ struct LeftoverListView: View {
                         withAnimation(.easeOut) {
                             //                        leftoversViewModel.leftoverIsChecked(leftover: leftover)
                             //toggle leftover
-                            leftover.isChecked.toggle()
+                            leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                         }
                     }
                     .foregroundColor(.accentColor)

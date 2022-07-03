@@ -9,10 +9,13 @@ import SwiftUI
 
 class RecipeViewModel: ObservableObject {
     
+    @Environment(\.managedObjectContext) private var viewContent
+    var leftoversViewModel:LeftoversViewModel
     @Published var recipes: [Recipe] = []
     
     init() {
         recipes = loadRecipeCSV(from: "Recipes")
+        leftoversViewModel = LeftoversViewModel()
     }
     
 //    func getRecipes() {
@@ -26,6 +29,28 @@ class RecipeViewModel: ObservableObject {
 //
 //        recipes.append(contentsOf: newRecipes)
 //    }
+    
+//    func compareLeftoverToRecipe() -> Int {
+//        //TODO: Bikin perbandingan ingredients yang perlu
+//    }
+    
+    func availableRecipe() -> [Recipe] {
+        var recipeList : [Recipe] = []
+        
+        for meal in recipes{
+            //NOTE: bisa dicek lagi nnti
+            let sorted_ingredient = meal.ingredients.sorted()
+            let leftovers = leftoversViewModel.getCheckedLeftovers(context: viewContent)
+            
+            if sorted_ingredient.contains(where: leftovers.contains) ||
+                sorted_ingredient.contains(where: ["Salt","Water","Cold Water","Boiling Water"].contains){
+                recipeList.append(meal)
+            }
+            
+            
+        }
+       return recipeList
+    }
     
 }
 

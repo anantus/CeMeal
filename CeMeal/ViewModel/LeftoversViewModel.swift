@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 import CoreData
 
@@ -46,6 +47,23 @@ class LeftoversViewModel:ObservableObject{
     func delete(ingredient:Leftovers, context:NSManagedObjectContext){
         context.delete(ingredient)
         save(context: context)
+    }
+    
+    func checkLeftovers(ingredient:Leftovers, context:NSManagedObjectContext){
+        ingredient.isChecked.toggle()
+        save(context: context)
+    }
+    
+    func getCheckedLeftovers(context:NSManagedObjectContext) -> [String]{
+        @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+        var checkedLeftovers:[String] = []
+        for leftover in fetchedLeftovers{
+            if leftover.isChecked{
+                checkedLeftovers.append(leftover.ingredients ?? "")
+            }
+        }
+        
+        return checkedLeftovers.sorted()
     }
     
     func save(context:NSManagedObjectContext){

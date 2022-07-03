@@ -14,6 +14,7 @@ struct AddIngredientView: View {
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
     @State private var showDetailSheet: Bool = false
+    
 //    @State private var selectedIngredient: Ingredient?
     @State private var isEdit:Bool = false
     
