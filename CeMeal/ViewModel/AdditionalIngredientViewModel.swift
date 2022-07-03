@@ -34,21 +34,17 @@ class AdditionalIngredientViewModel: ObservableObject {
         else { return }
         
         self.additionalIngredients = savedItems
-        
-        print(additionalIngredients)
     }
     
     func storeAdditionalIngredient(additionalIngredient: Ingredient) {
-//        let ingredientExist = additionalIngredients.filter({ $0.id == additionalIngredient.id }).first
-//        
-//        guard ingredientExist == nil else {
-//            return
-//        }
+        let ingredientExist = additionalIngredients.filter({ $0.id == additionalIngredient.id }).first
+
+        guard ingredientExist == nil else {
+            return
+        }
         
         let newAdditionalIngredient = AdditionalIngredient(id: additionalIngredient.id, title: additionalIngredient.title)
         additionalIngredients.append(newAdditionalIngredient)
-        
-        
     }
     
     func deleteAdditionalIngredient(id: String) {
