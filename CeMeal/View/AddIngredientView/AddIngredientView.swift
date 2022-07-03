@@ -10,7 +10,6 @@ import SwiftUI
 struct AddIngredientView: View {
     
     @Environment(\.presentationMode) var addIngredient: Binding<PresentationMode>
-    @GestureState private var dragOffset = CGSize.zero
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
     @State private var showDetailSheet: Bool = false
@@ -20,7 +19,7 @@ struct AddIngredientView: View {
 
     var body: some View {
         Group {
-            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
+            List(ingredientsViewModel.ingredients.filter({ searchQuery.lowercased().isEmpty ? true : $0.title.lowercased().contains(searchQuery.lowercased()) })) { ingredient in
                 Button {
                     selectedIngredient = ingredient
                 } label: {
@@ -55,12 +54,8 @@ struct AddIngredientView: View {
             }
         }
         .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
-        .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
-            if value.startLocation.x < 20 && value.translation.width > 100 {
-                self.addIngredient.wrappedValue.dismiss()
-            }
-        }))
     }
+    
 }
 
 struct AddIngredientView_Previews: PreviewProvider {

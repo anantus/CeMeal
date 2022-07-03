@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GenerateRecipeView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var recipeViewModel = RecipeViewModel()
     
@@ -16,9 +17,12 @@ struct GenerateRecipeView: View {
     @State private var moreIngredients = ["Onion", "Garlic", "Chicken", "Apple"]
     
     var body: some View {
-        List {
+        ScrollView {
             // MARK: With your ingredients title
             RecipeSectionView(title: "With your ingredients", subtitle: "You have 7 ingredients", hasActionButton: false)
+                .padding(.horizontal)
+                .padding(.top)
+            Divider()
             
             // MARK: With your ingredients recipes
             ForEach(recipeViewModel.recipes) { recipe in
@@ -27,10 +31,16 @@ struct GenerateRecipeView: View {
                 } label: {
                     RecipeListView(recipe: recipe)
                 }
+                .padding(.horizontal)
+                Divider()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
             
             // MARK: With more ingredients title
             RecipeSectionView(title: "With more ingredients", subtitle: nil, hasActionButton: true)
+                .padding(.horizontal)
+            Divider()
             
             // MARK: More ingredients badges
             if moreIngredients.count > 0 {
@@ -41,6 +51,8 @@ struct GenerateRecipeView: View {
                         }
                     }
                 }
+                .padding(.horizontal)
+                Divider()
             }
             
             // MARK: With more ingredients recipes
@@ -50,9 +62,12 @@ struct GenerateRecipeView: View {
                 } label: {
                     RecipeListView(recipe: recipe)
                 }
+                .padding(.horizontal)
+                Divider()
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .listStyle(.plain)
+        .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)

@@ -45,7 +45,7 @@ struct LeftoverView: View {
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
                         // Filled ingredient list
-                        ForEach(leftoverViewModel.leftovers.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { leftover in
+                        ForEach(leftoverViewModel.leftovers.filter({ searchQuery.lowercased().isEmpty ? true : $0.title.lowercased().contains(searchQuery.lowercased()) })) { leftover in
                             Button {
 //                                Text("Chicken Breast")
                             } label: {
