@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AdditionalIngredient: Identifiable {
+struct AdditionalIngredient: Identifiable, Codable {
     
     var id: String
     var title: String

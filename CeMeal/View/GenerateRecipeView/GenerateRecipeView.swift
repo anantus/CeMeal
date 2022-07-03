@@ -11,6 +11,7 @@ struct GenerateRecipeView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var additionalIngredientViewModel = AdditionalIngredientViewModel()
     @ObservedObject var recipeViewModel = RecipeViewModel()
     
 //    @State private var moreIngredients = [String]()
@@ -42,12 +43,17 @@ struct GenerateRecipeView: View {
                 .padding(.horizontal)
             Divider()
             
-            // MARK: More ingredients badges
-            if moreIngredients.count > 0 {
+            // MARK: More ingredients capsules
+            if additionalIngredientViewModel.additionalIngredients.count > 0 {
                 ScrollView(.horizontal) {
                     HStack(spacing: 15) {
-                        ForEach(moreIngredients, id: \.self) { ingredient in
-                            BadgeView(ingredient: ingredient)
+                        ForEach(additionalIngredientViewModel.additionalIngredients) { ingredient in
+                            CapsuleView(ingredient: ingredient)
+                                .onTapGesture {
+                                    additionalIngredientViewModel.deleteAdditionalIngredient(id: ingredient.id)
+                                    
+                                    print("Ingredient deleted successfully")
+                                }
                         }
                     }
                 }
@@ -68,6 +74,9 @@ struct GenerateRecipeView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
+        .refreshable {
+            additionalIngredientViewModel.getAdditionalIngredients()
+        }
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -80,6 +89,14 @@ struct GenerateRecipeView: View {
                         Text("Back")
                     }
                     .foregroundColor(.red)
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    additionalIngredientViewModel.getAdditionalIngredients()
+                }) {
+                    Image(systemName: "arrow.clockwise")
                 }
             }
         }
