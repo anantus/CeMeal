@@ -10,6 +10,7 @@ import SwiftUI
 struct AddMoreIngredientView: View {
     
     @Environment(\.presentationMode) var addIngredient: Binding<PresentationMode>
+    @ObservedObject var additionalIngredientsViewModel = AdditionalIngredientViewModel()
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
 
@@ -17,7 +18,8 @@ struct AddMoreIngredientView: View {
         Group {
             List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
                 Button {
-//                    selectedIngredient = ingredient
+                    additionalIngredientsViewModel.storeAdditionalIngredient(additionalIngredient: ingredient)
+                    addIngredient.wrappedValue.dismiss()
                 } label: {
                     HStack {
                         Image(systemName: "magnifyingglass")
