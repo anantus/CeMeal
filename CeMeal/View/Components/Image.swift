@@ -14,5 +14,8 @@ extension Image {
         let thumbnailImagePlaceholder = "NoIngredient"
         let noIngredient = "NoIngredient"
         let noSearchQueryResult = "NoIngredient"
+        let onboardingClock = "OnboardingClock"
+        let onboardingCooking = "OnboardingCooking"
+        let onboardingGarlic = "OnboardingGarlic"
     }
 }
