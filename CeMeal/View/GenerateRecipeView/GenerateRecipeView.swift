@@ -43,12 +43,17 @@ struct GenerateRecipeView: View {
                 .padding(.horizontal)
             Divider()
             
-            // MARK: More ingredients badges
+            // MARK: More ingredients capsules
             if additionalIngredientViewModel.additionalIngredients.count > 0 {
                 ScrollView(.horizontal) {
                     HStack(spacing: 15) {
                         ForEach(additionalIngredientViewModel.additionalIngredients) { ingredient in
                             CapsuleView(ingredient: ingredient)
+                                .onTapGesture {
+                                    additionalIngredientViewModel.deleteAdditionalIngredient(id: ingredient.id)
+                                    
+                                    print("Ingredient deleted successfully")
+                                }
                         }
                     }
                 }
