@@ -39,8 +39,8 @@ struct RecipeSectionView: View {
             
             // Action button
             if hasActionButton {
-                Button {
-                    
+                NavigationLink {
+                    AddMoreIngredientView()
                 } label: {
                     Image(systemName: "plus")
                         .foregroundColor(.accentColor)
