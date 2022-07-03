@@ -40,9 +40,6 @@ struct AddIngredientView: View {
             }
             .listStyle(.plain)
         }
-//        .sheet(item: $selectedIngredient) { item in
-//            IngredientDetailView(ingredient: selectedIngredient ?? initIngredient)
-//        }
         
         .navigationTitle("Add Ingredient")
         .navigationBarTitleDisplayMode(.inline)

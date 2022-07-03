@@ -35,7 +35,7 @@ struct Ingredient : Identifiable {
     
     init(raw: [String]) {
         category = raw[0] == "" ? "No Category" : raw[0]
-        ingredientName = raw[1]
+        ingredientName = raw[1].capitalized
         cupboard = raw[3]
         fridge = raw[4]
         freezer = raw[5]

@@ -113,9 +113,9 @@ struct IngredientDetailView: View {
     }
 }
 
-struct IngredientDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let ing = IngredientViewModel().ingredients[0]
-        IngredientDetailView(ingredient: ing)
-    }
-}
+//struct IngredientDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let ing = IngredientViewModel().ingredients[0]
+//        IngredientDetailView(ingredient: ing)
+//    }
+//}

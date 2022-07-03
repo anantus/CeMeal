@@ -87,7 +87,11 @@ struct GenerateRecipeView: View {
         }
         for meal in recipeViewModel.recipes{
             let mealIng = meal.ingredients.filter(){$0 != "Water" || $0 != "Salt" || $0 != "Boiling Water" || $0 != "Cold Water"}
-            if mealIng.sorted() == checkedIngredients.sorted(){
+            let countIng = mealIng.count
+            let listSet = Set(mealIng)
+            let findListSet = Set(checkedIngredients)
+            let allElemsContained = findListSet.isSubset(of: listSet)
+            if allElemsContained && checkedIngredients.count == countIng{
                 availableRecipe.append(meal)
             }
         }
@@ -105,10 +109,12 @@ struct GenerateRecipeView: View {
             }
         }
         for meal in recipeViewModel.recipes{
-            let listSet = Set(meal.ingredients)
+            let mealIng = meal.ingredients.filter(){$0 != "Water" || $0 != "Salt" || $0 != "Boiling Water" || $0 != "Cold Water"}
+            let countIng = mealIng.count
+            let listSet = Set(mealIng)
             let findListSet = Set(checkedIngredients)
             let allElemsContained = findListSet.isSubset(of: listSet)
-            if allElemsContained{
+            if allElemsContained && checkedIngredients.count != countIng{
                 availableRecipe.append(meal)
             }
         }

@@ -22,8 +22,6 @@ struct LeftoverListView: View {
                     .frame(width: 20, height: 20)
                     .onTapGesture {
                         withAnimation(.easeOut) {
-                            //                        leftoversViewModel.leftoverIsChecked(leftover: leftover)
-                            //toggle leftover
                             leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                         }
                     }
