@@ -16,7 +16,7 @@ struct AddMoreIngredientView: View {
 
     var body: some View {
         Group {
-            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.title.contains(searchQuery) })) { ingredient in
+            List(ingredientsViewModel.ingredients.filter({ searchQuery.isEmpty ? true : $0.ingredientName.contains(searchQuery) })) { ingredient in
                 Button {
                     additionalIngredientsViewModel.storeAdditionalIngredient(additionalIngredient: ingredient)
                     addIngredient.wrappedValue.dismiss()
@@ -25,7 +25,7 @@ struct AddMoreIngredientView: View {
                         Image(systemName: "magnifyingglass")
                             .padding(.leading)
                         
-                        Text("\(ingredient.title)")
+                        Text("\(ingredient.ingredientName)")
                             .foregroundColor(.accentColor)
                     }
                 }

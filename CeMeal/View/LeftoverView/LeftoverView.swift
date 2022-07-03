@@ -61,7 +61,7 @@ struct LeftoverView: View {
                                         .frame(width: 20, height: 20)
                                         .onTapGesture {
                                             withAnimation(.easeOut) {
-                                                leftoverViewModel.leftoverIsChecked(leftover: leftover)
+                                                leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                                             }
                                         }
                                     .foregroundColor(.accentColor)
@@ -72,13 +72,9 @@ struct LeftoverView: View {
                             }
                             .padding(.horizontal)
                         }
-//                        .onDelete(perform: leftoversViewModel.delete(ingredient: leftover, context: viewContent))
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
                     .listStyle(.plain)
-//                    .refreshable {
-//                        self.leftoverViewModel.getLeftovers()
-//                    }
                     
                 } else {
                     

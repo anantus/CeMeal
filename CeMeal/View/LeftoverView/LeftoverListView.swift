@@ -15,22 +15,6 @@ struct LeftoverListView: View {
     
     var body: some View {
         HStack {
-            // Content
-            VStack(alignment: .leading) {
-                
-                // Title
-                Text(leftover.title)
-                    .font(
-                        .title3
-                        .weight(.semibold)
-                    )
-                    .foregroundColor(Color.ui.title)
-                    .textCase(.uppercase)
-                
-                // Category
-                Text(leftover.category)
-                    .foregroundColor(.accentColor)
-                
                 // Content
                 VStack(alignment: .leading) {
                     
@@ -48,7 +32,7 @@ struct LeftoverListView: View {
                         .foregroundColor(.accentColor)
                         .font(.subheadline)
 
-                    Text(dateToString(leftover.buyDate))
+                    Text(dateToString(leftover.dateCreated!))
                         .foregroundColor(.gray)
                         .font(.subheadline)
                     
@@ -56,22 +40,18 @@ struct LeftoverListView: View {
                         .foregroundColor(Color.ui.accent2)
                         .font(.subheadline)
 
-                    Text(dateToString(leftover.expireDate))
+                    Text(dateToString(leftover.dateExpired!))
                         .foregroundColor(.gray)
                         .font(.subheadline)
                 }
                 .padding(.horizontal, 16)
-                
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 10)
         }
         .padding(.vertical, 10)
     }
 }
 
-struct IngredientListView_Previews: PreviewProvider {
-    static var previews: some View {
-        LeftoverListView(leftover: Leftover(id: "123", title: "Chicken Breast", category: "Poultry", buyDate: Date(), expireDate: Date(), storage: "Fridge", isChecked: true))
-    }
-}
+//struct IngredientListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LeftoverListView(leftover: Leftover(id: "123", title: "Chicken Breast", category: "Poultry", buyDate: Date(), expireDate: Date(), storage: "Fridge", isChecked: true))
+//    }
+//}

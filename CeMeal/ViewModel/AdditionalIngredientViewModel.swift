@@ -37,13 +37,13 @@ class AdditionalIngredientViewModel: ObservableObject {
     }
     
     func storeAdditionalIngredient(additionalIngredient: Ingredient) {
-        let ingredientExist = additionalIngredients.filter({ $0.id == additionalIngredient.id }).first
-
+        let ingredientExist = additionalIngredients.filter({ $0.id == additionalIngredient.id.uuidString }).first
+//        let ingredientExist = additionalIngredients.first
         guard ingredientExist == nil else {
             return
         }
         
-        let newAdditionalIngredient = AdditionalIngredient(id: additionalIngredient.id, title: additionalIngredient.title)
+        let newAdditionalIngredient = AdditionalIngredient(id: additionalIngredient.id.uuidString, title: additionalIngredient.ingredientName)
         additionalIngredients.append(newAdditionalIngredient)
     }
     

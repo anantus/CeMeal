@@ -11,7 +11,10 @@ struct LeftoverCheckupView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var leftoverViewModel = LeftoverViewModel()
+    @Environment(\.managedObjectContext) private var viewContent
+    @EnvironmentObject var leftoversViewModel:LeftoversViewModel
+    
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
 //    @State private var redirectToTabbedView = false
     
     var body: some View {
@@ -23,7 +26,7 @@ struct LeftoverCheckupView: View {
                     .weight(.bold)
                 )
             
-            ForEach(leftoverViewModel.leftovers) { leftover in
+            ForEach(fetchedLeftovers) { leftover in
                 HStack {
                     // Checkbox
                     Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
