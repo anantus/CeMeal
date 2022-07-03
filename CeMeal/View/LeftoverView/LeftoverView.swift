@@ -49,8 +49,23 @@ struct LeftoverView: View {
                             Button {
 //                                Text("Chicken Breast")
                             } label: {
-                                LeftoverListView(leftover: leftover)
+                                HStack {
+                                    // Checkbox
+                                    Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .onTapGesture {
+                                            withAnimation(.easeOut) {
+                                                leftoverViewModel.leftoverIsChecked(leftover: leftover)
+                                            }
+                                        }
+                                    .foregroundColor(.accentColor)
+                                    
+                                    // Content
+                                    LeftoverListView(leftover: leftover)
+                                }
                             }
+                            .padding(.horizontal)
                         }
                         .onDelete(perform: leftoverViewModel.removeLeftOver)
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))

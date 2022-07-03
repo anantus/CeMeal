@@ -14,17 +14,6 @@ struct LeftoverListView: View {
     
     var body: some View {
         HStack {
-            // Checkbox
-            Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .onTapGesture {
-                    withAnimation(.easeOut) {
-                        leftoverViewModel.leftoverIsChecked(leftover: leftover)
-                    }
-                }
-                .foregroundColor(.accentColor)
-            
             // Content
             VStack(alignment: .leading) {
                 
@@ -68,7 +57,6 @@ struct LeftoverListView: View {
             .padding(.horizontal, 16)
             
         }
-        .padding(.horizontal)
         .padding(.vertical, 10)
     }
 }
