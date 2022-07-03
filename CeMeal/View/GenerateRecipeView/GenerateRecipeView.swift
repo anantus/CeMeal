@@ -14,6 +14,11 @@ struct GenerateRecipeView: View {
     @ObservedObject var additionalIngredientViewModel = AdditionalIngredientViewModel()
     @ObservedObject var recipeViewModel = RecipeViewModel()
     
+    @Environment(\.managedObjectContext) private var viewContent
+    @EnvironmentObject var leftoversViewModel:LeftoversViewModel
+    
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
 //    @State private var moreIngredients = [String]()
     @State private var moreIngredients = ["Onion", "Garlic", "Chicken", "Apple"]
     
@@ -31,6 +36,7 @@ struct GenerateRecipeView: View {
                     RecipeView(recipe: recipe)
                 } label: {
                     RecipeListView(recipe: recipe)
+//                    Text(recipe.ingredients)
                 }
                 .padding(.horizontal)
                 Divider()
@@ -60,9 +66,9 @@ struct GenerateRecipeView: View {
                 .padding(.horizontal)
                 Divider()
             }
-            
+
             // MARK: With more ingredients recipes
-            ForEach(recipeViewModel.recipes) { recipe in
+            ForEach(generateMoreBasedOnIngredients()) { recipe in
                 NavigationLink {
                     RecipeView(recipe: recipe)
                 } label: {
@@ -100,6 +106,50 @@ struct GenerateRecipeView: View {
                 }
             }
         }
+    }
+    func generateRecipeBasedOnIngredients() -> [Recipe]{
+        var availableRecipe : [Recipe] = []
+        var checkedIngredients : [String] = []
+        for i in fetchedLeftovers{
+            if i.isChecked{
+                checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
+            }
+        }
+        for meal in recipeViewModel.recipes{
+            let mealIng = meal.ingredients.filter(){$0 != "Water" || $0 != "Salt" || $0 != "Boiling Water" || $0 != "Cold Water"}
+            let countIng = mealIng.count
+            let listSet = Set(mealIng)
+            let findListSet = Set(checkedIngredients)
+            let allElemsContained = findListSet.isSubset(of: listSet)
+            if allElemsContained && checkedIngredients.count == countIng{
+                availableRecipe.append(meal)
+            }
+        }
+        
+        return availableRecipe
+    }
+    
+    
+    func generateMoreBasedOnIngredients() -> [Recipe]{
+        var availableRecipe : [Recipe] = []
+        var checkedIngredients : [String] = []
+        for i in fetchedLeftovers{
+            if i.isChecked{
+                checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
+            }
+        }
+        for meal in recipeViewModel.recipes{
+            let mealIng = meal.ingredients.filter(){$0 != "Water" || $0 != "Salt" || $0 != "Boiling Water" || $0 != "Cold Water"}
+            let countIng = mealIng.count
+            let listSet = Set(mealIng)
+            let findListSet = Set(checkedIngredients)
+            let allElemsContained = findListSet.isSubset(of: listSet)
+            if allElemsContained && checkedIngredients.count != countIng{
+                availableRecipe.append(meal)
+            }
+        }
+        
+        return availableRecipe
     }
     
 }

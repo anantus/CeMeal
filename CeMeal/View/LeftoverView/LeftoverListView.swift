@@ -9,8 +9,9 @@ import SwiftUI
 
 struct LeftoverListView: View {
     
-    @ObservedObject var leftoverViewModel = LeftoverViewModel()
-    var leftover: Leftover
+    @Environment(\.managedObjectContext) private var viewContent
+    @EnvironmentObject var leftoversViewModel:LeftoversViewModel
+    @ObservedObject var leftover:Leftovers
     
     var body: some View {
         HStack {
@@ -29,13 +30,21 @@ struct LeftoverListView: View {
                 // Category
                 Text(leftover.category)
                     .foregroundColor(.accentColor)
-                    .font(
-                        .system(.callout, design: .serif)
-                        .italic()
-                    )
                 
-                HStack {
-                    Image(systemName: "calendar")
+                // Content
+                VStack(alignment: .leading) {
+                    
+                    // Title
+                    Text(leftover.ingredients!)
+                        .font(
+                            .title3
+                                .weight(.semibold)
+                        )
+                        .foregroundColor(Color.ui.title)
+                        .textCase(.uppercase)
+                    
+                    // Category
+                    Text(leftover.category ?? "no category")
                         .foregroundColor(.accentColor)
                         .font(.subheadline)
 
@@ -51,11 +60,11 @@ struct LeftoverListView: View {
                         .foregroundColor(.gray)
                         .font(.subheadline)
                 }
-                .padding(.top, 1)
+                .padding(.horizontal, 16)
                 
             }
-            .padding(.horizontal, 16)
-            
+            .padding(.horizontal)
+            .padding(.vertical, 10)
         }
         .padding(.vertical, 10)
     }

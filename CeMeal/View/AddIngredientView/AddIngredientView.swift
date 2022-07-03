@@ -13,29 +13,31 @@ struct AddIngredientView: View {
     @ObservedObject var ingredientsViewModel = IngredientViewModel()
     @State private var searchQuery = ""
     @State private var showDetailSheet: Bool = false
-    @State private var selectedIngredient: Ingredient?
     
-    private var initIngredient = Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"])
+//    @State private var selectedIngredient: Ingredient?
+    @State private var isEdit:Bool = false
+    
+//    private var initIngredient = Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"])
 
     var body: some View {
         Group {
-            List(ingredientsViewModel.ingredients.filter({ searchQuery.lowercased().isEmpty ? true : $0.title.lowercased().contains(searchQuery.lowercased()) })) { ingredient in
+            List(ingredientsViewModel.ingredients.filter({ searchQuery.lowercased().isEmpty ? true : $0.ingredientName.lowercased().contains(searchQuery.lowercased()) })) { ingredient in
                 Button {
-                    selectedIngredient = ingredient
+                    showDetailSheet.toggle()
                 } label: {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .padding(.leading)
                         
-                        Text("\(ingredient.title)")
+                        Text("\(ingredient.ingredientName)")
                             .foregroundColor(.accentColor)
                     }
                 }
+                .sheet(isPresented: $showDetailSheet) {
+                    IngredientDetailView(ingredient: ingredient)
+                }
             }
             .listStyle(.plain)
-        }
-        .sheet(item: $selectedIngredient) { item in
-            IngredientDetailView(ingredient: selectedIngredient ?? initIngredient)
         }
         
         .navigationTitle("Add Ingredient")

@@ -92,10 +92,10 @@ struct RecipeView: View {
     
 }
 
-struct RecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            RecipeView(recipe: Recipe(title: "Nasi Goreng", isFavorite: true))
-        }
-    }
-}
+//struct RecipeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            RecipeView(recipe: Recipe(title: "Nasi Goreng", isFavorite: true))
+//        }
+//    }
+//}

@@ -9,8 +9,13 @@ import SwiftUI
 
 struct LeftoverView: View {
     
+    @Environment(\.managedObjectContext) private var viewContent
+    @EnvironmentObject var leftoversViewModel:LeftoversViewModel
+    
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
+//    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
     
@@ -20,7 +25,7 @@ struct LeftoverView: View {
             ZStack {
                 
                 // Ingredient items
-                if leftoverViewModel.leftovers.count != 0 {
+                if fetchedLeftovers.count != 0 {
                     
                     List {
                         // My ingredients title & sort
@@ -45,7 +50,7 @@ struct LeftoverView: View {
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
                         // Filled ingredient list
-                        ForEach(leftoverViewModel.leftovers.filter({ searchQuery.lowercased().isEmpty ? true : $0.title.lowercased().contains(searchQuery.lowercased()) })) { leftover in
+                        ForEach(fetchedLeftovers.filter({ searchQuery.isEmpty ? true : $0.ingredients!.contains(searchQuery) })) { leftover in
                             Button {
 //                                Text("Chicken Breast")
                             } label: {
@@ -67,13 +72,13 @@ struct LeftoverView: View {
                             }
                             .padding(.horizontal)
                         }
-                        .onDelete(perform: leftoverViewModel.removeLeftOver)
+//                        .onDelete(perform: leftoversViewModel.delete(ingredient: leftover, context: viewContent))
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
                     .listStyle(.plain)
-                    .refreshable {
-                        self.leftoverViewModel.getLeftovers()
-                    }
+//                    .refreshable {
+//                        self.leftoverViewModel.getLeftovers()
+//                    }
                     
                 } else {
                     

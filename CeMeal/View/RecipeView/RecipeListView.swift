@@ -14,19 +14,25 @@ struct RecipeListView: View {
     var body: some View {
         HStack(alignment: .center) {
             // Checkbox
-            Image(recipe.thumbnailImage ?? "NoIngredient")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+            AsyncImage(url: URL(string: recipe.thumbnail))
                 .frame(width: 100, height: 100, alignment: .center)
                 .clipped()
                 .cornerRadius(10)
                 .padding(0)
             
+//            Image(recipe.thumbnail)
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                .frame(width: 100, height: 100, alignment: .center)
+//                .clipped()
+//                .cornerRadius(10)
+//                .padding(0)
+            
             // Content
             VStack(alignment: .leading) {
                 
                 // Title
-                Text(recipe.title)
+                Text(recipe.mealName)
                     .font(
                         .title3
                             .weight(.semibold)
@@ -60,8 +66,8 @@ struct RecipeListView: View {
     
 }
 
-struct RecipeListView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeListView(recipe: Recipe(title: "Nasi Goreng"))
-    }
-}
+//struct RecipeListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecipeListView(recipe: Recipe(title: "Nasi Goreng"))
+//    }
+//}
