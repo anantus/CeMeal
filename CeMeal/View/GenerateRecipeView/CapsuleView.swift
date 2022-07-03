@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct BadgeView: View {
+struct CapsuleView: View {
     
-    var ingredient: String = ""
+    var ingredient: AdditionalIngredient!
     
     var body: some View {
         HStack {
-            Text(ingredient)
+            Text(ingredient.title)
             Image(systemName: "x.square.fill")
         }
         .foregroundColor(.white)
@@ -27,6 +27,6 @@ struct BadgeView: View {
 
 struct BadgeView_Previews: PreviewProvider {
     static var previews: some View {
-        BadgeView()
+        CapsuleView()
     }
 }
