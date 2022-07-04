@@ -14,14 +14,21 @@ struct FavoriteView: View {
     
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
+    @Environment(\.managedObjectContext) private var viewContent
+
+    @EnvironmentObject var favoriteVM:FavoriteViewModel
+    @FetchRequest(entity: Favorites.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)]) var fetchedFavorites:FetchedResults<Favorites>
+    
     var body: some View {
         NavigationView {
             List(recipeViewModel.recipes) { recipe in
-                NavigationLink(destination: {
-                    RecipeView(recipe: recipe)
-                }, label: {
-                    RecipeListView(recipe: recipe, countIngredient: countCheckIngredient())
-                })
+                if favoritesRecipeList().contains(recipe.mealName){
+                    NavigationLink(destination: {
+                        RecipeView(recipe: recipe)
+                    }, label: {
+                        RecipeListView(recipe: recipe, countIngredient: countCheckIngredient())
+                    })
+                }
             }
             .listStyle(.plain)
             
@@ -41,6 +48,15 @@ struct FavoriteView: View {
         }
         return checkedIngredients.count
     }
+    
+    func favoritesRecipeList() -> [String]{
+        var favoriteList : [String] = []
+        for favorite in fetchedFavorites{
+            favoriteList.append(favorite.mealName!)
+        }
+        return favoriteList
+    }
+    
 }
 
 #if DEBUG

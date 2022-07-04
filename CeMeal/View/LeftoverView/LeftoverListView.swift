@@ -17,44 +17,45 @@ struct LeftoverListView: View {
         HStack {
                 // Content
                 VStack(alignment: .leading) {
-                    
-                    // Title
-                    Text(leftover.ingredients!)
-                        .font(
-                            .title3
-                                .weight(.semibold)
-                        )
-                        .foregroundColor(Date() < leftover.dateExpired! ? Color.ui.title : Color.ui.accent2)
-                        .textCase(.uppercase)
-                    
-                    // Category
-                    if let category = leftover.category {
-                        Text(category)
-                            .foregroundColor(.accentColor)
-                            .font(.subheadline)
-                    }
+                    if leftover.ingredients != nil{
+                        // Title
+                        Text(leftover.ingredients!)
+                            .font(
+                                .title3
+                                    .weight(.semibold)
+                            )
+                            .foregroundColor(Date() < leftover.dateExpired! ? Color.ui.title : Color.ui.accent2)
+                            .textCase(.uppercase)
+                        
+                        // Category
+                        if let category = leftover.category {
+                            Text(category)
+                                .foregroundColor(.accentColor)
+                                .font(.subheadline)
+                        }
 
-                    // Buy & expire dates
-                    HStack {
-                        
-                        Image(systemName: "calendar")
-                            .foregroundColor(.accentColor)
+                        // Buy & expire dates
+                        HStack {
+                            
+                            Image(systemName: "calendar")
+                                .foregroundColor(.accentColor)
+                                .font(.subheadline)
+                            
+                            Text(dateToString(leftover.dateCreated!))
+                                .foregroundColor(.gray)
                             .font(.subheadline)
-                        
-                        Text(dateToString(leftover.dateCreated!))
-                            .foregroundColor(.gray)
-                        .font(.subheadline)
-                        
-                        Image(systemName: "calendar")
-                            .foregroundColor(Color.ui.accent2)
-                            .font(.subheadline)
+                            
+                            Image(systemName: "calendar")
+                                .foregroundColor(Color.ui.accent2)
+                                .font(.subheadline)
 
-                        Text(dateToString(leftover.dateExpired!))
-                            .foregroundColor(.gray)
-                            .font(.subheadline)
+                            Text(dateToString(leftover.dateExpired!))
+                                .foregroundColor(.gray)
+                                .font(.subheadline)
+                            
+                        }
                         
                     }
-                    
                 }
                 .padding(.horizontal, 16)
         }

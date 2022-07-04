@@ -15,29 +15,28 @@ struct LeftoverCheckupView: View {
     @EnvironmentObject var leftoversViewModel:LeftoversViewModel
     
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
-//    @State private var redirectToTabbedView = false
+    //    @State private var redirectToTabbedView = false
     
     var body: some View {
-//        if !redirectToTabbedView {
+        //        if !redirectToTabbedView {
         List {
             Text("Do you use all your ingredients?")
                 .font(
                     .title
-                    .weight(.bold)
+                        .weight(.bold)
                 )
             
-            ForEach(fetchedLeftovers) { leftover in
+            ForEach(getCheckedLeftover()) { leftover in
                 HStack {
                     // Checkbox
-                    Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
+                    
+                    Image(systemName: leftover.isUsed ? "checkmark.square.fill" : "square")
                         .resizable()
                         .frame(width: 20, height: 20)
                         .onTapGesture {
-//                                withAnimation(.easeOut) {
-//                                    leftoverViewModel.leftoverIsChecked(leftover: leftover)
-//                                }
+                            leftoversViewModel.usedLeftovers(ingredient: leftover, context: viewContent)
                         }
-                    .foregroundColor(.accentColor)
+                        .foregroundColor(.accentColor)
                     
                     // Content
                     LeftoverListView(leftover: leftover)
@@ -63,16 +62,35 @@ struct LeftoverCheckupView: View {
             
             ToolbarItem(placement: .confirmationAction) {
                 Button {
+                    delCheckedLeftover()
                     self.presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Save")
                 }
             }
         }
-//        } else {
-//            FavoriteView()
-//                .navigationBarBackButtonHidden(true)
-//        }
+        //        } else {
+        //            FavoriteView()
+        //                .navigationBarBackButtonHidden(true)
+        //        }
+    }
+    
+    func getCheckedLeftover() -> [Leftovers] {
+        var checkedLeftover : [Leftovers] = []
+        for lo in fetchedLeftovers{
+            if lo.isChecked{
+                checkedLeftover.append(lo)
+            }
+        }
+        return checkedLeftover
+    }
+    
+    func delCheckedLeftover(){
+        for lo in fetchedLeftovers{
+            if lo.isUsed{
+                leftoversViewModel.delete(ingredient: lo, context: viewContent)
+            }
+        }
     }
     
 }

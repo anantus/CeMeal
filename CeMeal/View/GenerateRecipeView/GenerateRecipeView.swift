@@ -20,7 +20,6 @@ struct GenerateRecipeView: View {
     @FetchRequest(entity: AdditionalIngredient.entity(), sortDescriptors: [NSSortDescriptor(key: "title", ascending: true)]) var fetchedAddIngredient:FetchedResults<AdditionalIngredient>
     
 //    @State private var moreIngredients = [String]()
-    @State private var moreIngredients = ["Onion", "Garlic", "Chicken", "Apple"]
     
     var body: some View {
         ScrollView {
@@ -121,7 +120,8 @@ struct GenerateRecipeView: View {
         var availableRecipe : [Recipe] = []
         var checkedIngredients : [String] = []
         for i in fetchedLeftovers{
-            if i.isChecked{
+            let check = i.isChecked
+            if check{
                 checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
             }
         }
@@ -153,7 +153,8 @@ struct GenerateRecipeView: View {
         
         //get checked leftovers
         for i in fetchedLeftovers{
-            if i.isChecked{
+            let check = i.isChecked
+            if check{
                 checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
             }
         }

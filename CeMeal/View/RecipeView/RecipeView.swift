@@ -12,6 +12,11 @@ struct RecipeView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var selectedMenu = 0
     
+    @Environment(\.managedObjectContext) private var viewContent
+
+    @EnvironmentObject var favoriteVM:FavoriteViewModel
+    @FetchRequest(entity: Favorites.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)]) var fetchedFavorites:FetchedResults<Favorites>
+    
     var recipe: Recipe
     
     var body: some View {
@@ -102,11 +107,40 @@ struct RecipeView: View {
                 }
             }
             //TODO: Buat heart recipe
-            //            ToolbarItem(placement: .confirmationAction) {
-            //                Image(systemName: recipe. ? "heart.fill" : "heart")
-            //                    .foregroundColor(.accentColor)
-            //            }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button {
+                                favoriteVM.mealName = recipe.mealName
+                                
+                                if (favoritesRecipeList().contains(recipe.mealName)){
+                                    favoriteVM.delete(recipe: findFavorites(mealName: recipe.mealName), context: viewContent)
+                                }else{
+                                    favoriteVM.createFavorite(context: viewContent)
+                                }
+                                
+                            } label: {
+                                Image(systemName: favoritesRecipeList().contains(recipe.mealName) ? "heart.fill" : "heart")
+                                    .foregroundColor(.accentColor)
+                            }
+                        }
         }
+    }
+    
+    func favoritesRecipeList() -> [String]{
+        var favoriteList : [String] = []
+        for favorite in fetchedFavorites{
+            favoriteList.append(favorite.mealName!)
+        }
+        return favoriteList
+    }
+    
+    func findFavorites(mealName : String) -> Favorites {
+        let fav : Favorites = fetchedFavorites[0]
+        for favorite in fetchedFavorites{
+            if mealName == favorite.mealName{
+                return favorite
+            }
+        }
+        return fav
     }
     
 }

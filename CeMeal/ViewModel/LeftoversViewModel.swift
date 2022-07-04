@@ -19,6 +19,7 @@ class LeftoversViewModel:ObservableObject{
     @Published var dateCreated = Date()
     @Published var dateExpired = Date()
     @Published var isChecked = false
+    @Published var isUsed = false
     @Published var leftoverItem:Leftovers!
     
     func createLeftovers(context:NSManagedObjectContext){
@@ -31,7 +32,8 @@ class LeftoversViewModel:ObservableObject{
             leftover.reminder = reminder
             leftover.dateCreated = dateCreated
             leftover.dateExpired = dateExpired
-            leftover.isChecked = false
+            leftover.isChecked = isChecked
+            leftover.isUsed = isUsed
         }
         else{
             leftoverItem.ingredients = ingredients
@@ -51,6 +53,11 @@ class LeftoversViewModel:ObservableObject{
     
     func checkLeftovers(ingredient:Leftovers, context:NSManagedObjectContext){
         ingredient.isChecked.toggle()
+        save(context: context)
+    }
+    
+    func usedLeftovers(ingredient:Leftovers, context:NSManagedObjectContext){
+        ingredient.isUsed.toggle()
         save(context: context)
     }
     
