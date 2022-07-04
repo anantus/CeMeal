@@ -36,7 +36,6 @@ struct GenerateRecipeView: View {
                     RecipeView(recipe: recipe)
                 } label: {
                     RecipeListView(recipe: recipe, countIngredient: countCheckIngredient())
-//                    Text(recipe.ingredients)
                 }
                 .padding(.horizontal)
                 Divider()
