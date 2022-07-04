@@ -28,21 +28,33 @@ struct LeftoverListView: View {
                         .textCase(.uppercase)
                     
                     // Category
-                    Text(leftover.category ?? "no category")
-                        .foregroundColor(.accentColor)
-                        .font(.subheadline)
+                    if let category = leftover.category {
+                        Text(category)
+                            .foregroundColor(.accentColor)
+                            .font(.subheadline)
+                    }
 
-                    Text(dateToString(leftover.dateCreated!))
-                        .foregroundColor(.gray)
+                    // Buy & expire dates
+                    HStack {
+                        
+                        Image(systemName: "calendar")
+                            .foregroundColor(.accentColor)
+                            .font(.subheadline)
+                        
+                        Text(dateToString(leftover.dateCreated!))
+                            .foregroundColor(.gray)
                         .font(.subheadline)
+                        
+                        Image(systemName: "calendar")
+                            .foregroundColor(Color.ui.accent2)
+                            .font(.subheadline)
+
+                        Text(dateToString(leftover.dateExpired!))
+                            .foregroundColor(.gray)
+                            .font(.subheadline)
+                        
+                    }
                     
-                    Image(systemName: "calendar")
-                        .foregroundColor(Color.ui.accent2)
-                        .font(.subheadline)
-
-                    Text(dateToString(leftover.dateExpired!))
-                        .foregroundColor(.gray)
-                        .font(.subheadline)
                 }
                 .padding(.horizontal, 16)
         }
