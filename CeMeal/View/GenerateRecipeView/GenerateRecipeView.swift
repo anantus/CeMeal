@@ -31,18 +31,21 @@ struct GenerateRecipeView: View {
             Divider()
             
             // MARK: With your ingredients recipes
-            ForEach(generateRecipeBasedOnIngredients()) { recipe in
-                NavigationLink {
-                    RecipeView(recipe: recipe)
-                } label: {
-                    RecipeListView(recipe: recipe)
-//                    Text(recipe.ingredients)
+            if generateRecipeBasedOnIngredients().count > 0 {
+                ForEach(generateRecipeBasedOnIngredients()) { recipe in
+                    NavigationLink {
+                        RecipeView(recipe: recipe)
+                    } label: {
+                        RecipeListView(recipe: recipe)
+                    }
+                    .padding(.horizontal)
+                    Divider()
                 }
-                .padding(.horizontal)
-                Divider()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
+            } else {
+                EmptyRecipePlaceholderView()
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
             
             // MARK: With more ingredients title
             RecipeSectionView(title: "With more ingredients", subtitle: nil, hasActionButton: true)
@@ -68,16 +71,20 @@ struct GenerateRecipeView: View {
             }
 
             // MARK: With more ingredients recipes
-            ForEach(generateMoreBasedOnIngredients()) { recipe in
-                NavigationLink {
-                    RecipeView(recipe: recipe)
-                } label: {
-                    RecipeListView(recipe: recipe)
+            if generateMoreBasedOnIngredients().count > 0 {
+                ForEach(generateMoreBasedOnIngredients()) { recipe in
+                    NavigationLink {
+                        RecipeView(recipe: recipe)
+                    } label: {
+                        RecipeListView(recipe: recipe)
+                    }
+                    .padding(.horizontal)
+                    Divider()
                 }
-                .padding(.horizontal)
-                Divider()
+                .frame(maxWidth: .infinity, alignment: .leading)
+            } else {
+                EmptyRecipePlaceholderView()
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
 //        .refreshable {
