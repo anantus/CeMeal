@@ -15,7 +15,7 @@ struct LeftoverView: View {
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
     @Environment(\.colorScheme) var colorScheme
-    //    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
+//    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
     @State private var showAlert = false
@@ -43,10 +43,10 @@ struct LeftoverView: View {
                                     Text("Buy Date").tag(1)
                                 }
                             }
-                        label: {
-                            Image(systemName: "arrow.up.arrow.down")
-                                .foregroundColor(.accentColor)
-                        }
+                            label: {
+                                Image(systemName: "arrow.up.arrow.down")
+                                    .foregroundColor(.accentColor)
+                            }
                         }
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
@@ -79,12 +79,13 @@ struct LeftoverView: View {
                                                     leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                                                 }
                                             }
-                                        }
                                         .foregroundColor(.accentColor)
-                                    
-                                    // Content
-                                    LeftoverListView(leftover: leftover)
+                                        
+                                        // Content
+                                        LeftoverListView(leftover: leftover)
+                                    }
                                 }
+                            .padding()
                             }
                             .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                 //role destructive add red color and delete animation
@@ -93,8 +94,6 @@ struct LeftoverView: View {
                                 }, label: {
                                     Label("Delete", systemImage: "trash")
                                 })
-                            }
-                            .padding(.horizontal)
                             }
                         }
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))

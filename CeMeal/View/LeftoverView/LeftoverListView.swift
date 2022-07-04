@@ -15,17 +15,19 @@ struct LeftoverListView: View {
     
     var body: some View {
         HStack {
+            
+            if leftover.ingredients != nil {
                 // Content
                 VStack(alignment: .leading) {
                     
                     // Title
-                    Text(leftover.ingredients!)
-                        .font(
-                            .title3
-                                .weight(.semibold)
-                        )
-                        .foregroundColor(Date() < leftover.dateExpired! ? Color.accentColor : Color.ui.accent2)
-                        .textCase(.uppercase)
+                        Text(leftover.ingredients!)
+                            .font(
+                                .title3
+                                    .weight(.semibold)
+                            )
+                            .foregroundColor(Date() < leftover.dateExpired! ? Color.accentColor : Color.ui.accent2)
+                            .textCase(.uppercase)
                     
                     // Category
                     if let category = leftover.category {
@@ -61,6 +63,7 @@ struct LeftoverListView: View {
                     
                 }
                 .padding(.horizontal, 16)
+        }
         }
     }
 }
