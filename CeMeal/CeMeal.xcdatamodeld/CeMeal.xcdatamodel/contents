@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AdditionalIngredient" representedClassName="AdditionalIngredient" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Favorites" representedClassName="Favorites" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -22,5 +26,6 @@
         <element name="Favorites" positionX="-54" positionY="0" width="128" height="74"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
         <element name="Leftovers" positionX="-63" positionY="-9" width="128" height="149"/>
+        <element name="AdditionalIngredient" positionX="-54" positionY="45" width="128" height="59"/>
     </elements>
 </model>

@@ -20,6 +20,23 @@ struct RecipeListView: View {
                 .cornerRadius(10)
                 .padding(0)
             
+//            AsyncImage(
+//                url: URL(string: recipe.thumbnail),
+//                content: { image in
+//                    image
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+//                        .border(.blue)
+//                        .clipped()
+//                        .frame(width: .infinity, height: 250, alignment: .center)
+//                        .cornerRadius(10)
+//                        .padding(0)
+//                },
+//                placeholder: {
+//                    ProgressView()
+//                }
+//            )
+            
 //            Image(recipe.thumbnail)
 //                .resizable()
 //                .aspectRatio(contentMode: .fill)

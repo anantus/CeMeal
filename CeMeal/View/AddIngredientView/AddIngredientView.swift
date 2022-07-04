@@ -16,8 +16,6 @@ struct AddIngredientView: View {
     
 //    @State private var selectedIngredient: Ingredient?
     @State private var isEdit:Bool = false
-    
-//    private var initIngredient = Ingredient(id: "0", title: "Empty", category: "Unknown", expireDay: [1], shelfLife: ["a": "b"])
 
     var body: some View {
         Group {

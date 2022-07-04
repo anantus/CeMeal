@@ -31,14 +31,8 @@ struct Recipe : Identifiable {
         for ingr_measure_num in 1...20 {
             let ingredients_col : Int = 8 + ingr_measure_num
             let recipe_col : Int = 28 + ingr_measure_num
-            
-            if raw[ingredients_col].capitalized != ""{
-                ingredients.append(raw[ingredients_col].capitalized)
-            }
-            
-            if raw[recipe_col] != ""{
-                measurements.append(raw[recipe_col])
-            }
+            ingredients.append(raw[ingredients_col].capitalized)
+            measurements.append(raw[recipe_col])
         }
     }
 }

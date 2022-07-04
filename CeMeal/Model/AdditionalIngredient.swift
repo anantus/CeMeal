@@ -1,20 +1,20 @@
+////
+////  AdditionalIngredient.swift
+////  CeMeal
+////
+////  Created by Darma Wiryanata on 03/07/22.
+////
 //
-//  AdditionalIngredient.swift
-//  CeMeal
+//import Foundation
 //
-//  Created by Darma Wiryanata on 03/07/22.
+//struct AdditionalIngredient: Identifiable, Codable {
 //
-
-import Foundation
-
-struct AdditionalIngredient: Identifiable, Codable {
-    
-    var id: String
-    var title: String
-    
-    init(id: String, title: String) {
-        self.id = id
-        self.title = title
-    }
-    
-}
+//    var id: String
+//    var title: String
+//
+//    init(id: String, title: String) {
+//        self.id = id
+//        self.title = title
+//    }
+//
+//}

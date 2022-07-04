@@ -13,7 +13,7 @@ struct CapsuleView: View {
     
     var body: some View {
         HStack {
-            Text(ingredient.title)
+            Text(ingredient.title ?? "")
             Image(systemName: "x.square.fill")
         }
         .foregroundColor(.white)

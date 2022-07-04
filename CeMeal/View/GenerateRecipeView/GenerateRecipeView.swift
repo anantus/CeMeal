@@ -11,13 +11,13 @@ struct GenerateRecipeView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var additionalIngredientViewModel = AdditionalIngredientViewModel()
+    @EnvironmentObject var additionalIngredientVM : AdditionalIngredientViewModel
     @ObservedObject var recipeViewModel = RecipeViewModel()
-    
     @Environment(\.managedObjectContext) private var viewContent
     @EnvironmentObject var leftoversViewModel:LeftoversViewModel
     
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    @FetchRequest(entity: AdditionalIngredient.entity(), sortDescriptors: [NSSortDescriptor(key: "title", ascending: true)]) var fetchedAddIngredient:FetchedResults<AdditionalIngredient>
     
 //    @State private var moreIngredients = [String]()
     @State private var moreIngredients = ["Onion", "Garlic", "Chicken", "Apple"]
@@ -25,13 +25,13 @@ struct GenerateRecipeView: View {
     var body: some View {
         ScrollView {
             // MARK: With your ingredients title
-            RecipeSectionView(title: "With your ingredients", subtitle: "You have 7 ingredients", hasActionButton: false)
+            RecipeSectionView(title: "With your ingredients", subtitle: "You have \(countCheckIngredient()) ingredients", hasActionButton: false)
                 .padding(.horizontal)
                 .padding(.top)
             Divider()
             
             // MARK: With your ingredients recipes
-            ForEach(recipeViewModel.recipes) { recipe in
+            ForEach(generateRecipeBasedOnIngredients()) { recipe in
                 NavigationLink {
                     RecipeView(recipe: recipe)
                 } label: {
@@ -50,13 +50,13 @@ struct GenerateRecipeView: View {
             Divider()
             
             // MARK: More ingredients capsules
-            if additionalIngredientViewModel.additionalIngredients.count > 0 {
+            if fetchedAddIngredient.count > 0 {
                 ScrollView(.horizontal) {
                     HStack(spacing: 15) {
-                        ForEach(additionalIngredientViewModel.additionalIngredients) { ingredient in
+                        ForEach(fetchedAddIngredient) { ingredient in
                             CapsuleView(ingredient: ingredient)
                                 .onTapGesture {
-                                    additionalIngredientViewModel.deleteAdditionalIngredient(id: ingredient.id)
+                                    additionalIngredientVM.deleteAdditionalIngredient(addIng: ingredient, context: viewContent)
                                     
                                     print("Ingredient deleted successfully")
                                 }
@@ -80,9 +80,9 @@ struct GenerateRecipeView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
-        .refreshable {
-            additionalIngredientViewModel.getAdditionalIngredients()
-        }
+//        .refreshable {
+//            additionalIngredientViewModel.getAdditionalIngredients()
+//        }
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -98,15 +98,26 @@ struct GenerateRecipeView: View {
                 }
             }
             
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    additionalIngredientViewModel.getAdditionalIngredients()
-                }) {
-                    Image(systemName: "arrow.clockwise")
-                }
-            }
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                Button(action: {
+//                    additionalIngredientVM.getAdditionalIngredients()
+//                }) {
+//                    Image(systemName: "arrow.clockwise")
+//                }
+//            }
         }
     }
+    
+    func countCheckIngredient() -> Int{
+        var checkedIngredients : [String] = []
+        for i in fetchedLeftovers{
+            if i.isChecked{
+                checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
+            }
+        }
+        return checkedIngredients.count
+    }
+    
     func generateRecipeBasedOnIngredients() -> [Recipe]{
         var availableRecipe : [Recipe] = []
         var checkedIngredients : [String] = []
@@ -116,7 +127,14 @@ struct GenerateRecipeView: View {
             }
         }
         for meal in recipeViewModel.recipes{
-            let mealIng = meal.ingredients.filter(){$0 != "Water" || $0 != "Salt" || $0 != "Boiling Water" || $0 != "Cold Water"}
+            let mealIng = meal.ingredients.filter(){
+                $0 != "Water" &&
+                $0 != "Salt" &&
+                $0 != "Boiling Water" &&
+                $0 != "Cold Water" &&
+                $0 != "" &&
+                $0 != " "}
+            
             let countIng = mealIng.count
             let listSet = Set(mealIng)
             let findListSet = Set(checkedIngredients)
@@ -133,13 +151,27 @@ struct GenerateRecipeView: View {
     func generateMoreBasedOnIngredients() -> [Recipe]{
         var availableRecipe : [Recipe] = []
         var checkedIngredients : [String] = []
+        
+        //get checked leftovers
         for i in fetchedLeftovers{
             if i.isChecked{
                 checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
             }
         }
+        
+        //get additional ingredients
+        for addIng in fetchedAddIngredient{
+            checkedIngredients.append(addIng.title ?? "")
+        }
+        
         for meal in recipeViewModel.recipes{
-            let mealIng = meal.ingredients.filter(){$0 != "Water" || $0 != "Salt" || $0 != "Boiling Water" || $0 != "Cold Water"}
+            let mealIng = meal.ingredients.filter(){
+                $0 != "Water" &&
+                $0 != "Salt" &&
+                $0 != "Boiling Water" &&
+                $0 != "Cold Water" &&
+                $0 != "" &&
+                $0 != " "}
             let countIng = mealIng.count
             let listSet = Set(mealIng)
             let findListSet = Set(checkedIngredients)
