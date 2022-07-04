@@ -89,6 +89,7 @@ struct IngredientDetailView: View {
                     Button(action:{
                         //TODO: Reminder berdasarkan pilihan remind nya
                         leftoverVM.ingredients = ingredient.ingredientName
+                        leftoverVM.category = ingredient.category
                         leftoverVM.storage = storages[checkedStorage]
                         leftoverVM.dateCreated = buyDate
                         leftoverVM.dateExpired = expireDate

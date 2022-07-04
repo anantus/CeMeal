@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CapsuleView: View {
     
-    var ingredient: AdditionalIngredient!
+    var ingredient: AdditionalIngredient
     
     var body: some View {
         HStack {
@@ -27,6 +27,6 @@ struct CapsuleView: View {
 
 struct BadgeView_Previews: PreviewProvider {
     static var previews: some View {
-        CapsuleView()
+        CapsuleView(ingredient: AdditionalIngredient())
     }
 }
