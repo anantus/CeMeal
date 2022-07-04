@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeListView: View {
     
     var recipe: Recipe
+    var countIngredient : Int
     
     var body: some View {
         HStack(alignment: .center) {
@@ -59,13 +60,23 @@ struct RecipeListView: View {
                     .multilineTextAlignment(.leading)
                 
                 // Category
-                Text("You have all the ingredients")
-                    .foregroundColor(.accentColor)
-                    .font(
-                        .system(.callout, design: .serif)
-                        .italic()
-                    )
-                    .multilineTextAlignment(.leading)
+                if countIngredient >= recipe.ingredients.filter(){$0 != "" && $0 != " "}.count{
+                    Text("You have all the ingredients")
+                        .foregroundColor(.accentColor)
+                        .font(
+                            .system(.callout, design: .serif)
+                            .italic()
+                        )
+                        .multilineTextAlignment(.leading)
+                }else{
+                    Text("You are missing \(recipe.ingredients.filter(){$0 != "" && $0 != " "}.count - countIngredient) ingredients")
+                        .foregroundColor(.red)
+                        .font(
+                            .system(.callout, design: .serif)
+                            .italic()
+                        )
+                        .multilineTextAlignment(.leading)
+                }
                 
             }
             .padding(.horizontal, 8)

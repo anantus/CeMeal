@@ -14,25 +14,28 @@ struct AddIngredientView: View {
     @State private var searchQuery = ""
     @State private var showDetailSheet: Bool = false
     
-//    @State private var selectedIngredient: Ingredient?
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
     @State private var isEdit:Bool = false
 
     var body: some View {
         Group {
             List(ingredientsViewModel.ingredients.filter({ searchQuery.lowercased().isEmpty ? true : $0.ingredientName.lowercased().contains(searchQuery.lowercased()) })) { ingredient in
-                Button {
-                    showDetailSheet.toggle()
-                } label: {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .padding(.leading)
-                        
-                        Text("\(ingredient.ingredientName)")
-                            .foregroundColor(.accentColor)
+                if !leftoverList().contains(ingredient.ingredientName){
+                    Button {
+                        showDetailSheet.toggle()
+                    } label: {
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .padding(.leading)
+                            
+                            Text("\(ingredient.ingredientName)")
+                                .foregroundColor(.accentColor)
+                        }
                     }
-                }
-                .sheet(isPresented: $showDetailSheet) {
-                    IngredientDetailView(ingredient: ingredient)
+                    .sheet(isPresented: $showDetailSheet) {
+                        IngredientDetailView(ingredient: ingredient)
+                    }
                 }
             }
             .listStyle(.plain)
@@ -56,6 +59,13 @@ struct AddIngredientView: View {
         .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
     }
     
+    func leftoverList() -> [String]{
+        var availableIngredient : [String] = []
+        for lo in fetchedLeftovers{
+            availableIngredient.append(lo.ingredients!)
+        }
+        return availableIngredient
+    }
 }
 
 struct AddIngredientView_Previews: PreviewProvider {
