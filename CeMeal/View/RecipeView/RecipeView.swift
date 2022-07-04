@@ -17,6 +17,8 @@ struct RecipeView: View {
     @EnvironmentObject var favoriteVM:FavoriteViewModel
     @FetchRequest(entity: Favorites.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)]) var fetchedFavorites:FetchedResults<Favorites>
     
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
     var recipe: Recipe
     
     var body: some View {
@@ -82,18 +84,18 @@ struct RecipeView: View {
             
             // Done cooking button
             NavigationLink {
-                LeftoverCheckupView()
+                LeftoverCheckupView(checkLeftoverBool: getCheckedBool())
             } label: {
                 Text("Done Using Ingredients")
                     .fontWeight(.heavy)
                     .foregroundColor(Color.ui.buttonLabel)
             }
+            .isDetailLink(false)
             .buttonStyle(NeumorphicButtonStyle(bgColor: .accentColor))
             .frame(maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom)
             
         }
-        
         .navigationTitle(recipe.mealName)
         .navigationBarBackButtonHidden(true)
         .navigationBarColor(backgroundColor: .systemBackground, titleColor: UIColor(Color.ui.title))
@@ -141,6 +143,16 @@ struct RecipeView: View {
             }
         }
         return fav
+    }
+    
+    func getCheckedBool() -> [Bool]{
+        var returnLeftover :[Bool] = []
+        for lo in fetchedLeftovers{
+            if lo.isChecked{
+                returnLeftover.append(false)
+            }
+        }
+        return returnLeftover
     }
     
 }

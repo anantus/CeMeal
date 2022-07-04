@@ -85,6 +85,7 @@ struct GenerateRecipeView: View {
                 EmptyRecipePlaceholderView()
             }
         }
+        .navigationViewStyle(.stack)
         .background(colorScheme == .light ? .white : Color(UIColor.systemGray6))
 //        .refreshable {
 //            additionalIngredientViewModel.getAdditionalIngredients()

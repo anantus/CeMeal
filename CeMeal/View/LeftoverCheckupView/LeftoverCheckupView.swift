@@ -15,7 +15,8 @@ struct LeftoverCheckupView: View {
     @EnvironmentObject var leftoversViewModel:LeftoversViewModel
     
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
-    //    @State private var redirectToTabbedView = false
+    
+    @State var checkLeftoverBool : [Bool]
     
     var body: some View {
         //        if !redirectToTabbedView {
@@ -26,20 +27,20 @@ struct LeftoverCheckupView: View {
                         .weight(.bold)
                 )
             
-            ForEach(getCheckedLeftover()) { leftover in
+            ForEach((0...(getCheckedLeftover().count-1)), id: \.self) { index in
                 HStack {
                     // Checkbox
                     
-                    Image(systemName: leftover.isUsed ? "checkmark.square.fill" : "square")
+                    Image(systemName: checkLeftoverBool[index] ? "checkmark.square.fill" : "square")
                         .resizable()
                         .frame(width: 20, height: 20)
                         .onTapGesture {
-                            leftoversViewModel.usedLeftovers(ingredient: leftover, context: viewContent)
+                            checkLeftoverBool[index].toggle()
                         }
                         .foregroundColor(.accentColor)
                     
                     // Content
-                    LeftoverListView(leftover: leftover)
+                    LeftoverListView(leftover: getCheckedLeftover()[index])
                 }
                 .padding(.horizontal)
             }
@@ -86,19 +87,19 @@ struct LeftoverCheckupView: View {
     }
     
     func delCheckedLeftover(){
-        for lo in fetchedLeftovers{
-            if lo.isUsed{
-                leftoversViewModel.delete(ingredient: lo, context: viewContent)
+        for i in 0...getCheckedLeftover().count-1{
+            if checkLeftoverBool[i]{
+                leftoversViewModel.delete(ingredient: getCheckedLeftover()[i], context: viewContent)
             }
         }
     }
     
 }
 
-struct LeftoverCheckupView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            LeftoverCheckupView()
-        }
-    }
-}
+//struct LeftoverCheckupView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            LeftoverCheckupView()
+//        }
+//    }
+//}
