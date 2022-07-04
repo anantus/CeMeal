@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		552C6ACD285B23C7001F4FB5 /* CeMealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C6ACC285B23C7001F4FB5 /* CeMealApp.swift */; };
-		552C6ACF285B23C7001F4FB5 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C6ACE285B23C7001F4FB5 /* TabbedView.swift */; };
 		552C6AD1285B23C9001F4FB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C6AD0285B23C9001F4FB5 /* Assets.xcassets */; };
 		552C6AD4285B23C9001F4FB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C6AD3285B23C9001F4FB5 /* Preview Assets.xcassets */; };
 		552C6AD6285B23C9001F4FB5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C6AD5285B23C9001F4FB5 /* Persistence.swift */; };
@@ -21,9 +20,10 @@
 		55F4678B2870C0BC0027738E /* Recipes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 55F4678A2870C0BC0027738E /* Recipes.csv */; };
 		FA0276E62864389C0032B1DD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E52864389B0032B1DD /* Date.swift */; };
 		FA0276E828643BE20032B1DD /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0276E728643BE20032B1DD /* Float.swift */; };
+		FA0C3F232872BF5B008FC5D0 /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD4286EF02500AC320F /* CapsuleView.swift */; };
+		FA0C3F242872BF5B008FC5D0 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C6ACE285B23C7001F4FB5 /* TabbedView.swift */; };
 		FA216DD1286EDBB200AC320F /* GenerateRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD0286EDBB200AC320F /* GenerateRecipeView.swift */; };
 		FA216DD3286EE00900AC320F /* RecipeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD2286EE00900AC320F /* RecipeSectionView.swift */; };
-		FA216DD5286EF02500AC320F /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD4286EF02500AC320F /* CapsuleView.swift */; };
 		FA216DD9286F27C600AC320F /* AddMoreIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA216DD8286F27C600AC320F /* AddMoreIngredientView.swift */; };
 		FA6D87662862D7BF000E5225 /* LeftoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D87652862D7BF000E5225 /* LeftoverView.swift */; };
 		FA6D876E28631DA0000E5225 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D876D28631DA0000E5225 /* NavigationBarModifier.swift */; };
@@ -240,10 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				FA910466287156ED00EE3CBA /* AdditionalIngredientViewModel.swift */,
-				FA6D87752863213C000E5225 /* IngredientViewModel.swift */,
 				55EF8C06286ED06700529ED7 /* FavoriteViewModel.swift */,
 				FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */,
-				FAD63A6528667159002B6130 /* RecipeViewModel.swift */,
 				FA8482AF2871C32700EE4996 /* OnboardingViewModel.swift */,
 				FA8482BA2871DC2100EE4996 /* SessionManager.swift */,
 				55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */,
@@ -388,22 +386,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0C3F232872BF5B008FC5D0 /* CapsuleView.swift in Sources */,
+				FA0C3F242872BF5B008FC5D0 /* TabbedView.swift in Sources */,
 				FA6DAE0B286DC3B5006A5AE6 /* LeftoverViewModel.swift in Sources */,
 				FA216DD1286EDBB200AC320F /* GenerateRecipeView.swift in Sources */,
 				FAD63A682866A0E7002B6130 /* RecipeListView.swift in Sources */,
 				FAD63A72286758A5002B6130 /* RecipeDirectionsView.swift in Sources */,
 				FA6DAE03286CFD80006A5AE6 /* IngredientDetailView.swift in Sources */,
 				FA8482B02871C32700EE4996 /* OnboardingViewModel.swift in Sources */,
-				FA216DD5286EF02500AC320F /* CapsuleView.swift in Sources */,
 				FA8482B72871D67100EE4996 /* LeftoverCheckupView.swift in Sources */,
-				FA216DD5286EF02500AC320F /* BadgeView.swift in Sources */,
 				55EF8BFF286EB86D00529ED7 /* LeftoversViewModel.swift in Sources */,
 				552C6AD6285B23C9001F4FB5 /* Persistence.swift in Sources */,
 				FAD63A74286758B5002B6130 /* RecipeSuggestionsView.swift in Sources */,
-				552C6ACF285B23C7001F4FB5 /* TabbedView.swift in Sources */,
-				FAD63A6628667159002B6130 /* RecipeViewModel.swift in Sources */,
 				FA8482B92871DBB500EE4996 /* NavigationStackView.swift in Sources */,
-				552C6ACF285B23C7001F4FB5 /* ContentView.swift in Sources */,
 				55EF8C07286ED06700529ED7 /* FavoriteViewModel.swift in Sources */,
 				FA6D877028631F6E000E5225 /* Color.swift in Sources */,
 				FA216DD9286F27C600AC320F /* AddMoreIngredientView.swift in Sources */,
