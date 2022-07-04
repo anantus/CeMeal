@@ -15,7 +15,7 @@ struct LeftoverView: View {
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
     @Environment(\.colorScheme) var colorScheme
-//    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
+    //    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
     @State private var showAlert = false
@@ -43,49 +43,37 @@ struct LeftoverView: View {
                                     Text("Buy Date").tag(1)
                                 }
                             }
-                            label: {
-                                Image(systemName: "arrow.up.arrow.down")
-                                    .foregroundColor(.accentColor)
-                            }
+                        label: {
+                            Image(systemName: "arrow.up.arrow.down")
+                                .foregroundColor(.accentColor)
+                        }
                         }
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
                         // Filled ingredient list
                         ForEach(fetchedLeftovers.filter({ searchQuery.isEmpty ? true : $0.ingredients!.contains(searchQuery) })) { leftover in
-                            
-                            let expired = Date() > leftover.dateExpired!
-                            
-                            ZStack(alignment: .leading) {
-                                Rectangle()
-                                    .frame(width: .infinity)
-                                    .foregroundColor(!expired ? Color.clear : Color(UIColor.systemGray6))
-                                
-                                Button {
-    //                                Text("Chicken Breast")
-                                } label: {
-                                    HStack {
-                                        // Checkbox
-                                        Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                            .onTapGesture {
-                                                withAnimation(.easeOut) {
-                                                    let unchecked = leftover.isChecked == false
-                                                    
-                                                    if expired && unchecked {
-                                                        showAlert.toggle()
-                                                    }
-                                                    
-                                                    leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
+                            Button {
+                                //                                Text("Chicken Breast")
+                            } label: {
+                                HStack {
+                                    // Checkbox
+                                    Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .onTapGesture {
+                                            withAnimation(.easeOut) {
+                                                if Date() > leftover.dateExpired! && leftover.isChecked == false {
+                                                    showAlert.toggle()
                                                 }
+                                                
+                                                leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                                             }
+                                        }
                                         .foregroundColor(.accentColor)
-                                        
-                                        // Content
-                                        LeftoverListView(leftover: leftover)
-                                    }
+                                    
+                                    // Content
+                                    LeftoverListView(leftover: leftover)
                                 }
-                            .padding()
                             }
                             .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                 //role destructive add red color and delete animation
@@ -95,6 +83,7 @@ struct LeftoverView: View {
                                     Label("Delete", systemImage: "trash")
                                 })
                             }
+                            .padding(.horizontal)
                         }
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
