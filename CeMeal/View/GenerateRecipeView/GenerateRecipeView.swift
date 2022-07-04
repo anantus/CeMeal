@@ -135,7 +135,6 @@ struct GenerateRecipeView: View {
                 $0 != "" &&
                 $0 != " "}
             
-//            let countIng = mealIng.count
             let listSet = Set(mealIng)
             let findListSet = Set(checkedIngredients)
             let allElemsContained = listSet.isSubset(of: findListSet)
