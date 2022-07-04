@@ -24,14 +24,18 @@ struct LeftoverListView: View {
                             .title3
                                 .weight(.semibold)
                         )
-                        .foregroundColor(Date() < leftover.dateExpired! ? Color.ui.title : Color.ui.accent2)
+                        .foregroundColor(Date() < leftover.dateExpired! ? Color.accentColor : Color.ui.accent2)
                         .textCase(.uppercase)
                     
                     // Category
                     if let category = leftover.category {
                         Text(category)
-                            .foregroundColor(.accentColor)
-                            .font(.subheadline)
+                            .foregroundColor(Color.ui.title)
+                            .font(
+                                .system(.callout, design: .serif)
+                                .italic()
+                            )
+                            .padding(.bottom, 2)
                     }
 
                     // Buy & expire dates

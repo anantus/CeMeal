@@ -52,21 +52,32 @@ struct LeftoverView: View {
                         
                         // Filled ingredient list
                         ForEach(fetchedLeftovers.filter({ searchQuery.isEmpty ? true : $0.ingredients!.contains(searchQuery) })) { leftover in
-                            Button {
-                                //                                Text("Chicken Breast")
-                            } label: {
-                                HStack {
-                                    // Checkbox
-                                    Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                        .onTapGesture {
-                                            withAnimation(.easeOut) {
-                                                if Date() > leftover.dateExpired! && leftover.isChecked == false {
-                                                    showAlert.toggle()
+                            
+                            let expired = Date() > leftover.dateExpired!
+                            
+                            ZStack(alignment: .leading) {
+                                Rectangle()
+                                    .frame(width: .infinity)
+                                    .foregroundColor(!expired ? Color.clear : Color(UIColor.systemGray6))
+                                
+                                Button {
+    //                                Text("Chicken Breast")
+                                } label: {
+                                    HStack {
+                                        // Checkbox
+                                        Image(systemName: leftover.isChecked ? "checkmark.square.fill" : "square")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                            .onTapGesture {
+                                                withAnimation(.easeOut) {
+                                                    let unchecked = leftover.isChecked == false
+                                                    
+                                                    if expired && unchecked {
+                                                        showAlert.toggle()
+                                                    }
+                                                    
+                                                    leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                                                 }
-                                                
-                                                leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                                             }
                                         }
                                         .foregroundColor(.accentColor)
@@ -84,6 +95,7 @@ struct LeftoverView: View {
                                 })
                             }
                             .padding(.horizontal)
+                            }
                         }
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }

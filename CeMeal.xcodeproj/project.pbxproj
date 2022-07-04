@@ -41,6 +41,7 @@
 		FA8482B72871D67100EE4996 /* LeftoverCheckupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8482B62871D67100EE4996 /* LeftoverCheckupView.swift */; };
 		FA8482B92871DBB500EE4996 /* NavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8482B82871DBB500EE4996 /* NavigationStackView.swift */; };
 		FA8482BB2871DC2100EE4996 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8482BA2871DC2100EE4996 /* SessionManager.swift */; };
+		FA8D9EC82872DC6100F87BBA /* EmptyRecipePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D9EC72872DC6100F87BBA /* EmptyRecipePlaceholderView.swift */; };
 		FA910465287155D600EE3CBA /* AdditionalIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA910464287155D600EE3CBA /* AdditionalIngredient.swift */; };
 		FA910467287156ED00EE3CBA /* AdditionalIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA910466287156ED00EE3CBA /* AdditionalIngredientViewModel.swift */; };
 		FAA77538286AD7BE009D4F2B /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA77537286AD7BE009D4F2B /* AddIngredientView.swift */; };
@@ -93,6 +94,7 @@
 		FA8482B62871D67100EE4996 /* LeftoverCheckupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverCheckupView.swift; sourceTree = "<group>"; };
 		FA8482B82871DBB500EE4996 /* NavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackView.swift; sourceTree = "<group>"; };
 		FA8482BA2871DC2100EE4996 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		FA8D9EC72872DC6100F87BBA /* EmptyRecipePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyRecipePlaceholderView.swift; sourceTree = "<group>"; };
 		FA910464287155D600EE3CBA /* AdditionalIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalIngredient.swift; sourceTree = "<group>"; };
 		FA910466287156ED00EE3CBA /* AdditionalIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalIngredientViewModel.swift; sourceTree = "<group>"; };
 		FAA77537286AD7BE009D4F2B /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				FA216DD0286EDBB200AC320F /* GenerateRecipeView.swift */,
 				FA216DD2286EE00900AC320F /* RecipeSectionView.swift */,
 				FA216DD4286EF02500AC320F /* CapsuleView.swift */,
+				FA8D9EC72872DC6100F87BBA /* EmptyRecipePlaceholderView.swift */,
 			);
 			path = GenerateRecipeView;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */,
 				55F4678528707C950027738E /* RecipeViewModel.swift in Sources */,
 				FAC70C6028666D17006CEF12 /* FavoriteView.swift in Sources */,
+				FA8D9EC82872DC6100F87BBA /* EmptyRecipePlaceholderView.swift in Sources */,
 				552C6ACD285B23C7001F4FB5 /* CeMealApp.swift in Sources */,
 				FAD63A6428666FF5002B6130 /* Recipe.swift in Sources */,
 				FAA77538286AD7BE009D4F2B /* AddIngredientView.swift in Sources */,
