@@ -12,13 +12,15 @@ struct FavoriteView: View {
     @ObservedObject private var recipeViewModel = RecipeViewModel()
     @State private var searchQuery = ""
     
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
     var body: some View {
         NavigationView {
             List(recipeViewModel.recipes) { recipe in
                 NavigationLink(destination: {
                     RecipeView(recipe: recipe)
                 }, label: {
-                    RecipeListView(recipe: recipe)
+                    RecipeListView(recipe: recipe, countIngredient: countCheckIngredient())
                 })
             }
             .listStyle(.plain)
@@ -28,6 +30,16 @@ struct FavoriteView: View {
             .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
         }
         
+    }
+    
+    func countCheckIngredient() -> Int{
+        var checkedIngredients : [String] = []
+        for i in fetchedLeftovers{
+            if i.isChecked{
+                checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
+            }
+        }
+        return checkedIngredients.count
     }
 }
 

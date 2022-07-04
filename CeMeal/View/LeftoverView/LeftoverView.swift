@@ -15,7 +15,7 @@ struct LeftoverView: View {
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
     @Environment(\.colorScheme) var colorScheme
-//    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
+    //    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
     @State private var showAlert = false
@@ -43,17 +43,17 @@ struct LeftoverView: View {
                                     Text("Buy Date").tag(1)
                                 }
                             }
-                            label: {
-                                Image(systemName: "arrow.up.arrow.down")
-                                    .foregroundColor(.accentColor)
-                            }
+                        label: {
+                            Image(systemName: "arrow.up.arrow.down")
+                                .foregroundColor(.accentColor)
+                        }
                         }
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                         
                         // Filled ingredient list
                         ForEach(fetchedLeftovers.filter({ searchQuery.isEmpty ? true : $0.ingredients!.contains(searchQuery) })) { leftover in
                             Button {
-//                                Text("Chicken Breast")
+                                //                                Text("Chicken Breast")
                             } label: {
                                 HStack {
                                     // Checkbox
@@ -69,11 +69,19 @@ struct LeftoverView: View {
                                                 leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                                             }
                                         }
-                                    .foregroundColor(.accentColor)
+                                        .foregroundColor(.accentColor)
                                     
                                     // Content
                                     LeftoverListView(leftover: leftover)
                                 }
+                            }
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                //role destructive add red color and delete animation
+                                Button(role: .destructive, action: {
+                                    leftoversViewModel.delete(ingredient: leftover, context: viewContent)
+                                }, label: {
+                                    Label("Delete", systemImage: "trash")
+                                })
                             }
                             .padding(.horizontal)
                         }

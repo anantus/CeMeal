@@ -35,7 +35,7 @@ struct GenerateRecipeView: View {
                 NavigationLink {
                     RecipeView(recipe: recipe)
                 } label: {
-                    RecipeListView(recipe: recipe)
+                    RecipeListView(recipe: recipe, countIngredient: countCheckIngredient())
 //                    Text(recipe.ingredients)
                 }
                 .padding(.horizontal)
@@ -72,7 +72,7 @@ struct GenerateRecipeView: View {
                 NavigationLink {
                     RecipeView(recipe: recipe)
                 } label: {
-                    RecipeListView(recipe: recipe)
+                    RecipeListView(recipe: recipe, countIngredient: countCheckIngredient())
                 }
                 .padding(.horizontal)
                 Divider()
@@ -118,8 +118,6 @@ struct GenerateRecipeView: View {
         return checkedIngredients.count
     }
     
-    
-    
     func generateRecipeBasedOnIngredients() -> [Recipe]{
         var availableRecipe : [Recipe] = []
         var checkedIngredients : [String] = []
@@ -137,12 +135,12 @@ struct GenerateRecipeView: View {
                 $0 != "" &&
                 $0 != " "}
             
-            let countIng = mealIng.count
+//            let countIng = mealIng.count
             let listSet = Set(mealIng)
             let findListSet = Set(checkedIngredients)
-            let allElemsContained = findListSet.isSubset(of: listSet)
+            let allElemsContained = listSet.isSubset(of: findListSet)
             
-            if allElemsContained && checkedIngredients.count == countIng{
+            if allElemsContained{
                 availableRecipe.append(meal)
             }
         }
@@ -161,6 +159,7 @@ struct GenerateRecipeView: View {
                 checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
             }
         }
+        let ingredientCount : Int = checkedIngredients.count
         
         //get additional ingredients
         for addIng in fetchedAddIngredient{
@@ -175,11 +174,13 @@ struct GenerateRecipeView: View {
                 $0 != "Cold Water" &&
                 $0 != "" &&
                 $0 != " "}
+            
             let countIng = mealIng.count
             let listSet = Set(mealIng)
             let findListSet = Set(checkedIngredients)
             let allElemsContained = findListSet.isSubset(of: listSet)
-            if allElemsContained && checkedIngredients.count != countIng{
+            
+            if allElemsContained && ingredientCount != countIng{
                 availableRecipe.append(meal)
             }
         }

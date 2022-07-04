@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeSuggestionsView: View {
     
     @ObservedObject private var recipeViewModel = RecipeViewModel()
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
     var body: some View {
         ScrollView {
@@ -28,11 +29,21 @@ struct RecipeSuggestionsView: View {
                 NavigationLink(destination: {
                     RecipeView(recipe: recipe)
                 }, label: {
-                    RecipeListView(recipe: recipe)
+                    RecipeListView(recipe: recipe, countIngredient: countCheckIngredient())
                 })
             }
             .listStyle(.plain)
         }
+    }
+    
+    func countCheckIngredient() -> Int{
+        var checkedIngredients : [String] = []
+        for i in fetchedLeftovers{
+            if i.isChecked{
+                checkedIngredients.append(i.ingredients ?? "Invalid Ingredients")
+            }
+        }
+        return checkedIngredients.count
     }
 }
 
