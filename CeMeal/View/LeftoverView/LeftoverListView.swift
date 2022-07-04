@@ -24,7 +24,7 @@ struct LeftoverListView: View {
                             .title3
                                 .weight(.semibold)
                         )
-                        .foregroundColor(Color.ui.title)
+                        .foregroundColor(Date() < leftover.dateExpired! ? Color.ui.title : Color.ui.accent2)
                         .textCase(.uppercase)
                     
                     // Category
