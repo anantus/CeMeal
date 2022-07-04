@@ -18,6 +18,7 @@ struct LeftoverView: View {
 //    @ObservedObject private var leftoverViewModel = LeftoverViewModel()
     @State private var searchQuery = ""
     @State private var sort: Int = 0
+    @State private var showAlert = false
     
     var body: some View {
         NavigationView {
@@ -61,6 +62,10 @@ struct LeftoverView: View {
                                         .frame(width: 20, height: 20)
                                         .onTapGesture {
                                             withAnimation(.easeOut) {
+                                                if Date() > leftover.dateExpired! && leftover.isChecked == false {
+                                                    showAlert.toggle()
+                                                }
+                                                
                                                 leftoversViewModel.checkLeftovers(ingredient: leftover, context: viewContent)
                                             }
                                         }
@@ -114,6 +119,13 @@ struct LeftoverView: View {
                 }
             }
             .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Check Before Using!"),
+                    message: Text("This ingredient is past its estimated expired date."),
+                    dismissButton: .destructive(Text("Got It!"))
+                )
+            }
         }
     }
     
