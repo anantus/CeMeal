@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     
@@ -14,6 +15,17 @@ struct ContentView: View {
     var body: some View {
         if goToTabbedView {
             TabbedView()
+            
+            .onAppear {
+                // MARK: Notification request
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        print("All set!")
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
         } else {
             OnboardingView(goToTabbedView: $goToTabbedView)
         }
