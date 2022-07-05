@@ -40,12 +40,12 @@ class IngredientViewModel: ObservableObject {
         
         //remove header rows
         //count the number of header columns before removing
-        let columnCount = rows.first?.components(separatedBy: ",").count
+        let columnCount = rows.first?.components(separatedBy: "^").count
         rows.removeFirst()
         
         //now loop around each row and split into columns
         for row in rows {
-            let csvColumns = row.components(separatedBy: ",")
+            let csvColumns = row.components(separatedBy: "^")
             if csvColumns.count == columnCount{
                 let ingredientsStruct = Ingredient.init(raw: csvColumns)
                 csvToStruct.append(ingredientsStruct)

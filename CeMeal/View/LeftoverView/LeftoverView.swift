@@ -11,6 +11,7 @@ struct LeftoverView: View {
     
     @Environment(\.managedObjectContext) private var viewContent
     @EnvironmentObject var leftoversViewModel:LeftoversViewModel
+    @ObservedObject var ingredientVM:IngredientViewModel = IngredientViewModel()
     
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
@@ -19,6 +20,8 @@ struct LeftoverView: View {
     @State private var searchQuery = ""
     @State private var sort: Int = 0
     @State private var showAlert = false
+    
+    @State private var selectedIngredient: Ingredient?
     
     var body: some View {
         NavigationView {
@@ -72,7 +75,12 @@ struct LeftoverView: View {
                                         .foregroundColor(.accentColor)
                                     
                                     // Content
-                                    LeftoverListView(leftover: leftover)
+                                    
+                                    Button {
+                                        selectedIngredient = findIngredient(leftover: leftover)
+                                    } label: {
+                                        LeftoverListView(leftover: leftover)
+                                    }
                                 }
                             }
                             .swipeActions(edge: .trailing, allowsFullSwipe: false){
@@ -84,6 +92,9 @@ struct LeftoverView: View {
                                 })
                             }
                             .padding(.horizontal)
+                        }
+                        .sheet(item: $selectedIngredient ) { item in
+                            IngredientDetailView(isEdit: true, ingredient: item)
                         }
                         .listRowBackground(colorScheme == .light ? .white : Color(UIColor.systemGray6))
                     }
@@ -135,6 +146,17 @@ struct LeftoverView: View {
                 )
             }
         }
+    }
+    
+    func findIngredient(leftover : Leftovers) -> Ingredient{
+        var leftoverIngredient : Ingredient?
+        for i in ingredientVM.ingredients{
+            if i.ingredientName == leftover.ingredients{
+                leftoverIngredient = i
+                return leftoverIngredient!
+            }
+        }
+        return leftoverIngredient!
     }
     
 }

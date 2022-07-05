@@ -17,13 +17,14 @@ struct AddIngredientView: View {
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
     @State private var isEdit:Bool = false
-
+    @State private var selectedIngredient: Ingredient?
+    
     var body: some View {
         Group {
             List(ingredientsViewModel.ingredients.filter({ searchQuery.lowercased().isEmpty ? true : $0.ingredientName.lowercased().contains(searchQuery.lowercased()) })) { ingredient in
                 if !leftoverList().contains(ingredient.ingredientName){
                     Button {
-                        showDetailSheet.toggle()
+                        selectedIngredient = ingredient
                     } label: {
                         HStack {
                             Image(systemName: "magnifyingglass")
@@ -33,10 +34,11 @@ struct AddIngredientView: View {
                                 .foregroundColor(.accentColor)
                         }
                     }
-                    .sheet(isPresented: $showDetailSheet) {
-                        IngredientDetailView(ingredient: ingredient)
-                    }
+                    
                 }
+            }
+            .sheet(item: $selectedIngredient) { item in
+                IngredientDetailView(isEdit: false, ingredient: item)
             }
             .listStyle(.plain)
         }
@@ -53,7 +55,7 @@ struct AddIngredientView: View {
                     Text("Cancel")
                         .foregroundColor(.red)
                 }
-
+                
             }
         }
         .searchable(text: $searchQuery, placement: .navigationBarDrawer(displayMode: .always))

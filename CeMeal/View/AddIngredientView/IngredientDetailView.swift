@@ -13,11 +13,15 @@ struct IngredientDetailView: View {
     @Environment(\.managedObjectContext) var viewContent
     @EnvironmentObject var leftoverVM:LeftoversViewModel
     
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
     @Environment(\.presentationMode) var detailSheet
     @State private var checkedStorage = 0
     @State private var buyDate = Date()
     @State private var expireDate = Date()
     @State var isReminded = false
+    @State var isEdit : Bool
+    @State var leftover : Leftovers?
     
     var ingredient: Ingredient
     var storages = ["Cupboard", "Fridge", "Freezer"]
@@ -93,7 +97,12 @@ struct IngredientDetailView: View {
                         leftoverVM.storage = storages[checkedStorage]
                         leftoverVM.dateCreated = buyDate
                         leftoverVM.dateExpired = expireDate
-                        leftoverVM.createLeftovers(context: viewContent)
+                        if isEdit{
+                            leftoverVM.createLeftovers(context: viewContent)
+                            leftoverVM.delete(ingredient: findLeftover(), context: viewContent)
+                        }else{
+                            leftoverVM.createLeftovers(context: viewContent)
+                        }
                         detailSheet.wrappedValue.dismiss()
                     } , label: {
                         Text("Save")
@@ -101,6 +110,17 @@ struct IngredientDetailView: View {
                 }
             }
         }
+    }
+    
+    func findLeftover() -> Leftovers{
+        var loFound : Leftovers?
+        for i in fetchedLeftovers{
+            if i.ingredients == ingredient.ingredientName{
+                loFound = i
+                return loFound!
+            }
+        }
+        return loFound!
     }
     
     func storagePicker(index: Int) -> String {

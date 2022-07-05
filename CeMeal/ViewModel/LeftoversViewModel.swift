@@ -42,8 +42,9 @@ class LeftoversViewModel:ObservableObject{
         ingredients = ""
     }
     
-    func editLeftovers(ingredient:Leftovers){
+    func editLeftovers(ingredient:Leftovers, context:NSManagedObjectContext){
         leftoverItem = ingredient
+//        save(context: context)
     }
     
     func delete(ingredient:Leftovers, context:NSManagedObjectContext){
