@@ -31,23 +31,13 @@ struct LeftoverView: View {
                     NavigationLink(destination: {
                         LeftoverDetailView()
                     }, label: {
-                        VStack(alignment: .leading) {
-                            Text("Scallop")
-                            Text("Expired in 3 days")
-                                .font(.footnote)
-                                .foregroundColor(.red)
-                        }
+                        LeftoverListView(title: "Scallop", expiredDate: Date())
                     })
                     
                     NavigationLink(destination: {
                         LeftoverDetailView()
                     }, label: {
-                        VStack(alignment: .leading) {
-                            Text("Onion")
-                            Text("Expired on 22 Dec 2023")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
+                        LeftoverListView(title: "Onion", expiredDate: Date())
                     })
                 }
             
