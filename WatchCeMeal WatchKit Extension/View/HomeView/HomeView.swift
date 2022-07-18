@@ -17,7 +17,7 @@ struct HomeView: View {
         VStack {
             TextField("Type to search", text: $searchQuery)
             
-            NavigationLink (destination: LeftoverDetailView(), isActive: $allowNavigate) {
+            NavigationLink (destination: SearchResultView(searchQuery: searchQuery), isActive: $allowNavigate) {
                 Image(systemName: "magnifyingglass")
                     .onTapGesture {
                         checkSearchQuery()
