@@ -53,6 +53,7 @@
 		FAB1F14828844B0800C3D05F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB1F14728844B0800C3D05F /* Assets.xcassets */; };
 		FAB1F14B28844B0800C3D05F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB1F14A28844B0800C3D05F /* Preview Assets.xcassets */; };
 		FAB1F14F28844B0800C3D05F /* WatchCeMeal.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FAB1F13428844B0600C3D05F /* WatchCeMeal.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FAB1F15D28844F4400C3D05F /* LeftoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1F15C28844F4400C3D05F /* LeftoverView.swift */; };
 		FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5A28656D7F006CEF12 /* Button.swift */; };
 		FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */; };
 		FAC70C6028666D17006CEF12 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5F28666D17006CEF12 /* FavoriteView.swift */; };
@@ -157,6 +158,7 @@
 		FAB1F14728844B0800C3D05F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAB1F14A28844B0800C3D05F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FAB1F14C28844B0800C3D05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB1F15C28844F4400C3D05F /* LeftoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverView.swift; sourceTree = "<group>"; };
 		FAC70C5A28656D7F006CEF12 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
 		FAC70C5F28666D17006CEF12 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
@@ -407,9 +409,18 @@
 		FAB1F15A28844B6F00C3D05F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAB1F15B28844F2500C3D05F /* LeftoverView */,
 				FAB1F14128844B0700C3D05F /* ContentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FAB1F15B28844F2500C3D05F /* LeftoverView */ = {
+			isa = PBXGroup;
+			children = (
+				FAB1F15C28844F4400C3D05F /* LeftoverView.swift */,
+			);
+			path = LeftoverView;
 			sourceTree = "<group>";
 		};
 		FAC70C5E28666CF2006CEF12 /* FavoriteView */ = {
@@ -627,6 +638,7 @@
 				FAB1F14428844B0700C3D05F /* CeMealApp.swift in Sources */,
 				FAB1F14228844B0700C3D05F /* ContentView.swift in Sources */,
 				FAB1F14628844B0700C3D05F /* ComplicationController.swift in Sources */,
+				FAB1F15D28844F4400C3D05F /* LeftoverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
