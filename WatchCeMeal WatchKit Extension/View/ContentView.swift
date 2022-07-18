@@ -13,7 +13,7 @@ struct ContentView: View {
             Text("abc")
                 .tag(0)
             
-            Text("def")
+            LeftoverView()
                 .tag(1)
         }
     }
