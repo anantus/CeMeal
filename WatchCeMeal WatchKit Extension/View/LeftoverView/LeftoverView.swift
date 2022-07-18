@@ -24,10 +24,30 @@ struct LeftoverView: View {
                             .tag(i)
                     }
                 })
-                .frame(height: 40)
+                .labelsHidden()
+                .frame(height: 30)
+                
+                // Leftovers
+                List {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Abc")
+                            Text("Expired in 3 days")
+                                .font(.footnote)
+                                .foregroundColor(.red)
+                        }
+                        
+                        Spacer()
+                    }
+//                    .background(Color(UIColor.darkGray))
+                    .clipShape(Rectangle())
+                    .cornerRadius(5)
+                }
+                
             }
             
             .navigationTitle("Ingredients List")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
