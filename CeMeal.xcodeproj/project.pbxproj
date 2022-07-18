@@ -57,6 +57,7 @@
 		FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5A28656D7F006CEF12 /* Button.swift */; };
 		FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */; };
 		FAC70C6028666D17006CEF12 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5F28666D17006CEF12 /* FavoriteView.swift */; };
+		FAD30C3B2885299C00BDF972 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD30C3A2885299C00BDF972 /* Color.swift */; };
 		FAD63A6428666FF5002B6130 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD63A6328666FF5002B6130 /* Recipe.swift */; };
 		FAD63A682866A0E7002B6130 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD63A672866A0E7002B6130 /* RecipeListView.swift */; };
 		FAD63A6B2866A248002B6130 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD63A6A2866A248002B6130 /* RecipeView.swift */; };
@@ -162,6 +163,7 @@
 		FAC70C5A28656D7F006CEF12 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
 		FAC70C5F28666D17006CEF12 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		FAD30C3A2885299C00BDF972 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		FAD63A6328666FF5002B6130 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		FAD63A672866A0E7002B6130 /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 		FAD63A6A2866A248002B6130 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 		FAB1F15A28844B6F00C3D05F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAD30C392885298B00BDF972 /* Components */,
 				FAB1F15B28844F2500C3D05F /* LeftoverView */,
 				FAB1F14128844B0700C3D05F /* ContentView.swift */,
 			);
@@ -429,6 +432,14 @@
 				FAC70C5F28666D17006CEF12 /* FavoriteView.swift */,
 			);
 			path = FavoriteView;
+			sourceTree = "<group>";
+		};
+		FAD30C392885298B00BDF972 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FAD30C3A2885299C00BDF972 /* Color.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		FAD63A692866A164002B6130 /* RecipeView */ = {
@@ -638,6 +649,7 @@
 				FAB1F14428844B0700C3D05F /* CeMealApp.swift in Sources */,
 				FAB1F14228844B0700C3D05F /* ContentView.swift in Sources */,
 				FAB1F14628844B0700C3D05F /* ComplicationController.swift in Sources */,
+				FAD30C3B2885299C00BDF972 /* Color.swift in Sources */,
 				FAB1F15D28844F4400C3D05F /* LeftoverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

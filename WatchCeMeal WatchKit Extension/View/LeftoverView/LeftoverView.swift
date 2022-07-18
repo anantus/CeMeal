@@ -29,21 +29,20 @@ struct LeftoverView: View {
                 
                 // Leftovers
                 List {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Abc")
-                            Text("Expired in 3 days")
-                                .font(.footnote)
-                                .foregroundColor(.red)
-                        }
-                        
-                        Spacer()
+                    VStack(alignment: .leading) {
+                        Text("Scallop")
+                        Text("Expired in 3 days")
+                            .font(.footnote)
+                            .foregroundColor(.red)
                     }
-//                    .background(Color(UIColor.darkGray))
-                    .clipShape(Rectangle())
-                    .cornerRadius(5)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Onion")
+                        Text("Expired on 22 Dec 2023")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
                 }
-                
             }
             
             .navigationTitle("Ingredients List")
