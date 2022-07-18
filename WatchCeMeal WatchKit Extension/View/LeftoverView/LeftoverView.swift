@@ -14,7 +14,6 @@ struct LeftoverView: View {
     private var categories = ["Seafood & Seaweed", "A", "B", "C"]
     
     var body: some View {
-        NavigationView {
             // Filter picker
             VStack {
                 Picker("Filter", selection: $selectedCategory, content: {
@@ -29,21 +28,28 @@ struct LeftoverView: View {
                 
                 // Leftovers
                 List {
-                    VStack(alignment: .leading) {
-                        Text("Scallop")
-                        Text("Expired in 3 days")
-                            .font(.footnote)
-                            .foregroundColor(.red)
-                    }
+                    NavigationLink(destination: {
+                        LeftoverDetailView()
+                    }, label: {
+                        VStack(alignment: .leading) {
+                            Text("Scallop")
+                            Text("Expired in 3 days")
+                                .font(.footnote)
+                                .foregroundColor(.red)
+                        }
+                    })
                     
-                    VStack(alignment: .leading) {
-                        Text("Onion")
-                        Text("Expired on 22 Dec 2023")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
+                    NavigationLink(destination: {
+                        LeftoverDetailView()
+                    }, label: {
+                        VStack(alignment: .leading) {
+                            Text("Onion")
+                            Text("Expired on 22 Dec 2023")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
+                    })
                 }
-            }
             
             .navigationTitle("Ingredients List")
             .navigationBarTitleDisplayMode(.inline)
