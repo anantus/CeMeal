@@ -8,15 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-        
     var body: some View {
-        TabView {
-            HomeView()
-                .tag(0)
-            
-            LeftoverView()
-                .tag(1)
-        }
+        LeftoverView()
     }
 }
 
