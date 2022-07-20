@@ -17,10 +17,12 @@ struct CircularComplicationView: View {
             Image("ComplicationVector")
                 .resizable()
                 .frame(width: 36.86, height: 44)
+                .complicationForeground()
             
             Text("\(qty)")
                 .font(.body)
                 .foregroundColor(.red)
+                .complicationForeground()
                 .padding(.top)
         }
     }
