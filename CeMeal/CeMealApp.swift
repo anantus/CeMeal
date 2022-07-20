@@ -13,6 +13,7 @@ struct CeMealApp: App {
     @StateObject var leftoversViewModel = LeftoversViewModel()
     @StateObject var favoriteViewModel = FavoriteViewModel()
     @StateObject var addIngredientViewModel = AdditionalIngredientViewModel()
+    @StateObject private var locationManager = LocationManager()
     
     let persistenceController = PersistenceController.shared
 
@@ -23,6 +24,7 @@ struct CeMealApp: App {
                 .environmentObject(leftoversViewModel)
                 .environmentObject(favoriteViewModel)
                 .environmentObject(addIngredientViewModel)
+                .environmentObject(locationManager)
         }
     }
     

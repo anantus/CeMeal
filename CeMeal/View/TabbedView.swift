@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TabbedView: View {
     
+    @EnvironmentObject private var locationManager: LocationManager
+    
     @State private var selection: Int = 0
     
     var body: some View {
@@ -27,6 +29,14 @@ struct TabbedView: View {
                 }
                 .tag(1)
         }
+        .onAppear {
+            requestNotification()
+        }
+    }
+    
+    func requestNotification() {
+        locationManager.validateLocationAuthorizationStatus()
+        locationManager.requestNotificationAuthorization()
     }
     
 }
