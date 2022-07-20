@@ -34,6 +34,7 @@
 		FA6DAE09286D8044006A5AE6 /* Leftover.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6DAE08286D8044006A5AE6 /* Leftover.swift */; };
 		FA6DAE0B286DC3B5006A5AE6 /* LeftoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */; };
 		FA769C4E2886DE21002F1273 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA769C4D2886DE21002F1273 /* SearchBarView.swift */; };
+		FA769C512887C576002F1273 /* CircularComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA769C502887C576002F1273 /* CircularComplicationView.swift */; };
 		FA8482AA2871BDEC00EE4996 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8482A92871BDEC00EE4996 /* OnboardingView.swift */; };
 		FA8482AC2871BF1B00EE4996 /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8482AB2871BF1B00EE4996 /* OnboardingTabView.swift */; };
 		FA8482AE2871C2E300EE4996 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8482AD2871C2E300EE4996 /* Onboarding.swift */; };
@@ -61,6 +62,8 @@
 		FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5A28656D7F006CEF12 /* Button.swift */; };
 		FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */; };
 		FAC70C6028666D17006CEF12 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5F28666D17006CEF12 /* FavoriteView.swift */; };
+		FACEDF082887D276001E544A /* ExtraLargeComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */; };
+		FACEDF0A2887EB2E001E544A /* RectangularComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEDF092887EB2E001E544A /* RectangularComplicationView.swift */; };
 		FAD30C3D28852EAC00BDF972 /* LeftoverDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD30C3C28852EAC00BDF972 /* LeftoverDetailView.swift */; };
 		FAD365CD28856EFB007F6E31 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD365CC28856EFB007F6E31 /* SearchResultView.swift */; };
 		FAD365CF2885710E007F6E31 /* LeftoverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD365CE2885710E007F6E31 /* LeftoverListView.swift */; };
@@ -145,6 +148,7 @@
 		FA6DAE08286D8044006A5AE6 /* Leftover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leftover.swift; sourceTree = "<group>"; };
 		FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverViewModel.swift; sourceTree = "<group>"; };
 		FA769C4D2886DE21002F1273 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		FA769C502887C576002F1273 /* CircularComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularComplicationView.swift; sourceTree = "<group>"; };
 		FA8482A92871BDEC00EE4996 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FA8482AB2871BF1B00EE4996 /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
 		FA8482AD2871C2E300EE4996 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 		FAC70C5A28656D7F006CEF12 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
 		FAC70C5F28666D17006CEF12 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargeComplicationView.swift; sourceTree = "<group>"; };
+		FACEDF092887EB2E001E544A /* RectangularComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularComplicationView.swift; sourceTree = "<group>"; };
 		FAD30C3C28852EAC00BDF972 /* LeftoverDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverDetailView.swift; sourceTree = "<group>"; };
 		FAD365CC28856EFB007F6E31 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		FAD365CE2885710E007F6E31 /* LeftoverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverListView.swift; sourceTree = "<group>"; };
@@ -349,6 +355,16 @@
 			path = LeftoverView;
 			sourceTree = "<group>";
 		};
+		FA769C4F2887C552002F1273 /* Complications */ = {
+			isa = PBXGroup;
+			children = (
+				FA769C502887C576002F1273 /* CircularComplicationView.swift */,
+				FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */,
+				FACEDF092887EB2E001E544A /* RectangularComplicationView.swift */,
+			);
+			path = Complications;
+			sourceTree = "<group>";
+		};
 		FA8482A82871BDD900EE4996 /* OnboardingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +440,7 @@
 		FAB1F15A28844B6F00C3D05F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA769C4F2887C552002F1273 /* Complications */,
 				FAB1F15B28844F2500C3D05F /* LeftoverView */,
 				FAC2C85C288537D600620152 /* LeftoverDetailView */,
 				FAD365CB28856EE4007F6E31 /* SearchResultView */,
@@ -685,9 +702,12 @@
 				FAD30C3D28852EAC00BDF972 /* LeftoverDetailView.swift in Sources */,
 				FA769C4E2886DE21002F1273 /* SearchBarView.swift in Sources */,
 				FAC2C86328853AE800620152 /* BuyDateView.swift in Sources */,
+				FACEDF0A2887EB2E001E544A /* RectangularComplicationView.swift in Sources */,
 				FAB1F14228844B0700C3D05F /* ContentView.swift in Sources */,
 				FAB1F14628844B0700C3D05F /* ComplicationController.swift in Sources */,
+				FA769C512887C576002F1273 /* CircularComplicationView.swift in Sources */,
 				FAB1F15D28844F4400C3D05F /* LeftoverView.swift in Sources */,
+				FACEDF082887D276001E544A /* ExtraLargeComplicationView.swift in Sources */,
 				FAC2C86128853AD500620152 /* ExpiredDateView.swift in Sources */,
 				FAD365CD28856EFB007F6E31 /* SearchResultView.swift in Sources */,
 				FAD365CF2885710E007F6E31 /* LeftoverListView.swift in Sources */,

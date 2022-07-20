@@ -6,7 +6,7 @@
 //
 
 import ClockKit
-
+import SwiftUI
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
@@ -42,7 +42,35 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
-        handler(nil)
+        if let template = getComplicationTemplate(for: complication) {
+            let entry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template)
+            handler(entry)
+        } else {
+            handler(nil)
+        }
+    }
+    
+    func getComplicationTemplate(for complication: CLKComplication) -> CLKComplicationTemplate? {
+        let leftoverQty = 20
+        
+        switch complication.family {
+        case .graphicCorner:
+            return CLKComplicationTemplateGraphicCornerTextView(
+                textProvider: CLKTextProvider(format: "Exp this week!"),
+                label: Text("\(leftoverQty)")
+                    .font(.body)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.red)
+            )
+        case .graphicCircular:
+            return CLKComplicationTemplateGraphicCircularView(CircularComplicationView(qty: leftoverQty))
+        case .graphicRectangular:
+            return CLKComplicationTemplateGraphicRectangularFullView(RectangularComplicationView(qty: leftoverQty))
+        case .graphicExtraLarge:
+            return CLKComplicationTemplateGraphicExtraLargeCircularView(ExtraLargeComplicationView(qty: leftoverQty))
+        default:
+            return nil
+        }
     }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
