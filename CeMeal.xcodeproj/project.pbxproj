@@ -407,9 +407,7 @@
 				FAB1F14728844B0800C3D05F /* Assets.xcassets */,
 				FAB1F14C28844B0800C3D05F /* Info.plist */,
 				FAC2C85D28853A6800620152 /* Helper */,
-				FAB1F15828844B5900C3D05F /* Model */,
 				FAB1F15A28844B6F00C3D05F /* View */,
-				FAB1F15928844B6400C3D05F /* ViewModel */,
 				FAB1F14928844B0800C3D05F /* Preview Content */,
 			);
 			path = "WatchCeMeal WatchKit Extension";
@@ -421,20 +419,6 @@
 				FAB1F14A28844B0800C3D05F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		FAB1F15828844B5900C3D05F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		FAB1F15928844B6400C3D05F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FAB1F15A28844B6F00C3D05F /* View */ = {
