@@ -1,5 +1,5 @@
 //
-//  CircularComplicationView.swift
+//  ExtraLargeComplicationView.swift
 //  WatchCeMeal WatchKit Extension
 //
 //  Created by Darma Wiryanata on 20/07/22.
@@ -8,7 +8,7 @@
 import ClockKit
 import SwiftUI
 
-struct CircularComplicationView: View {
+struct ExtraLargeComplicationView: View {
     
     var qty: Int
     
@@ -21,17 +21,18 @@ struct CircularComplicationView: View {
                 .complicationForeground()
             
             Text("\(qty)")
-                .font(.body)
+                .font(.largeTitle)
                 .foregroundColor(.red)
                 .complicationForeground()
-                .padding(.top)
+                .padding(.top, 20)
         }
     }
+    
 }
 
-struct CircularComplicationView_Previews: PreviewProvider {
+struct ExtraLargeComplicationView_Previews: PreviewProvider {
     static var previews: some View {
-        CLKComplicationTemplateGraphicCircularView(CircularComplicationView(qty: 15))
-            .previewContext()
+        CLKComplicationTemplateGraphicExtraLargeCircularView(ExtraLargeComplicationView(qty: 15))
+        .previewContext()
     }
 }

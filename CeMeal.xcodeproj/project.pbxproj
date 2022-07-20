@@ -62,6 +62,7 @@
 		FAC70C5B28656D7F006CEF12 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5A28656D7F006CEF12 /* Button.swift */; };
 		FAC70C5D28658ABB006CEF12 /* SampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */; };
 		FAC70C6028666D17006CEF12 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5F28666D17006CEF12 /* FavoriteView.swift */; };
+		FACEDF082887D276001E544A /* ExtraLargeComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */; };
 		FAD30C3D28852EAC00BDF972 /* LeftoverDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD30C3C28852EAC00BDF972 /* LeftoverDetailView.swift */; };
 		FAD365CD28856EFB007F6E31 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD365CC28856EFB007F6E31 /* SearchResultView.swift */; };
 		FAD365CF2885710E007F6E31 /* LeftoverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD365CE2885710E007F6E31 /* LeftoverListView.swift */; };
@@ -175,6 +176,7 @@
 		FAC70C5A28656D7F006CEF12 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FAC70C5C28658ABB006CEF12 /* SampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleContentView.swift; sourceTree = "<group>"; };
 		FAC70C5F28666D17006CEF12 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargeComplicationView.swift; sourceTree = "<group>"; };
 		FAD30C3C28852EAC00BDF972 /* LeftoverDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverDetailView.swift; sourceTree = "<group>"; };
 		FAD365CC28856EFB007F6E31 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		FAD365CE2885710E007F6E31 /* LeftoverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverListView.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				FA769C502887C576002F1273 /* CircularComplicationView.swift */,
+				FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */,
 			);
 			path = Complications;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				FAB1F14628844B0700C3D05F /* ComplicationController.swift in Sources */,
 				FA769C512887C576002F1273 /* CircularComplicationView.swift in Sources */,
 				FAB1F15D28844F4400C3D05F /* LeftoverView.swift in Sources */,
+				FACEDF082887D276001E544A /* ExtraLargeComplicationView.swift in Sources */,
 				FAC2C86128853AD500620152 /* ExpiredDateView.swift in Sources */,
 				FAD365CD28856EFB007F6E31 /* SearchResultView.swift in Sources */,
 				FAD365CF2885710E007F6E31 /* LeftoverListView.swift in Sources */,

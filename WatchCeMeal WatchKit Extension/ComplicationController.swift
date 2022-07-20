@@ -51,6 +51,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getComplicationTemplate(for complication: CLKComplication) -> CLKComplicationTemplate? {
+        let leftoverQty = 15
+        
         switch complication.family {
         case .modularSmall:
             return CLKComplicationTemplateModularSmallSimpleText(textProvider: CLKTextProvider(format: "Str"))
@@ -64,14 +66,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             
 //        case .circularSmall:
             
-//        case .extraLarge:
-            
-//        case .graphicCorner:
-            
+        case .extraLarge:
+            return CLKComplicationTemplateGraphicExtraLargeCircularView(ExtraLargeComplicationView(qty: leftoverQty))
+        case .graphicCorner:
+            return CLKComplicationTemplateGraphicCornerTextView(textProvider: CLKTextProvider(format: "CeMeal"), label: Text("\(leftoverQty)"))
 //        case .graphicBezel:
             
         case .graphicCircular:
-            return CLKComplicationTemplateGraphicCircularView(CircularComplicationView(qty: 15))
+            return CLKComplicationTemplateGraphicCircularView(CircularComplicationView(qty: leftoverQty))
 //        case .graphicRectangular:
             
 //        case .graphicExtraLarge:
