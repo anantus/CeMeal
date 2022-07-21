@@ -11,7 +11,8 @@ import UserNotifications
 class LocationManager: NSObject, ObservableObject {
     let notificationCenter = UNUserNotificationCenter.current()
     let locations = [
-        CLLocationCoordinate2D(latitude: 37.33182, longitude: -122.03118)
+        CLLocationCoordinate2D(latitude: 37.33182, longitude: -122.03118),
+        CLLocationCoordinate2D(latitude: -8.3646752, longitude: 114.6676869)
     ]
     
     lazy var storeRegions = makeStoreRegion()

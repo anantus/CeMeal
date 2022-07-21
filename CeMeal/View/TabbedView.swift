@@ -21,7 +21,7 @@ struct TabbedView: View {
                     Text("Ingredient")
                 }
                 .tag(0)
-            
+
             FavoriteView()
                 .tabItem {
                     Image(systemName: "heart")
