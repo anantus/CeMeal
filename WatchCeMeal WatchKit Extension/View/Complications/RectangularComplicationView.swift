@@ -18,7 +18,7 @@ struct RectangularComplicationView: View {
                 Text("Expired this week!")
                     .foregroundColor(.red)
                 
-                Text("\(qty) ingredients")
+                Text("\(qty) \(qty <= 1 ? "ingredient" : "ingredients")")
             }
             
             Spacer()

@@ -11,7 +11,7 @@ import SwiftUI
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
     // MARK: - Complication Configuration
-    @ObservedObject var model = ViewModelWatch()
+    @ObservedObject var leftoverVM = LeftoverViewModel()
 
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
@@ -88,8 +88,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getQuantity() -> Int{
         var quantity = 0
-        for lo in model.leftovers{
-            if isExpiringInAWeek(lhs: lo["dateCreated"] as! Date, rhs: lo["dateExpired"] as! Date){
+        
+        for leftover in leftoverVM.leftovers {
+            if isExpiringInAWeek(lhs: leftover.dateCreated, rhs: leftover.dateExpired){
                 quantity += 1
             }
         }

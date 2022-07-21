@@ -9,8 +9,9 @@ import SwiftUI
 
 struct SearchResultView: View {
     
+    @ObservedObject var leftoverVM = LeftoverViewModel()
+    
     var searchQuery: String
-    @Binding var model : ViewModelWatch
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,14 +20,15 @@ struct SearchResultView: View {
                 .font(.headline)
             
             // Leftovers
-            List {
-                if (model.leftovers.count != 0) {
-                    ForEach(0...model.leftovers.count-1, id: \.self){ index in
-                        
-                        let ingredients : String = model.leftovers[index]["ingredients"] as! String
-                        let expiredDate : Date = model.leftovers[index]["dateExpired"] as! Date
-                        let dateCreated : Date = model.leftovers[index]["dateCreated"] as! Date
-                        
+            if (!leftoverVM.leftovers.filter({ $0.ingredients.contains(searchQuery) }).isEmpty) {
+                
+                List {
+                    ForEach(leftoverVM.leftovers.filter({ $0.ingredients.contains(searchQuery) })) { leftover in
+
+                        let ingredients = leftover.ingredients
+                        let expiredDate = leftover.dateExpired
+                        let dateCreated = leftover.dateCreated
+
                         if ingredients.contains(searchQuery){
                             NavigationLink(destination: {
                                 LeftoverDetailView(expiredDate: expiredDate, dateCreated: dateCreated)
@@ -34,27 +36,18 @@ struct SearchResultView: View {
                                 LeftoverListView(title: ingredients , expiredDate: expiredDate, dateCreated: dateCreated)
                             })
                         }
-                        
                     }
                 }
-                //                NavigationLink(destination: {
-                //                    LeftoverDetailView()
-                //                }, label: {
-                //                    LeftoverListView(title: "Scallop", expiredDate: Date(), dateCreated: Date())
-                //                })
-                //
-                //                NavigationLink(destination: {
-                //                    LeftoverDetailView()
-                //                }, label: {
-                //                    LeftoverListView(title: "Onion", expiredDate: Date(), dateCreated: Date())
-                //                })
+                
+            } else {
+                Text("No items found")
             }
         }
     }
 }
 
-//struct SearchResultView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchResultView(searchQuery: "Scallop")
-//    }
-//}
+struct SearchResultView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchResultView(searchQuery: "A")
+    }
+}
