@@ -68,6 +68,7 @@
 		FAC70C6028666D17006CEF12 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC70C5F28666D17006CEF12 /* FavoriteView.swift */; };
 		FACEDF082887D276001E544A /* ExtraLargeComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */; };
 		FACEDF0A2887EB2E001E544A /* RectangularComplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEDF092887EB2E001E544A /* RectangularComplicationView.swift */; };
+		FACEDF0C2887FB95001E544A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEDF0B2887FB95001E544A /* LocationManager.swift */; };
 		FAD30C3D28852EAC00BDF972 /* LeftoverDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD30C3C28852EAC00BDF972 /* LeftoverDetailView.swift */; };
 		FAD365CD28856EFB007F6E31 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD365CC28856EFB007F6E31 /* SearchResultView.swift */; };
 		FAD365CF2885710E007F6E31 /* LeftoverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD365CE2885710E007F6E31 /* LeftoverListView.swift */; };
@@ -185,6 +186,8 @@
 		FAC70C5F28666D17006CEF12 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		FACEDF072887D276001E544A /* ExtraLargeComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLargeComplicationView.swift; sourceTree = "<group>"; };
 		FACEDF092887EB2E001E544A /* RectangularComplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularComplicationView.swift; sourceTree = "<group>"; };
+		FACEDF0B2887FB95001E544A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FACEDF0D288806FB001E544A /* SimulatedLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimulatedLocation.gpx; sourceTree = "<group>"; };
 		FAD30C3C28852EAC00BDF972 /* LeftoverDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverDetailView.swift; sourceTree = "<group>"; };
 		FAD365CC28856EFB007F6E31 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		FAD365CE2885710E007F6E31 /* LeftoverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoverListView.swift; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				552C6ACC285B23C7001F4FB5 /* CeMealApp.swift */,
 				552C6AD0285B23C9001F4FB5 /* Assets.xcassets */,
 				552C6AD5285B23C9001F4FB5 /* Persistence.swift */,
+				552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */,
+				FACEDF0D288806FB001E544A /* SimulatedLocation.gpx */,
 				FA0276E4286438810032B1DD /* Helper */,
 				FA6D877128632009000E5225 /* Model */,
 				FA6D876B28631BF7000E5225 /* View */,
@@ -358,6 +363,7 @@
 				FA8482AD2871C2E300EE4996 /* Onboarding.swift */,
 				55F4678A2870C0BC0027738E /* Recipes.csv */,
 				55F4678628707E310027738E /* Ingredients.csv */,
+				FACEDF0B2887FB95001E544A /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -680,6 +686,7 @@
 				FA6D877028631F6E000E5225 /* Color.swift in Sources */,
 				FA216DD9286F27C600AC320F /* AddMoreIngredientView.swift in Sources */,
 				FA6D876E28631DA0000E5225 /* NavigationBarModifier.swift in Sources */,
+				FACEDF0C2887FB95001E544A /* LocationManager.swift in Sources */,
 				FA6D877A2863278A000E5225 /* LeftoverListView.swift in Sources */,
 				FA8482AA2871BDEC00EE4996 /* OnboardingView.swift in Sources */,
 				FA910467287156ED00EE3CBA /* AdditionalIngredientViewModel.swift in Sources */,
@@ -876,6 +883,8 @@
 				DEVELOPMENT_TEAM = 6PDVJXGB2J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location access is needed to get you notified in grocery store.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location access is needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -906,6 +915,8 @@
 				DEVELOPMENT_TEAM = 6PDVJXGB2J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location access is needed to get you notified in grocery store.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location access is needed";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
