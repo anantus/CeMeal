@@ -10,9 +10,11 @@ import UserNotifications
 
 class LocationManager: NSObject, ObservableObject {
     let notificationCenter = UNUserNotificationCenter.current()
-    let location = CLLocationCoordinate2D(latitude: 37.33182, longitude: -122.03118)
+    let locations = [
+        CLLocationCoordinate2D(latitude: 37.33182, longitude: -122.03118)
+    ]
     
-    lazy var storeRegion = makeStoreRegion()
+    lazy var storeRegions = makeStoreRegion()
     lazy var locationManager = makeLocationManager()
     
     override init() {
@@ -26,14 +28,19 @@ class LocationManager: NSObject, ObservableObject {
         return manager
     }
     
-    private func makeStoreRegion() -> CLCircularRegion {
-        let region = CLCircularRegion(
-            center: location,
-            radius: 2,
-            identifier: UUID().uuidString)
-        region.notifyOnEntry = true
+    private func makeStoreRegion() -> [CLCircularRegion] {
+        var regions = [CLCircularRegion]()
+        for location in locations {
+            let region = CLCircularRegion(
+                center: location,
+                radius: 2,
+                identifier: UUID().uuidString)
+            region.notifyOnEntry = true
+            
+            regions.append(region)
+        }
         
-        return region
+        return regions
     }
     
     func validateLocationAuthorizationStatus() {
@@ -66,23 +73,25 @@ class LocationManager: NSObject, ObservableObject {
         notificationContent.body = "Your order will be ready shortly."
         notificationContent.sound = .default
 
-        let trigger = UNLocationNotificationTrigger(
-            region: storeRegion,
-            repeats: false
-        )
+        for storeRegion in storeRegions {
+            let trigger = UNLocationNotificationTrigger(
+                region: storeRegion,
+                repeats: false
+            )
 
-        let request = UNNotificationRequest(
-            identifier: UUID().uuidString,
-            content: notificationContent,
-            trigger: trigger
-        )
+            let request = UNNotificationRequest(
+                identifier: UUID().uuidString,
+                content: notificationContent,
+                trigger: trigger
+            )
 
-        notificationCenter
-            .add(request) { error in
-                if error != nil {
-                    print("Error: \(String(describing: error))")
+            notificationCenter
+                .add(request) { error in
+                    if error != nil {
+                        print("Error: \(String(describing: error))")
+                    }
                 }
-            }
+        }
     }
 
 }
