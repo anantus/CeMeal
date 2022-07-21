@@ -26,7 +26,7 @@ struct LeftoverView: View {
                     ForEach(model.categories.indices, id: \.self) { i in
                         Text(model.categories[i])
                             .font(.caption2)
-                            .tag(i)
+                            .tag(model.categories[i])
                     }
                 })
                 .labelsHidden()
@@ -35,8 +35,8 @@ struct LeftoverView: View {
                 
                 // Item list
                 if (model.leftovers.count != 0) {
-                    ForEach(model.leftovers.indices, id: \.self){ index in
-                        if(selectedCategory == "All" || selectedCategory == model.leftovers[index]["category"] as! String){
+                    ForEach(model.leftovers.indices, id: \.self) { index in
+                        if (selectedCategory == "All" || selectedCategory == model.leftovers[index]["category"] as! String) {
                             NavigationLink(destination: {
                                 LeftoverDetailView(expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated: model.leftovers[index]["dateCreated"] as! Date)
                             }, label: {
@@ -53,7 +53,7 @@ struct LeftoverView: View {
                     .alert("Search query can't be empty", isPresented: $showAlert) {
                         Button("OK", role: .cancel) { }
                     }
-                }else{
+                } else {
                     Text("Use your phone to add an ingredients!")
                 }
             }

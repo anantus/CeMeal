@@ -250,7 +250,6 @@
 				552C6ACC285B23C7001F4FB5 /* CeMealApp.swift */,
 				552C6AD0285B23C9001F4FB5 /* Assets.xcassets */,
 				552C6AD5285B23C9001F4FB5 /* Persistence.swift */,
-				552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */,
 				FACEDF0D288806FB001E544A /* SimulatedLocation.gpx */,
 				FA0276E4286438810032B1DD /* Helper */,
 				FA6D877128632009000E5225 /* Model */,
@@ -272,8 +271,8 @@
 		55D712D6288802F2001FC19A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				55D712D728880312001FC19A /* ViewModel */,
 				552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */,
+				55D712D728880312001FC19A /* ViewModel */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1097,7 +1096,8 @@
 				552C6AD8285B23C9001F4FB5 /* CeMeal.xcdatamodel */,
 			);
 			currentVersion = 552C6AD8285B23C9001F4FB5 /* CeMeal.xcdatamodel */;
-			path = CeMeal.xcdatamodeld;
+			name = CeMeal.xcdatamodeld;
+			path = ../CeMeal/CeMeal.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

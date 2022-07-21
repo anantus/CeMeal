@@ -14,11 +14,15 @@ struct LeftoverListView: View {
     var dateCreated: Date
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-            Text(computeNewDate(lhs:dateCreated ,rhs:expiredDate))
-                .font(.footnote)
-                .foregroundColor(colorDate(lhs: dateCreated, rhs: expiredDate))
+        HStack {
+            VStack(alignment: .leading) {
+                Text(title)
+                Text(computeNewDate(lhs:dateCreated ,rhs:expiredDate))
+                    .font(.footnote)
+                    .foregroundColor(colorDate(lhs: dateCreated, rhs: expiredDate))
+            }
+            
+            Spacer()
         }
     }
     
@@ -39,10 +43,10 @@ struct LeftoverListView: View {
     
     func colorDate(lhs: Date, rhs:Date) -> Color {
         let diffComponents = Calendar.current.dateComponents([.month, .day], from: lhs, to: rhs)
-        if diffComponents.day! >= 0{
+        if diffComponents.day! <= 7{
             return .red
         }else{
-            return .gray
+            return .green
         }
     }
 }
