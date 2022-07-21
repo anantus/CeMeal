@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchResultView: View {
     
     var searchQuery: String
-    @Binding var model : ViewModelWatch
+//    @Binding var model : ViewModelWatch
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,23 +20,23 @@ struct SearchResultView: View {
             
             // Leftovers
             List {
-                if (model.leftovers.count != 0) {
-                    ForEach(0...model.leftovers.count-1, id: \.self){ index in
-                        
-                        let ingredients : String = model.leftovers[index]["ingredients"] as! String
-                        let expiredDate : Date = model.leftovers[index]["dateExpired"] as! Date
-                        let dateCreated : Date = model.leftovers[index]["dateCreated"] as! Date
-                        
-                        if ingredients.contains(searchQuery){
-                            NavigationLink(destination: {
-                                LeftoverDetailView(expiredDate: expiredDate, dateCreated: dateCreated)
-                            }, label: {
-                                LeftoverListView(title: ingredients , expiredDate: expiredDate, dateCreated: dateCreated)
-                            })
-                        }
-                        
-                    }
-                }
+//                if (model.leftovers.count != 0) {
+//                    ForEach(0...model.leftovers.count-1, id: \.self){ index in
+//
+//                        let ingredients : String = model.leftovers[index]["ingredients"] as! String
+//                        let expiredDate : Date = model.leftovers[index]["dateExpired"] as! Date
+//                        let dateCreated : Date = model.leftovers[index]["dateCreated"] as! Date
+//
+//                        if ingredients.contains(searchQuery){
+//                            NavigationLink(destination: {
+//                                LeftoverDetailView(expiredDate: expiredDate, dateCreated: dateCreated)
+//                            }, label: {
+//                                LeftoverListView(title: ingredients , expiredDate: expiredDate, dateCreated: dateCreated)
+//                            })
+//                        }
+//
+//                    }
+//                }
                 //                NavigationLink(destination: {
                 //                    LeftoverDetailView()
                 //                }, label: {

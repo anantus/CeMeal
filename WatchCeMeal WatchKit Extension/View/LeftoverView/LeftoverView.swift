@@ -13,36 +13,35 @@ struct LeftoverView: View {
     @State private var searchQuery = ""
     @State private var selectedCategory = "All"
     @State private var showAlert = false
-    @ObservedObject var model = ViewModelWatch()
+//    @ObservedObject var model = ViewModelWatch()
+    @ObservedObject var leftoverVM = LeftoverViewModel()
     
     var body: some View {
         ScrollView {
             ScrollViewReader { value in
                 // Search bar
-                SearchBarView(allowNavigate: $allowNavigate, searchQuery: $searchQuery, showAlert: $showAlert, model: .constant(model))
+//                SearchBarView(allowNavigate: $allowNavigate, searchQuery: $searchQuery, showAlert: $showAlert, model: .constant(model))
                 
                 // Filter picker
-                Picker("Filter", selection: $selectedCategory, content: {
-                    ForEach(model.categories.indices, id: \.self) { i in
-                        Text(model.categories[i])
-                            .font(.caption2)
-                            .tag(model.categories[i])
-                    }
-                })
-                .labelsHidden()
-                .frame(height: 30)
-                .id(0)
+//                Picker("Filter", selection: $selectedCategory, content: {
+//                    ForEach(model.categories.indices, id: \.self) { i in
+//                        Text(model.categories[i])
+//                            .font(.caption2)
+//                            .tag(model.categories[i])
+//                    }
+//                })
+//                .labelsHidden()
+//                .frame(height: 30)
+//                .id(0)
                 
                 // Item list
-                if (model.leftovers.count != 0) {
-                    ForEach(model.leftovers.indices, id: \.self) { index in
-                        if (selectedCategory == "All" || selectedCategory == model.leftovers[index]["category"] as! String) {
+                if (leftoverVM.leftovers.count != 0) {
+                    ForEach(leftoverVM.leftovers.filter({ selectedCategory == "All" ? true : $0.category.contains(selectedCategory) })) { leftover in
                             NavigationLink(destination: {
-                                LeftoverDetailView(expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated: model.leftovers[index]["dateCreated"] as! Date)
+                                LeftoverDetailView(expiredDate: leftover.dateExpired, dateCreated: leftover.dateCreated)
                             }, label: {
-                                LeftoverListView(title: model.leftovers[index]["ingredients"] as! String, expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated:  model.leftovers[index]["dateCreated"] as! Date)
+                                LeftoverListView(title: leftover.ingredients, expiredDate: leftover.dateExpired, dateCreated: leftover.dateCreated)
                             })
-                        }
                     }
                     .onAppear() {
                         value.scrollTo(0)
