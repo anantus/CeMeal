@@ -22,6 +22,8 @@ class LeftoversViewModel:ObservableObject{
     @Published var isUsed = false
     @Published var leftoverItem:Leftovers!
     
+    @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
+    
     func createLeftovers(context:NSManagedObjectContext){
         if leftoverItem == nil {
             let leftover = Leftovers(context: context)

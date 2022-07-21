@@ -11,19 +11,44 @@ struct LeftoverListView: View {
     
     var title: String
     var expiredDate: Date
+    var dateCreated: Date
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-            Text("Expired on \(dateToString(expiredDate))")
+            Text(computeNewDate(lhs:dateCreated ,rhs:expiredDate))
                 .font(.footnote)
-                .foregroundColor(.red)
+                .foregroundColor(colorDate(lhs: dateCreated, rhs: expiredDate))
+        }
+    }
+    
+    func computeNewDate(lhs: Date, rhs:Date) -> String  {
+        let diffComponents = Calendar.current.dateComponents([.month, .day], from: lhs, to: rhs)
+        let days = diffComponents.day
+        let month = diffComponents.month
+        if month! > 0 {
+            return "Expire on \(String(describing: month)) month"
+        }else if days! > 0 {
+            return "Expire on \(String(days!)) days"
+        }else if days == 0 {
+            return "Expire Today!"
+        }else{
+            return "Expired on \(dateToString(rhs))"
+        }
+    }
+    
+    func colorDate(lhs: Date, rhs:Date) -> Color {
+        let diffComponents = Calendar.current.dateComponents([.month, .day], from: lhs, to: rhs)
+        if diffComponents.day! >= 0{
+            return .red
+        }else{
+            return .gray
         }
     }
 }
 
 struct LeftoverListView_Previews: PreviewProvider {
     static var previews: some View {
-        LeftoverListView(title: "Scallop", expiredDate: Date())
+        LeftoverListView(title: "Scallop", expiredDate: Date(), dateCreated: Date())
     }
 }

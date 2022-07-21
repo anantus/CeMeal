@@ -12,6 +12,10 @@
 		552C6AD4285B23C9001F4FB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C6AD3285B23C9001F4FB5 /* Preview Assets.xcassets */; };
 		552C6AD6285B23C9001F4FB5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C6AD5285B23C9001F4FB5 /* Persistence.swift */; };
 		552C6AD9285B23C9001F4FB5 /* CeMeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */; };
+		55D712D82888032C001FC19A /* LeftoversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */; };
+		55D712DA28880393001FC19A /* ViewModelPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D712D928880393001FC19A /* ViewModelPhone.swift */; };
+		55D712DD288803B3001FC19A /* ViewModelWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D712DC288803B3001FC19A /* ViewModelWatch.swift */; };
+		55D712DE288803EC001FC19A /* CeMeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */; };
 		55EF8BFF286EB86D00529ED7 /* LeftoversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */; };
 		55EF8C07286ED06700529ED7 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EF8C06286ED06700529ED7 /* FavoriteViewModel.swift */; };
 		55F4678328707C5D0027738E /* IngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F4678228707C5D0027738E /* IngredientViewModel.swift */; };
@@ -127,6 +131,8 @@
 		552C6AD3285B23C9001F4FB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		552C6AD5285B23C9001F4FB5 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		552C6AD8285B23C9001F4FB5 /* CeMeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CeMeal.xcdatamodel; sourceTree = "<group>"; };
+		55D712D928880393001FC19A /* ViewModelPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelPhone.swift; sourceTree = "<group>"; };
+		55D712DC288803B3001FC19A /* ViewModelWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelWatch.swift; sourceTree = "<group>"; };
 		55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftoversViewModel.swift; sourceTree = "<group>"; };
 		55EF8C06286ED06700529ED7 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		55F4678228707C5D0027738E /* IngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientViewModel.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 		552C6AC0285B23C7001F4FB5 = {
 			isa = PBXGroup;
 			children = (
+				55D712D6288802F2001FC19A /* Shared */,
 				552C6ACB285B23C7001F4FB5 /* CeMeal */,
 				FAB1F13528844B0600C3D05F /* WatchCeMeal */,
 				FAB1F14028844B0700C3D05F /* WatchCeMeal WatchKit Extension */,
@@ -240,7 +247,6 @@
 				552C6ACC285B23C7001F4FB5 /* CeMealApp.swift */,
 				552C6AD0285B23C9001F4FB5 /* Assets.xcassets */,
 				552C6AD5285B23C9001F4FB5 /* Persistence.swift */,
-				552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */,
 				FA0276E4286438810032B1DD /* Helper */,
 				FA6D877128632009000E5225 /* Model */,
 				FA6D876B28631BF7000E5225 /* View */,
@@ -256,6 +262,31 @@
 				552C6AD3285B23C9001F4FB5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		55D712D6288802F2001FC19A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				55D712D728880312001FC19A /* ViewModel */,
+				552C6AD7285B23C9001F4FB5 /* CeMeal.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		55D712D728880312001FC19A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55D712DB288803B3001FC19A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55D712DC288803B3001FC19A /* ViewModelWatch.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FA0276E4286438810032B1DD /* Helper */ = {
@@ -334,12 +365,12 @@
 		FA6D877428632117000E5225 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				55D712D928880393001FC19A /* ViewModelPhone.swift */,
 				FA910466287156ED00EE3CBA /* AdditionalIngredientViewModel.swift */,
 				55EF8C06286ED06700529ED7 /* FavoriteViewModel.swift */,
 				FA6DAE0A286DC3B5006A5AE6 /* LeftoverViewModel.swift */,
 				FA8482AF2871C32700EE4996 /* OnboardingViewModel.swift */,
 				FA8482BA2871DC2100EE4996 /* SessionManager.swift */,
-				55EF8BFE286EB86D00529ED7 /* LeftoversViewModel.swift */,
 				55F4678228707C5D0027738E /* IngredientViewModel.swift */,
 				55F4678428707C950027738E /* RecipeViewModel.swift */,
 			);
@@ -406,6 +437,7 @@
 				FAB1F14528844B0700C3D05F /* ComplicationController.swift */,
 				FAB1F14728844B0800C3D05F /* Assets.xcassets */,
 				FAB1F14C28844B0800C3D05F /* Info.plist */,
+				55D712DB288803B3001FC19A /* ViewModel */,
 				FAC2C85D28853A6800620152 /* Helper */,
 				FAB1F15A28844B6F00C3D05F /* View */,
 				FAB1F14928844B0800C3D05F /* Preview Content */,
@@ -630,6 +662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D712DA28880393001FC19A /* ViewModelPhone.swift in Sources */,
 				FA0C3F232872BF5B008FC5D0 /* CapsuleView.swift in Sources */,
 				FA0C3F242872BF5B008FC5D0 /* TabbedView.swift in Sources */,
 				FA6DAE0B286DC3B5006A5AE6 /* LeftoverViewModel.swift in Sources */,
@@ -683,11 +716,14 @@
 			files = (
 				FAB1F14428844B0700C3D05F /* CeMealApp.swift in Sources */,
 				FAC2C85F28853A7300620152 /* Date.swift in Sources */,
+				55D712DD288803B3001FC19A /* ViewModelWatch.swift in Sources */,
 				FAD30C3D28852EAC00BDF972 /* LeftoverDetailView.swift in Sources */,
 				FA769C4E2886DE21002F1273 /* SearchBarView.swift in Sources */,
 				FAC2C86328853AE800620152 /* BuyDateView.swift in Sources */,
 				FACEDF0A2887EB2E001E544A /* RectangularComplicationView.swift in Sources */,
 				FAB1F14228844B0700C3D05F /* ContentView.swift in Sources */,
+				55D712DE288803EC001FC19A /* CeMeal.xcdatamodeld in Sources */,
+				55D712D82888032C001FC19A /* LeftoversViewModel.swift in Sources */,
 				FAB1F14628844B0700C3D05F /* ComplicationController.swift in Sources */,
 				FA769C512887C576002F1273 /* CircularComplicationView.swift in Sources */,
 				FAB1F15D28844F4400C3D05F /* LeftoverView.swift in Sources */,
