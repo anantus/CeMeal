@@ -20,7 +20,7 @@ struct LeftoverView: View {
         ScrollView {
             ScrollViewReader { value in
                 // Search bar
-//                SearchBarView(allowNavigate: $allowNavigate, searchQuery: $searchQuery, showAlert: $showAlert, model: .constant(model))
+                SearchBarView(allowNavigate: $allowNavigate, searchQuery: $searchQuery, showAlert: $showAlert)
                 
                 // Filter picker
 //                Picker("Filter", selection: $selectedCategory, content: {

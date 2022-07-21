@@ -12,11 +12,10 @@ struct SearchBarView: View {
     @Binding var allowNavigate: Bool
     @Binding var searchQuery: String
     @Binding var showAlert: Bool
-//    @Binding var model: ViewModelWatch
     
     var body: some View {
         ZStack {
-//            NavigationLink (destination: SearchResultView(searchQuery: searchQuery, model: $model), isActive: $allowNavigate) {}
+            NavigationLink (destination: SearchResultView(searchQuery: searchQuery), isActive: $allowNavigate) {}
             
             TextField("Search", text: $searchQuery)
                 .submitLabel(.continue)
@@ -36,8 +35,8 @@ struct SearchBarView: View {
     
 }
 
-//struct SearchBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchBarView(allowNavigate: .constant(false), searchQuery: .constant(""), showAlert: .constant(false))
-//    }
-//}
+struct SearchBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchBarView(allowNavigate: .constant(false), searchQuery: .constant(""), showAlert: .constant(false))
+    }
+}
