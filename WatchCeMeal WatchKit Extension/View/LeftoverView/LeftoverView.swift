@@ -11,21 +11,20 @@ struct LeftoverView: View {
     
     @State private var allowNavigate = false
     @State private var searchQuery = ""
-    @State private var selectedCategory = "Seafood & Seaweed"
+    @State private var selectedCategory = "All"
     @State private var showAlert = false
-    
-    private var categories = ["Seafood & Seaweed", "A", "B", "C"]
+    @ObservedObject var model = ViewModelWatch()
     
     var body: some View {
         ScrollView {
             ScrollViewReader { value in
                 // Search bar
-                SearchBarView(allowNavigate: $allowNavigate, searchQuery: $searchQuery, showAlert: $showAlert)
+                SearchBarView(allowNavigate: $allowNavigate, searchQuery: $searchQuery, showAlert: $showAlert, model: .constant(model))
                 
                 // Filter picker
                 Picker("Filter", selection: $selectedCategory, content: {
-                    ForEach(categories.indices, id: \.self) { i in
-                        Text(categories[i])
+                    ForEach(model.categories.indices, id: \.self) { i in
+                        Text(model.categories[i])
                             .font(.caption2)
                             .tag(i)
                     }
@@ -33,28 +32,33 @@ struct LeftoverView: View {
                 .labelsHidden()
                 .frame(height: 30)
                 .id(0)
-
+                
                 // Item list
-                ForEach(0..<10) { i in
-                    NavigationLink(destination: {
-                        LeftoverDetailView()
-                    }, label: {
-                        LeftoverListView(title: "Scallop \(i)", expiredDate: Date())
-                    })
-                }
-                .onAppear() {
-                    value.scrollTo(0)
-                }
-
-                .navigationTitle("Ingredients List")
-                .navigationBarTitleDisplayMode(.inline)
-                .alert("Search query can't be empty", isPresented: $showAlert) {
-                    Button("OK", role: .cancel) { }
+                if (model.leftovers.count != 0) {
+                    ForEach(model.leftovers.indices, id: \.self){ index in
+                        if(selectedCategory == "All" || selectedCategory == model.leftovers[index]["category"] as! String){
+                            NavigationLink(destination: {
+                                LeftoverDetailView(expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated: model.leftovers[index]["dateCreated"] as! Date)
+                            }, label: {
+                                LeftoverListView(title: model.leftovers[index]["ingredients"] as! String, expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated:  model.leftovers[index]["dateCreated"] as! Date)
+                            })
+                        }
+                    }
+                    .onAppear() {
+                        value.scrollTo(0)
+                    }
+                    
+                    .navigationTitle("Ingredients List")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .alert("Search query can't be empty", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
+                }else{
+                    Text("Use your phone to add an ingredients!")
                 }
             }
         }
     }
-    
 }
 
 struct LeftoverView_Previews: PreviewProvider {

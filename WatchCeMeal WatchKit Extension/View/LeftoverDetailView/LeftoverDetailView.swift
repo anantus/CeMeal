@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct LeftoverDetailView: View {
+    
+    var expiredDate: Date
+    var dateCreated: Date
+    
     var body: some View {
         VStack {
             Spacer()
             
-            ExpiredDateView(expiredDate: Date())
+            ExpiredDateView(expiredDate: expiredDate, dateCreated: dateCreated)
             
             Spacer()
             
-            BuyDateView(buyDate: Date())
+            BuyDateView(buyDate: dateCreated)
         }
     }
 }
 
 struct LeftoverDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LeftoverDetailView()
+        LeftoverDetailView(expiredDate: Date(), dateCreated: Date())
     }
 }

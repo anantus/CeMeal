@@ -12,7 +12,8 @@ struct LeftoverView: View {
     @Environment(\.managedObjectContext) private var viewContent
     @EnvironmentObject var leftoversViewModel:LeftoversViewModel
     @ObservedObject var ingredientVM:IngredientViewModel = IngredientViewModel()
-    
+    @State var reachable = false
+    @State var ingredientCount = 0
     @FetchRequest(entity: Leftovers.entity(), sortDescriptors: [NSSortDescriptor(key: "dateCreated", ascending: true)]) var fetchedLeftovers:FetchedResults<Leftovers>
     
     @Environment(\.colorScheme) var colorScheme
@@ -22,6 +23,8 @@ struct LeftoverView: View {
     @State private var showAlert = false
     
     @State private var selectedIngredient: Ingredient?
+    
+    var model = ViewModelPhone()
     
     var body: some View {
         NavigationView {
@@ -56,7 +59,6 @@ struct LeftoverView: View {
                         // Filled ingredient list
                         ForEach(fetchedLeftovers.filter({ searchQuery.isEmpty ? true : $0.ingredients!.contains(searchQuery) })) { leftover in
                             Button {
-                                //                                Text("Chicken Breast")
                             } label: {
                                 HStack {
                                     // Checkbox
@@ -113,6 +115,7 @@ struct LeftoverView: View {
                     
                 }
                 
+                
                 NavigationLink {
                     GenerateRecipeView()
                 } label: {
@@ -123,8 +126,8 @@ struct LeftoverView: View {
                 .buttonStyle(NeumorphicButtonStyle(bgColor: .accentColor))
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .padding(.bottom)
-                
             }
+            
             
             .navigationTitle("Hi, Chef!")
             .navigationBarColor(backgroundColor: .systemBackground, titleColor: UIColor(Color.ui.title))
@@ -145,6 +148,11 @@ struct LeftoverView: View {
                     dismissButton: .destructive(Text("Got It!"))
                 )
             }
+            .onAppear{
+                while (reachable == false && ingredientCount != fetchedLeftovers.count) {
+                    sendMessage()
+                }
+            }
         }
     }
     
@@ -157,6 +165,39 @@ struct LeftoverView: View {
             }
         }
         return leftoverIngredient!
+    }
+    
+    func sendMessage() {
+        var allLeftover : [[String : Any]] = []
+        var categories : [String] = []
+        
+        for leftover in fetchedLeftovers{
+            let tempLeftover : [String: Any] =
+            ["category":  leftover.category ?? "No Category",
+             "dateCreated": leftover.dateCreated ?? Date(),
+             "dateExpired": leftover.dateExpired ?? Date(),
+             "ingredients": leftover.ingredients!]
+            
+            allLeftover.append(tempLeftover)
+            categories.append(leftover.category ?? "No Category")
+        }
+        
+        var uniqueCat = Array(Set(categories))
+        uniqueCat.sort()
+        uniqueCat.insert("All", at: 0)
+        
+        
+        // MARK: Send message menggunakan WCSession
+        let dataMessage = ["leftovers": allLeftover, "categories": uniqueCat] as [String : Any]
+        
+        if model.wcSession.isReachable {
+            reachable = true
+            ingredientCount = allLeftover.count
+        } else {
+            reachable = false
+        }
+        
+        model.wcSession.sendMessage(dataMessage, replyHandler: nil)
     }
     
 }
