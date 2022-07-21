@@ -8,40 +8,6 @@
 import SwiftUI
 import WatchConnectivity
 
-//class ViewModelWatch: NSObject, ObservableObject {
-//    
-//    var wcSession: WCSession
-//    
-//    // Emoji & color
-//    @Published var leftovers : [[String: Any]] = []
-//    @Published var categories : [String] = []
-//    
-//    // Init session and activate watch connectivity
-//    // alat komunikasi buat watch
-//    init(session: WCSession = .default) {
-//        self.wcSession = session
-//        super.init()
-//        self.wcSession.delegate = self
-//        session.activate()
-//    }
-//    
-//    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-//        // MARK: Capture data
-//        DispatchQueue.main.async {
-//            self.leftovers = message["leftovers"] as! [[String: Any]]
-//            self.categories = message["categories"] as! [String]
-//            }
-//    }
-//    
-//}
-//
-//extension ViewModelWatch: WCSessionDelegate {
-//    
-//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-//        
-//    }
-//}
-
 class LeftoverViewModel: NSObject, ObservableObject {
     
     @Published var leftovers: [Leftover] = [] {
@@ -77,6 +43,18 @@ class LeftoverViewModel: NSObject, ObservableObject {
         }
     }
     
+    func filterCategories() -> [String] {
+        var categories = ["All"]
+        
+        for leftover in leftovers {
+            if !categories.contains(leftover.category) {
+                categories.append(leftover.category)
+            }
+        }
+        
+        return categories
+    }
+    
     // Init session and activate watch connectivity
     // alat komunikasi buat watch
     init(session: WCSession = .default) {
@@ -84,7 +62,7 @@ class LeftoverViewModel: NSObject, ObservableObject {
         super.init()
         self.wcSession.delegate = self
         session.activate()
-        
+
         getItems()
     }
     

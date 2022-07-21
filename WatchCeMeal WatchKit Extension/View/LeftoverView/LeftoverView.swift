@@ -23,16 +23,16 @@ struct LeftoverView: View {
                 SearchBarView(allowNavigate: $allowNavigate, searchQuery: $searchQuery, showAlert: $showAlert)
                 
                 // Filter picker
-//                Picker("Filter", selection: $selectedCategory, content: {
-//                    ForEach(model.categories.indices, id: \.self) { i in
-//                        Text(model.categories[i])
-//                            .font(.caption2)
-//                            .tag(model.categories[i])
-//                    }
-//                })
-//                .labelsHidden()
-//                .frame(height: 30)
-//                .id(0)
+                Picker("Filter", selection: $selectedCategory, content: {
+                    ForEach(leftoverVM.filterCategories(), id:\.self) { category in
+                        Text(category)
+                            .font(.caption2)
+                            .tag(category)
+                    }
+                })
+                .labelsHidden()
+                .frame(height: 30)
+                .id(0)
                 
                 // Item list
                 if (leftoverVM.leftovers.count != 0) {
