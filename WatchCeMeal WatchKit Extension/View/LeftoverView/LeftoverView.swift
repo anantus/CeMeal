@@ -35,13 +35,14 @@ struct LeftoverView: View {
                 
                 // Item list
                 if (model.leftovers.count != 0) {
-                    ForEach(0...model.leftovers.count-1, id: \.self){ index in
-                        
-                        NavigationLink(destination: {
-                            LeftoverDetailView(expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated: model.leftovers[index]["dateCreated"] as! Date)
-                        }, label: {
-                            LeftoverListView(title: model.leftovers[index]["ingredients"] as! String, expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated:  model.leftovers[index]["dateCreated"] as! Date)
-                        })
+                    ForEach(model.leftovers.indices, id: \.self){ index in
+                        if(selectedCategory == "All" || selectedCategory == model.leftovers[index]["category"] as! String){
+                            NavigationLink(destination: {
+                                LeftoverDetailView(expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated: model.leftovers[index]["dateCreated"] as! Date)
+                            }, label: {
+                                LeftoverListView(title: model.leftovers[index]["ingredients"] as! String, expiredDate: model.leftovers[index]["dateExpired"] as! Date, dateCreated:  model.leftovers[index]["dateCreated"] as! Date)
+                            })
+                        }
                     }
                     .onAppear() {
                         value.scrollTo(0)
@@ -52,6 +53,8 @@ struct LeftoverView: View {
                     .alert("Search query can't be empty", isPresented: $showAlert) {
                         Button("OK", role: .cancel) { }
                     }
+                }else{
+                    Text("Use your phone to add an ingredients!")
                 }
             }
         }

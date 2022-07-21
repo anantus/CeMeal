@@ -11,6 +11,7 @@ import SwiftUI
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
     // MARK: - Complication Configuration
+    @ObservedObject var model = ViewModelWatch()
 
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
@@ -51,7 +52,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getComplicationTemplate(for complication: CLKComplication) -> CLKComplicationTemplate? {
-        let leftoverQty = 20
+        let leftoverQty = getQuantity()
         
         switch complication.family {
         case .graphicCorner:
@@ -83,5 +84,24 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         // This method will be called once per supported complication, and the results will be cached
         handler(nil)
+    }
+    
+    func getQuantity() -> Int{
+        var quantity = 0
+        for lo in model.leftovers{
+            if isExpiringInAWeek(lhs: lo["dateCreated"] as! Date, rhs: lo["dateExpired"] as! Date){
+                quantity += 1
+            }
+        }
+        
+        return quantity
+    }
+    
+    func isExpiringInAWeek(lhs: Date, rhs:Date) -> Bool  {
+        let diffComponents = Calendar.current.dateComponents([.month, .day], from: lhs, to: rhs)
+        let days = diffComponents.day!
+//        let month = diffComponents.month!
+        
+        return (days >= 0 && days < 7)
     }
 }
