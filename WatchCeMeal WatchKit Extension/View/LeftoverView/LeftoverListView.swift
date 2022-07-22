@@ -31,7 +31,7 @@ struct LeftoverListView: View {
         let days = diffComponents.day
         let month = diffComponents.month
         if month! > 0 {
-            return "Expire on \(String(describing: month)) month"
+            return "Expire on \(String(describing: month!)) month"
         }else if days! > 0 {
             return "Expire on \(String(days!)) days"
         }else if days == 0 {
