@@ -149,7 +149,8 @@ struct LeftoverView: View {
                 )
             }
             .onAppear{
-                while (reachable == false && ingredientCount != fetchedLeftovers.count) {
+                //Delay sendMessage after opening app
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                     sendMessage()
                 }
             }
