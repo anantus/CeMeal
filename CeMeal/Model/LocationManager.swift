@@ -70,8 +70,8 @@ class LocationManager: NSObject, ObservableObject {
     
     private func registerNotification() {
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Welcome to Swifty TakeOut"
-        notificationContent.body = "Your order will be ready shortly."
+        notificationContent.title = "It looks like you are at the supermarket!"
+        notificationContent.body = "Check out your leftover ingredients!"
         notificationContent.sound = .default
 
         for storeRegion in storeRegions {

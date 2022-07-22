@@ -957,7 +957,7 @@
 				DEVELOPMENT_TEAM = 6PDVJXGB2J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchCeMeal_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = WatchCeMeal;
+				INFOPLIST_KEY_CFBundleDisplayName = CeMeal;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.darmawiryanata.CeMeal;
 				MARKETING_VERSION = 0.5;
@@ -983,7 +983,7 @@
 				DEVELOPMENT_TEAM = 6PDVJXGB2J;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = WatchCeMeal_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = WatchCeMeal;
+				INFOPLIST_KEY_CFBundleDisplayName = CeMeal;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.darmawiryanata.CeMeal;
 				MARKETING_VERSION = 0.5;
@@ -1009,7 +1009,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchCeMeal WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "WatchCeMeal WatchKit Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = CeMeal;
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = WatchCeMeal_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1040,7 +1040,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchCeMeal WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "WatchCeMeal WatchKit Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = CeMeal;
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = WatchCeMeal_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
